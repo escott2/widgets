@@ -1,0 +1,7 @@
+@use "./variables" as *;
+
+@mixin layout-container($padding: $layout-padding) {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: $padding;
+}

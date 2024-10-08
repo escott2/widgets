@@ -1,0 +1,16 @@
+@use "../../styles/abstracts/" as *;
+
+.homeContainer {
+  @include layout-container;
+  // padding: $layout-padding;
+}
+
+.homeHeading {
+  font-size: 24px;
+  text-align: center;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    font-size: 28px;
+    text-align: left;
+  }
+}

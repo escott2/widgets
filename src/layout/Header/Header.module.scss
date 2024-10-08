@@ -1,0 +1,28 @@
+@use "../../styles/abstracts/" as *;
+
+.header {
+  border-bottom: 2px solid #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @include layout-container;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    flex-direction: row;
+  }
+}
+
+.pageTitle {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navList {
+  display: flex;
+
+  li {
+    padding-right: 20px;
+  }
+}
