@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import { About, WeatherWidget } from "../../features";
+import { AboutMe, WeatherWidget } from "../../features";
 
 function Home() {
   return (
@@ -7,7 +7,7 @@ function Home() {
       <h1 className={styles.homeHeading}>
         I'm Emily, an experienced front-end developer.
       </h1>
-      <About />
+      <AboutMe />
       <WeatherWidget />
     </main>
   );

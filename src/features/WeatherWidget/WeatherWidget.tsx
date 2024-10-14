@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./WeatherWidget.module.scss";
-import { GeoLocationData, WeatherData } from "./interfaces";
+import { GeoLocationData, WeatherData } from "./types/WeatherWidgetTypes";
+import { WeatherForm, WeatherDisplay } from "./components";
 
 function WeatherWidget() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -58,31 +59,14 @@ function WeatherWidget() {
   return (
     <div className={styles.weatherContainer}>
       <h2>Weather</h2>
-      <form>
-        <label>Zipcode:</label>
-        <input
-          value={zipCode}
-          onChange={handleZipCodeChange}
-          type="text"
-        ></input>
-        <button type="submit" onClick={handleFindWeatherClick}>
-          Submit
-        </button>
-      </form>
-      <div>
-        {weatherData && <h3>Weather for {zipCode}</h3>}
-
-        <div>
-          <h4>Temperature:</h4>
-          {weatherData?.main?.temp && Math.round(weatherData.main.temp)}&deg;F
-        </div>
-        <div>
-          <h4>Feels like:</h4>
-          {weatherData?.main?.feels_like &&
-            Math.round(weatherData.main.feels_like)}
-          &deg;F
-        </div>
-      </div>
+      <WeatherForm
+        zipCode={zipCode}
+        onZipCodeChange={handleZipCodeChange}
+        onFindWeatherClick={handleFindWeatherClick}
+      />
+      {weatherData && (
+        <WeatherDisplay weatherData={weatherData} zipCode={zipCode} />
+      )}
     </div>
   );
 }

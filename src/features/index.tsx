@@ -1,2 +1,2 @@
-export { About } from "./About";
+export { AboutMe } from "./AboutMe";
 export { WeatherWidget } from "./WeatherWidget";

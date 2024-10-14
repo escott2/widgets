@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import styles from "./About.module.scss";
+import styles from "./AboutMe.module.scss";
 
-function About() {
+function AboutMe() {
   return (
     <div>
       <motion.div
@@ -16,4 +16,4 @@ function About() {
   );
 }
 
-export default About;
+export default AboutMe;
