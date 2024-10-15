@@ -58,7 +58,7 @@ function WeatherWidget() {
 
   return (
     <div className={styles.weatherContainer}>
-      <h2>Weather</h2>
+      <h2 className={styles.title}>Weather</h2>
       <WeatherForm
         zipCode={zipCode}
         onZipCodeChange={handleZipCodeChange}

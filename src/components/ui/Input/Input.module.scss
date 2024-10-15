@@ -1,0 +1,24 @@
+@use "../../../styles/abstracts/" as *;
+
+.label {
+  padding-right: 10px;
+  margin: $form-element-padding;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.labelAboveHint {
+  margin-bottom: 0;
+}
+
+.input {
+  height: 40px;
+  border: 2px solid #dcdcdc;
+  border-radius: 5px;
+  margin: $form-element-padding;
+}
+
+.hint {
+  margin: $form-element-padding;
+  margin-top: 0;
+}

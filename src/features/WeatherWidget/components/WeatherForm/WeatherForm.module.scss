@@ -1,0 +1,33 @@
+@use "../../../../styles/abstracts/" as *;
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.zipCodeButton {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: $primary-color;
+  color: white;
+  border: 2px solid $primary-color;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  margin: $form-element-padding;
+
+  &:hover {
+    background-color: white;
+    color: $primary-color;
+    .arrowForwardSvg {
+      fill: $primary-color;
+    }
+  }
+
+  .arrowForwardSvg {
+    margin-left: 2px;
+  }
+}
