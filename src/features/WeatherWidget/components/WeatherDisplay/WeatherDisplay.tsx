@@ -2,13 +2,13 @@ import { WeatherData } from "../../types/WeatherWidgetTypes";
 
 interface WeatherDisplayProps {
   weatherData: WeatherData;
-  zipCode: string;
+  locationZipCode: string;
 }
 
-function WeatherDisplay({ weatherData, zipCode }: WeatherDisplayProps) {
+function WeatherDisplay({ weatherData, locationZipCode }: WeatherDisplayProps) {
   return (
     <div>
-      {weatherData && <h3>Weather for {zipCode}</h3>}
+      {weatherData && <h3>Weather for {locationZipCode}</h3>}
 
       <div>
         <h4>Temperature:</h4>

@@ -2,23 +2,26 @@
 
 .label {
   padding-right: 10px;
-  margin: $form-element-padding;
+  margin: $form-element-margin;
   font-weight: 700;
   font-size: 18px;
-}
-
-.labelAboveHint {
-  margin-bottom: 0;
 }
 
 .input {
   height: 40px;
   border: 2px solid #dcdcdc;
   border-radius: 5px;
-  margin: $form-element-padding;
+  margin: $form-element-margin;
+  padding: 5px;
 }
 
 .hint {
-  margin: $form-element-padding;
+  margin: $form-element-margin;
   margin-top: 0;
+}
+
+.error {
+  color: red;
+  line-height: 1;
+  margin: $form-element-margin;
 }

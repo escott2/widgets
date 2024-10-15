@@ -2,7 +2,15 @@
 
 .formContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.zipCodeLabel {
+  flex-basis: 100%;
+}
+
+.zipCodeInput {
+  flex-grow: 1;
 }
 
 .zipCodeButton {
@@ -17,7 +25,7 @@
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  margin: $form-element-padding;
+  margin: $form-element-margin;
 
   &:hover {
     background-color: white;

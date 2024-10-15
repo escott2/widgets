@@ -5,8 +5,10 @@ interface InputProps {
   type: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
+  customInputClasses?: string;
   hint?: string;
+  customLabelClasses?: string;
+  error?: string;
 }
 
 function Input({
@@ -14,22 +16,25 @@ function Input({
   type,
   value,
   onChange,
-  className = "",
+  customInputClasses = "",
   hint,
+  customLabelClasses = "",
+  error,
 }: InputProps) {
   return (
     <>
       {label && (
-        <label className={`${styles.label} ${hint && styles.labelAboveHint}`}>
+        <label className={`${styles.label} ${customLabelClasses}`}>
           {label}
         </label>
       )}
       {hint && <p className={styles.hint}>{hint}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       <input
         type={type}
         value={value}
         onChange={onChange}
-        className={`${styles.input} ${className}`}
+        className={`${styles.input} ${customInputClasses}`}
       />
     </>
   );

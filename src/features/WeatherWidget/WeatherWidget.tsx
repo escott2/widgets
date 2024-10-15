@@ -2,12 +2,14 @@ import { useState } from "react";
 import styles from "./WeatherWidget.module.scss";
 import { GeoLocationData, WeatherData } from "./types/WeatherWidgetTypes";
 import { WeatherForm, WeatherDisplay } from "./components";
+import { isValidZipCode } from "./utility";
 
 function WeatherWidget() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [geoLocationData, setGeoLocationData] =
     useState<GeoLocationData | null>(null);
   const [zipCode, setZipCode] = useState("");
+  const [error, setError] = useState("");
 
   const apiKey = "922176d7fe6aa80866789eaaf2e9d26d";
 
@@ -41,7 +43,8 @@ function WeatherWidget() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    if (zipCode) {
+    if (zipCode && isValidZipCode(zipCode)) {
+      setError("");
       try {
         const geoData = await getGeoLocationData(zipCode);
         if (geoData) {
@@ -50,9 +53,12 @@ function WeatherWidget() {
           const weatherData = await getWeatherData(lat, lon);
           setWeatherData(weatherData);
         }
+        setZipCode("");
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+    } else {
+      setError("Please enter a valid 5-digit ZIP code.");
     }
   };
 
@@ -63,9 +69,13 @@ function WeatherWidget() {
         zipCode={zipCode}
         onZipCodeChange={handleZipCodeChange}
         onFindWeatherClick={handleFindWeatherClick}
+        error={error}
       />
-      {weatherData && (
-        <WeatherDisplay weatherData={weatherData} zipCode={zipCode} />
+      {weatherData && geoLocationData?.zip && (
+        <WeatherDisplay
+          weatherData={weatherData}
+          locationZipCode={geoLocationData.zip}
+        />
       )}
     </div>
   );
