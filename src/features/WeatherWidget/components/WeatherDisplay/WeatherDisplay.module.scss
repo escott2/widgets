@@ -1,0 +1,62 @@
+.weatherDisplayContainer {
+  margin-top: 20px;
+}
+
+.temperatureContainer {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.primaryWeatherContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.icon {
+  width: 50px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.feelsLikeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.feelsLikeHeading,
+.highHeading,
+.lowHeading,
+.humidityHeading,
+.windHeading {
+  margin-right: 5px;
+  font-weight: 400;
+}
+
+.highLowContainer {
+  display: flex;
+  align-items: center;
+}
+
+.lowHeading {
+  margin-left: 5px;
+  padding-left: 5px;
+  border-left: 1px solid #000;
+}
+
+.humidityContainer {
+  display: flex;
+  align-items: center;
+}
+
+.windContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.secondaryWeatherContainer {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 20px;
+}

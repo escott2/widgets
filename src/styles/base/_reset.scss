@@ -61,8 +61,10 @@ label {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   text-wrap: balance;
+  margin: 0;
 }
 
 /* A elements that don't have a class get default styles */

@@ -1,5 +1,6 @@
 import styles from "./WeatherForm.module.scss";
 import { Input, ArrowForwardSVG } from "../../../../components/";
+import { motion } from "framer-motion";
 
 interface WeatherFormProps {
   zipCode: string;
@@ -28,15 +29,25 @@ function WeatherForm({
         customInputClasses={styles.zipCodeInput}
         customLabelClasses={styles.zipCodeLabel}
       />
-      <button
+      <motion.button
         type="submit"
         onClick={onFindWeatherClick}
         className={styles.zipCodeButton}
+        whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+        whileTap={{ scale: 0.9 }}
       >
         <ArrowForwardSVG customClasses={styles.arrowForwardSvg} />
-      </button>
+      </motion.button>
     </form>
   );
 }
+
+<motion.button
+  whileHover={{
+    scale: 1.2,
+    transition: { duration: 1 },
+  }}
+  whileTap={{ scale: 0.9 }}
+/>;
 
 export default WeatherForm;
