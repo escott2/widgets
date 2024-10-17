@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./WeatherWidget.module.scss";
 import { GeoLocationData, WeatherData } from "./types/WeatherWidgetTypes";
 import { WeatherForm, WeatherDisplay } from "./components";
-import { isValidZipCode } from "./utility";
+import { isValidZipCode } from "./utils";
 
 function WeatherWidget() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);

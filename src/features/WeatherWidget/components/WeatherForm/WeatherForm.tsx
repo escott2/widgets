@@ -42,12 +42,4 @@ function WeatherForm({
   );
 }
 
-<motion.button
-  whileHover={{
-    scale: 1.2,
-    transition: { duration: 1 },
-  }}
-  whileTap={{ scale: 0.9 }}
-/>;
-
 export default WeatherForm;

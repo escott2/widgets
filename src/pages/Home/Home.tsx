@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import { AboutMe, WeatherWidget } from "../../features";
+import { AboutMe, WeatherWidget, SunWidget } from "../../features";
 
 function Home() {
   return (
@@ -29,6 +29,7 @@ function Home() {
 
       <section className={styles.widgetContainer}>
         <WeatherWidget />
+        <SunWidget />
       </section>
       <AboutMe />
     </main>
