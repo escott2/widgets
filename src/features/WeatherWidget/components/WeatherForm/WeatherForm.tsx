@@ -1,29 +1,40 @@
+import { useState, useContext } from "react";
 import styles from "./WeatherForm.module.scss";
 import { Input, ArrowForwardSVG } from "../../../../components/";
 import { motion } from "framer-motion";
+import { isValidZipCode } from "../../utils";
+import { WeatherContext } from "../../../../context";
 
-interface WeatherFormProps {
-  zipCode: string;
-  onZipCodeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error: string;
-  onFindWeatherClick: (
+function WeatherForm() {
+  const [zipCode, setZipCode] = useState("");
+  const [error, setError] = useState("");
+  const { actions } = useContext(WeatherContext);
+  const findWeather = actions?.findWeather ? actions.findWeather : null;
+
+  const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setZipCode(e.target.value);
+  };
+
+  const handleFindWeatherClick = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => Promise<void>;
-}
+  ) => {
+    e.preventDefault();
+    if (zipCode && isValidZipCode(zipCode)) {
+      setError("");
+      findWeather && findWeather(zipCode);
+      setZipCode("");
+    } else {
+      setError("Please enter a valid 5-digit ZIP code.");
+    }
+  };
 
-function WeatherForm({
-  zipCode,
-  onZipCodeChange,
-  error,
-  onFindWeatherClick,
-}: WeatherFormProps) {
   return (
     <form className={styles.formContainer}>
       <Input
         label="ZIP Code"
         type="text"
         value={zipCode}
-        onChange={onZipCodeChange}
+        onChange={handleZipCodeChange}
         hint="Find local weather by entering your ZIP code."
         error={error}
         customInputClasses={styles.zipCodeInput}
@@ -31,7 +42,7 @@ function WeatherForm({
       />
       <motion.button
         type="submit"
-        onClick={onFindWeatherClick}
+        onClick={handleFindWeatherClick}
         className={styles.zipCodeButton}
         whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
         whileTap={{ scale: 0.9 }}

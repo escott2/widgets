@@ -1,12 +1,9 @@
-import { WeatherData } from "../../types/WeatherWidgetTypes";
+import { useContext } from "react";
+import { WeatherContext } from "../../../../context";
 import styles from "./WeatherDisplay.module.scss";
 
-interface WeatherDisplayProps {
-  weatherData: WeatherData;
-  locationZipCode: string;
-}
-
-function WeatherDisplay({ weatherData, locationZipCode }: WeatherDisplayProps) {
+function WeatherDisplay() {
+  const { weatherData, geoLocationData } = useContext(WeatherContext);
   const iconURL = `https://openweathermap.org/img/wn/${weatherData?.weather?.[0]?.icon}@2x.png`;
 
   const temperature = weatherData?.main?.temp
@@ -30,42 +27,49 @@ function WeatherDisplay({ weatherData, locationZipCode }: WeatherDisplayProps) {
     : null;
 
   return (
-    <div className={styles.weatherDisplayContainer}>
-      {weatherData && (
-        <h3>
-          {weatherData?.name}, {weatherData?.sys?.country} - {locationZipCode}
-        </h3>
-      )}
-      <div className={styles.primaryWeatherContainer}>
-        <div className={styles.temperatureContainer}>{temperature}&deg;F</div>
-        <img
-          className={styles.icon}
-          src={iconURL}
-          alt={`${weatherData?.weather?.[0]?.description} icon`}
-        />
-      </div>
-      <div className={styles.feelsLikeContainer}>
-        <h4 className={styles.feelsLikeHeading}>Feels like:</h4>
-        {feelsLike}&deg;F
-      </div>
-      <div className={styles.highLowContainer}>
-        <h4 className={styles.highHeading}>High:</h4>
-        <p>{highTemp}&deg;F</p>
-        <h4 className={styles.lowHeading}>Low:</h4>
-        <p>{lowTemp}&deg;F</p>
-      </div>
+    <>
+      {weatherData && geoLocationData?.zip && (
+        <div className={styles.weatherDisplayContainer}>
+          {weatherData && (
+            <h3>
+              {weatherData?.name}, {weatherData?.sys?.country} -{" "}
+              {geoLocationData?.zip}
+            </h3>
+          )}
+          <div className={styles.primaryWeatherContainer}>
+            <div className={styles.temperatureContainer}>
+              {temperature}&deg;F
+            </div>
+            <img
+              className={styles.icon}
+              src={iconURL}
+              alt={`${weatherData?.weather?.[0]?.description} icon`}
+            />
+          </div>
+          <div className={styles.feelsLikeContainer}>
+            <h4 className={styles.feelsLikeHeading}>Feels like:</h4>
+            {feelsLike}&deg;F
+          </div>
+          <div className={styles.highLowContainer}>
+            <h4 className={styles.highHeading}>High:</h4>
+            <p>{highTemp}&deg;F</p>
+            <h4 className={styles.lowHeading}>Low:</h4>
+            <p>{lowTemp}&deg;F</p>
+          </div>
 
-      <div className={styles.secondaryWeatherContainer}>
-        <div className={styles.humidityContainer}>
-          <h4 className={styles.humidityHeading}>Humidity:</h4>
-          <p>{weatherData?.main?.humidity}%</p>
+          <div className={styles.secondaryWeatherContainer}>
+            <div className={styles.humidityContainer}>
+              <h4 className={styles.humidityHeading}>Humidity:</h4>
+              <p>{weatherData?.main?.humidity}%</p>
+            </div>
+            <div className={styles.windContainer}>
+              <h4 className={styles.windHeading}>Wind:</h4>
+              <p>{windSpeed} mph</p>
+            </div>
+          </div>
         </div>
-        <div className={styles.windContainer}>
-          <h4 className={styles.windHeading}>Wind:</h4>
-          <p>{windSpeed} mph</p>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
