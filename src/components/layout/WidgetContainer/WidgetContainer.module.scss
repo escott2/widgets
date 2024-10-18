@@ -1,0 +1,29 @@
+.widgetContainer {
+  height: auto;
+  width: 375px;
+  border: 2px solid #ffffff;
+  padding: 30px 20px 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: -15px;
+  background-color: white;
+  padding: 5px 20px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 400;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}

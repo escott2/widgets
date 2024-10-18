@@ -52,11 +52,9 @@
 .windContainer {
   display: flex;
   align-items: center;
-  margin-left: auto;
 }
 
 .secondaryWeatherContainer {
-  display: flex;
-  align-items: flex-end;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }

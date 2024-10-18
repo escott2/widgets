@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AboutMe, WeatherWidget, SunWidget } from "../../features";
+import { WeatherContext } from "../../context";
 
 function Home() {
+  const { weatherData } = useContext(WeatherContext);
   return (
     <main className={styles.homeContainer}>
       <h1 className={styles.homeHeading}>
@@ -27,9 +30,12 @@ function Home() {
         <li>I've worked on many agile projects with multi-functional teams.</li>
       </ul>
 
-      <section className={styles.widgetContainer}>
+      <section className={styles.widgetsContainer}>
         <WeatherWidget />
-        <SunWidget />
+        {weatherData && <SunWidget />}
+        {weatherData && <SunWidget />}
+        {weatherData && <SunWidget />}
+        {weatherData && <SunWidget />}
       </section>
       <AboutMe />
     </main>

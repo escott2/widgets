@@ -1,13 +1,16 @@
 import styles from "./WeatherWidget.module.scss";
 import { WeatherForm, WeatherDisplay } from "./components";
+import { WidgetContainer } from "../../components/layout";
 
 function WeatherWidget() {
   return (
-    <div className={styles.weatherContainer}>
-      <h2 className={styles.title}>Weather</h2>
+    <WidgetContainer
+      customClasses={styles.weatherWidgetContainer}
+      title="Weather"
+    >
       <WeatherForm />
       <WeatherDisplay />
-    </div>
+    </WidgetContainer>
   );
 }
 

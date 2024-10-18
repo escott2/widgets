@@ -46,18 +46,18 @@ function WeatherDisplay() {
               alt={`${weatherData?.weather?.[0]?.description} icon`}
             />
           </div>
-          <div className={styles.feelsLikeContainer}>
-            <h4 className={styles.feelsLikeHeading}>Feels like:</h4>
-            {feelsLike}&deg;F
-          </div>
-          <div className={styles.highLowContainer}>
-            <h4 className={styles.highHeading}>High:</h4>
-            <p>{highTemp}&deg;F</p>
-            <h4 className={styles.lowHeading}>Low:</h4>
-            <p>{lowTemp}&deg;F</p>
-          </div>
-
           <div className={styles.secondaryWeatherContainer}>
+            <div className={styles.highLowContainer}>
+              <h4 className={styles.highHeading}>High:</h4>
+              <p>{highTemp}&deg;F</p>
+              <h4 className={styles.lowHeading}>Low:</h4>
+              <p>{lowTemp}&deg;F</p>
+            </div>
+            <div className={styles.feelsLikeContainer}>
+              <h4 className={styles.feelsLikeHeading}>Feels like:</h4>
+              {feelsLike}&deg;F
+            </div>
+
             <div className={styles.humidityContainer}>
               <h4 className={styles.humidityHeading}>Humidity:</h4>
               <p>{weatherData?.main?.humidity}%</p>

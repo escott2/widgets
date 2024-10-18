@@ -1,20 +1,23 @@
-// import { WeatherData } from "../../types/WeatherWidgetTypes";
-
-// interface SunWidgetProps {
-//   weatherData: WeatherData;
-// }
+import { useContext } from "react";
+import { WeatherContext } from "../../context";
+import { WidgetContainer } from "../../components/layout/";
+import styles from "./SunWidget.module.scss";
 
 function SunWidget() {
+  const { weatherData } = useContext(WeatherContext);
   return (
-    <div>
-      <h1>Sun</h1>
-      <h4>Sunrise</h4>
-      {/* <p>{weatherData?.sys?.sunrise}</p> */}
-      <p>7:32 AM</p>
-      <h4>Sunset</h4>
-      {/* <p>{weatherData?.sys?.sunset}</p> */}
-      <p>6:26 PM</p>
-    </div>
+    <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
+      <div className={styles.sunInfoContainer}>
+        <div className={styles.sunriseContainer}>
+          <h4>Sunrise</h4>
+          <p>{weatherData?.sys?.sunrise}</p>
+        </div>
+        <div className={styles.sunriseContainer}>
+          <h4>Sunset</h4>
+          <p>{weatherData?.sys?.sunset}</p>
+        </div>
+      </div>
+    </WidgetContainer>
   );
 }
 
