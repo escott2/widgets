@@ -19,11 +19,6 @@
   margin-left: 10px;
 }
 
-.feelsLikeContainer {
-  display: flex;
-  align-items: center;
-}
-
 .feelsLikeHeading,
 .highHeading,
 .lowHeading,
@@ -33,28 +28,23 @@
   font-weight: 400;
 }
 
-.highLowContainer {
-  display: flex;
-  align-items: center;
-}
-
 .lowHeading {
   margin-left: 5px;
   padding-left: 5px;
   border-left: 1px solid #000;
 }
 
-.humidityContainer {
-  display: flex;
-  align-items: center;
-}
-
-.windContainer {
+.windContainer,
+.humidityContainer,
+.highLowContainer,
+.feelsLikeContainer {
   display: flex;
   align-items: center;
 }
 
 .secondaryWeatherContainer {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
+  gap: 10px 0;
+  margin-bottom: 10px;
 }
