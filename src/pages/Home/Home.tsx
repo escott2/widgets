@@ -10,10 +10,10 @@ function Home() {
   return (
     <main className={styles.homeContainer}>
       <div className={styles.landingContainer}>
-        <h1 className={styles.homeHeading}>
-          I'm Emily, an experienced front-end engineer.
-        </h1>
         <div className={styles.introContainer}>
+          <h1 className={styles.homeHeading}>
+            I'm Emily, an experienced front-end engineer.
+          </h1>
           <p className={styles.introText}>
             I'm passionate about creating exceptional web experiences that are
             not only visually appealing but also intuitive and well-engineered.
@@ -22,9 +22,11 @@ function Home() {
             portfolio to see my work and learn more about my skills. I'm glad
             you're here and I hope you enjoy the experience!
           </p>
-          <ScrollVideo customClasses={styles.scrollVideo} />
         </div>
+        <ScrollVideo customClasses={styles.scrollVideo} />
       </div>
+
+      <h2>Projects</h2>
 
       <section className={styles.widgetsContainer}>
         <WeatherWidget />
@@ -34,6 +36,7 @@ function Home() {
         {weatherData && <SunWidget />}
       </section>
       <AboutMe />
+      <h2>Contact</h2>
     </main>
   );
 }

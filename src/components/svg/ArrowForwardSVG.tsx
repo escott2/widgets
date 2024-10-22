@@ -2,7 +2,7 @@ interface ArrowForwardSVGProps {
   customClasses?: string;
 }
 
-function ArrowForwardSVG({ customClasses }: ArrowForwardSVGProps) {
+function ArrowForwardSVG({ customClasses = "" }: ArrowForwardSVGProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

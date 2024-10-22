@@ -2,7 +2,7 @@ interface SunSVGProps {
   customClasses?: string;
 }
 
-function SunSVG({ customClasses }: SunSVGProps) {
+function SunSVG({ customClasses = "" }: SunSVGProps) {
   return (
     <svg
       width="230"

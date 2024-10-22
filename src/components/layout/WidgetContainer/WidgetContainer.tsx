@@ -8,7 +8,7 @@ interface WidgetContainerProps {
 
 function WidgetContainer({
   children,
-  customClasses,
+  customClasses = "",
   title,
 }: WidgetContainerProps) {
   return (

@@ -2,7 +2,7 @@ interface SunHorizonSVGProps {
   customClasses?: string;
 }
 
-function SunHorizonSVG({ customClasses }: SunHorizonSVGProps) {
+function SunHorizonSVG({ customClasses = "" }: SunHorizonSVGProps) {
   return (
     <svg
       width="234"

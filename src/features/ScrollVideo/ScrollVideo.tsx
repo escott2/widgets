@@ -7,7 +7,7 @@ interface ScrollVideoProps {
   customClasses?: string;
 }
 
-function ScrollVideo({ customClasses }: ScrollVideoProps) {
+function ScrollVideo({ customClasses = "" }: ScrollVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll();
