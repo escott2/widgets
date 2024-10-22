@@ -8,7 +8,7 @@ import { convertUnixTimeToLocal } from "./utils";
 function SunWidget() {
   const { weatherData } = useContext(WeatherContext);
 
-  return (
+  const renderSunWidget = (
     <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
       <div className={styles.sunPositionContainer}></div>
 
@@ -31,6 +31,19 @@ function SunWidget() {
         </div>
       </div>
     </WidgetContainer>
+  );
+
+  return (
+    <>
+      {weatherData ? (
+        renderSunWidget
+      ) : (
+        <WidgetContainer
+          empty={true}
+          customClasses={styles.sunWidgetContainerEmpty}
+        ></WidgetContainer>
+      )}
+    </>
   );
 }
 
