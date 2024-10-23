@@ -1,6 +1,12 @@
 import { useContext } from "react";
 import styles from "./Home.module.scss";
-import { AboutMe, WeatherWidget, SunWidget, ClockWidget } from "../../features";
+import {
+  AboutMe,
+  WeatherWidget,
+  SunWidget,
+  ClockWidget,
+  ChatWidget,
+} from "../../features";
 import { WeatherContext } from "../../context";
 import ScrollVideo from "../../features/ScrollVideo/ScrollVideo";
 import { WidgetContainer } from "../../components/layout";
@@ -32,6 +38,8 @@ function Home() {
       <section className={styles.widgetsContainer}>
         <WeatherWidget />
         <ClockWidget />
+        <ChatWidget />
+
         <SunWidget />
       </section>
       <AboutMe />
