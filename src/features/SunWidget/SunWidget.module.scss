@@ -28,3 +28,10 @@
 .sunsetContainer {
   text-align: center;
 }
+
+.sunArc {
+  height: 100px;
+  background-color: red;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}

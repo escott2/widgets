@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./Home.module.scss";
 import {
   AboutMe,
@@ -10,9 +10,15 @@ import {
 import { WeatherContext } from "../../context";
 import ScrollVideo from "../../features/ScrollVideo/ScrollVideo";
 import { WidgetContainer } from "../../components/layout";
+import WelcomeWidget from "../../features/WelcomeWidget/WelcomeWidget";
 
 function Home() {
   const { weatherData } = useContext(WeatherContext);
+  const [name, setName] = useState("");
+
+  const saveUsername = (name: string) => {
+    setName(name);
+  };
 
   return (
     <main className={styles.homeContainer}>
@@ -37,10 +43,10 @@ function Home() {
 
       <section className={styles.widgetsContainer}>
         <WeatherWidget />
-        <ClockWidget />
-        <ChatWidget />
-
+        <WelcomeWidget name={name} />
+        <ChatWidget saveUsername={saveUsername} />
         <SunWidget />
+        <ClockWidget />
       </section>
       <AboutMe />
       <h2>Contact</h2>

@@ -14,14 +14,17 @@ interface UserTextObject {
   text: string;
 }
 
-function ChatWidget() {
+interface ChatWidgetProps {
+  saveUsername: (name: string) => void;
+}
+
+function ChatWidget({ saveUsername }: ChatWidgetProps) {
   const [chatText, setChatText] = useState<ChatTextObject[]>([
     chatQuestions[0],
   ]);
   const [displayChat, setDisplayChat] = useState<boolean>(false);
   const [userText, setUserText] = useState<UserTextObject[]>();
   const [currentChatId, setCurrentChatId] = useState<number>(1);
-  const [userName, setUserName] = useState<string>("");
   const [nameValue, setNameValue] = useState<string>("");
 
   console.log(chatText);
@@ -79,10 +82,11 @@ function ChatWidget() {
   const handleSubmit = (currentChatId: number) => {
     switch (currentChatId) {
       case 1:
-        setUserName(nameValue);
+        saveUsername(nameValue);
         addChatTextToConversation(currentChatId, 2, nameValue, nameValue);
         setCurrentChatId(2);
         setNameValue("");
+        break;
       // case 2:
       //   return <Warning} />
       // case 3:

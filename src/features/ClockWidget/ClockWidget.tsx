@@ -3,7 +3,8 @@ import { WidgetContainer } from "../../components/layout";
 import styles from "./ClockWidget.module.scss";
 
 function ClockWidget() {
-  const [time, setTime] = useState(new Date());
+  const currentDate = new Date();
+  const [time, setTime] = useState(currentDate);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -18,9 +19,16 @@ function ClockWidget() {
     minute: "numeric",
   });
 
+  const formattedDate = currentDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
   return (
-    <WidgetContainer title="Time" customClasses={styles.clockWidgetContainer}>
+    <WidgetContainer customClasses={styles.clockWidgetContainer}>
       <p className={styles.clock}>{formattedTime}</p>
+      <p className={styles.date}>{formattedDate}</p>
     </WidgetContainer>
   );
 }
