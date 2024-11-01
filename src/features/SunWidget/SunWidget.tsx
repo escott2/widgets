@@ -3,57 +3,56 @@ import { WeatherContext } from "../../context";
 import { WidgetContainer } from "../../components/layout/";
 import styles from "./SunWidget.module.scss";
 import { SunHorizonSVG, SunPositionSVG } from "../../components/svg";
-import { convertUnixTimeToLocal } from "./utils";
+import { convertUnixTimeToLocal, getSunPosition } from "./utils";
+import { NightDisplay } from "./components/NightDisplay";
 
 function SunWidget() {
   const { weatherData } = useContext(WeatherContext);
+  const percentDaylightRemaining =
+    weatherData?.sys?.sunrise &&
+    weatherData?.sys?.sunset &&
+    getSunPosition(weatherData.sys.sunrise, weatherData.sys.sunset);
 
-  const getSunPosition = (sunriseEpoch: number, sunsetEpoch: number) => {
-    const rangeInMilliseconds = (sunsetEpoch - sunriseEpoch) * 1000;
-    const currentEpochInMilliseconds = new Date().getTime();
-    const percentage = Math.floor(
-      ((currentEpochInMilliseconds - sunriseEpoch * 1000) /
-        rangeInMilliseconds) *
-        100
-    );
-    console.log(percentage);
-    return percentage;
-  };
+  const sunriseTime =
+    weatherData?.sys?.sunrise !== undefined &&
+    convertUnixTimeToLocal(weatherData.sys.sunrise);
+
+  const sunsetTime =
+    weatherData?.sys?.sunset !== undefined &&
+    convertUnixTimeToLocal(weatherData.sys.sunset);
 
   const renderSunWidget = (
-    <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
-      <div className={styles.sunPositionContainer}>
-        {/* <div className={styles.sunArc}></div> */}
-        {weatherData?.sys?.sunrise && weatherData?.sys?.sunset && (
-          // <SunPositionSVG
-          //   percentage={getSunPosition(
-          //     weatherData.sys.sunrise,
-          //     weatherData.sys.sunset
-          //   )}
-          // />
-          <SunPositionSVG percentage={360} />
-        )}
-      </div>
-
-      <div className={styles.sunIconContainer}>
-        <SunHorizonSVG customClasses={styles.sunHorizonIcon} />
-        <SunHorizonSVG customClasses={styles.sunHorizonIcon} />
-      </div>
-      <div className={styles.sunInfoContainer}>
-        <div className={styles.sunriseContainer}>
-          <h4>Sunrise</h4>
-          {weatherData?.sys?.sunrise && (
-            <p>{convertUnixTimeToLocal(weatherData.sys.sunrise)}</p>
-          )}
-        </div>
-        <div className={styles.sunsetContainer}>
-          <h4>Sunset</h4>
-          {weatherData?.sys?.sunset && (
-            <p>{convertUnixTimeToLocal(weatherData.sys.sunset)}</p>
-          )}
-        </div>
-      </div>
-    </WidgetContainer>
+    <>
+      {percentDaylightRemaining ? (
+        <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
+          <div className={styles.sunPositionContainer}>
+            {/* <SunPositionSVG
+              percentage={percentDaylightRemaining}
+              customClasses={styles.sunArc}
+            /> */}
+            <SunPositionSVG percentage={50} customClasses={styles.sunArc} />
+          </div>
+          <div className={styles.sunInfoContainer}>
+            <div className={styles.sunIconContainer}>
+              {/* <SunHorizonSVG customClasses={styles.sunHorizonIcon} />
+              <SunHorizonSVG customClasses={styles.sunHorizonIcon} /> */}
+            </div>
+            <div className={styles.sunTimeContainer}>
+              <div className={styles.sunriseContainer}>
+                <h4>Sunrise</h4>
+                {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
+              </div>
+              <div className={styles.sunsetContainer}>
+                <h4>Sunset</h4>
+                {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
+              </div>
+            </div>
+          </div>
+        </WidgetContainer>
+      ) : (
+        <NightDisplay sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
+      )}
+    </>
   );
 
   return (
