@@ -8,6 +8,25 @@ const convertUnixTimeToLocal = (timeInUTC: number): string => {
   return formattedTime;
 };
 
+interface LightDuration {
+  dayLengthInHours: number;
+  nightLengthInHours: number;
+}
+
+const getLightDurationData = (
+  sunriseEpoch: number,
+  sunsetEpoch: number
+): LightDuration => {
+  const SECONDS_IN_HOUR = 3600;
+  const lengthInSeconds = sunsetEpoch - sunriseEpoch;
+  const dayLengthInHours = parseFloat(
+    (lengthInSeconds / SECONDS_IN_HOUR).toFixed(1)
+  );
+  const nightLengthInHours = 24 - dayLengthInHours;
+
+  return { dayLengthInHours, nightLengthInHours };
+};
+
 const getSunPosition = (sunriseEpoch: number, sunsetEpoch: number) => {
   const rangeInMilliseconds = (sunsetEpoch - sunriseEpoch) * 1000;
   const currentEpochInMilliseconds = new Date().getTime();
@@ -29,4 +48,4 @@ const getSunPosition = (sunriseEpoch: number, sunsetEpoch: number) => {
   }
 };
 
-export { convertUnixTimeToLocal, getSunPosition };
+export { convertUnixTimeToLocal, getSunPosition, getLightDurationData };

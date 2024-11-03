@@ -24,8 +24,8 @@ const SunPositionSVG = ({ percentage, customClasses }: SunPositionSVGProps) => {
         />
         <ellipse
           id="sun"
-          cx={412 + x}
-          cy={408 - y}
+          cx={415 + x}
+          cy={385 - y}
           rx="45"
           ry="45"
           fill="#EC6E4C"
