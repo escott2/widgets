@@ -101,11 +101,21 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
       title="Water Cooler Chat"
       customClasses={styles.chatWidgetContainer}
     >
-      <button onClick={handleChat}>Start Chat</button>
+      <div className={styles.chatHeader}>
+        <div className={styles.chatInfo}>
+          <div className={styles.circle}></div>
+          <p>Emily</p>
+        </div>
+      </div>
+      {!displayChat && <button onClick={handleChat}>Start Chat</button>}
 
       {displayChat &&
         chatText.map((chatBubble) => {
-          return <div key={chatBubble.id}>{chatBubble.text}</div>;
+          return (
+            <div key={chatBubble.id} className={styles[chatBubble.speakerType]}>
+              {chatBubble.text}
+            </div>
+          );
         })}
 
       {displayChat && displayInputTest(currentChatId)}

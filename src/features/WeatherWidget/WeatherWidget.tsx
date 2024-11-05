@@ -8,7 +8,7 @@ function WeatherWidget() {
       customClasses={styles.weatherWidgetContainer}
       title="Weather"
     >
-      <WeatherForm />
+      {/* <WeatherForm /> */}
       <WeatherDisplay />
     </WidgetContainer>
   );

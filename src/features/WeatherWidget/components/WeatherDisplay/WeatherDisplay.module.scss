@@ -10,41 +10,33 @@
 .primaryWeatherContainer {
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin: 30px 0px 20px;
 }
 
 .icon {
-  width: 50px;
+  width: 60px;
   height: auto;
   margin-left: 10px;
 }
 
-.feelsLikeHeading,
-.highHeading,
-.lowHeading,
-.humidityHeading,
-.windHeading {
+.weatherInfoHeading {
   margin-right: 5px;
   font-weight: 400;
 }
 
-.lowHeading {
-  margin-left: 5px;
-  padding-left: 5px;
-  border-left: 1px solid #000;
+.secondaryWeatherContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 50px 50px;
+  gap: 10px 0;
+  margin-bottom: 10px;
 }
 
-.windContainer,
-.humidityContainer,
-.highLowContainer,
-.feelsLikeContainer {
+.weatherInfoItem {
   display: flex;
   align-items: center;
 }
 
-.secondaryWeatherContainer {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 10px 0;
-  margin-bottom: 10px;
+.description {
+  text-transform: capitalize;
 }

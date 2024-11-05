@@ -1,6 +1,5 @@
 .widgetContainer {
-  height: auto;
-  width: 375px;
+  // min-width: 350px;
   border: 2px solid #ffffff;
   padding: 30px 20px 20px;
   background-color: #fff;
@@ -17,6 +16,7 @@
 
 .title {
   position: absolute;
+  z-index: 2;
   top: -15px;
   background-color: white;
   padding: 5px 20px;

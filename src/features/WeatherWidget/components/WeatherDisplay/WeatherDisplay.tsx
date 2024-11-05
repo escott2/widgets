@@ -45,17 +45,20 @@ function WeatherDisplay() {
             />
           </div>
           <div className={styles.secondaryWeatherContainer}>
-            <div className={styles.feelsLikeContainer}>
-              <h4 className={styles.feelsLikeHeading}>Feels like:</h4>
+            <div className={styles.weatherInfoItem}>
+              <h4 className={styles.weatherInfoHeading}>Feels like:</h4>
               {feelsLike}&deg;F
             </div>
+            <div className={`${styles.weatherInfoItem} ${styles.description}`}>
+              <p>{weatherData?.weather?.[0]?.description}</p>
+            </div>
 
-            <div className={styles.humidityContainer}>
-              <h4 className={styles.humidityHeading}>Humidity:</h4>
+            <div className={styles.weatherInfoItem}>
+              <h4 className={styles.weatherInfoHeading}>Humidity:</h4>
               <p>{humidity}%</p>
             </div>
-            <div className={styles.windContainer}>
-              <h4 className={styles.windHeading}>Wind:</h4>
+            <div className={styles.weatherInfoItem}>
+              <h4 className={styles.weatherInfoHeading}>Wind:</h4>
               <p>{windSpeed} mph</p>
             </div>
           </div>

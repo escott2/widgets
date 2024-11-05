@@ -7,10 +7,8 @@ interface WelcomeWidgetProps {
 
 function WelcomeWidget({ name }: WelcomeWidgetProps) {
   return (
-    <WidgetContainer>
-      <p className={styles.welcomeWidgetContainer}>
-        Welcome{name && ` ${name}`}!
-      </p>
+    <WidgetContainer customClasses={styles.welcomeWidgetContainer}>
+      <p>Welcome{name && ` ${name}`}!</p>
     </WidgetContainer>
   );
 }

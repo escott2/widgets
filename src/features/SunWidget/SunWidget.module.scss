@@ -3,13 +3,13 @@
 }
 
 .sunWidgetContainer {
-  height: 350px;
+  height: 325px;
 }
 
 .sunTimeContainer {
   display: flex;
   justify-content: space-between;
-  margin-top: 190px;
+  // margin-top: 190px;
 }
 
 .sunriseContainer,
@@ -17,15 +17,16 @@
   text-align: center;
 }
 
-.sunArc {
-  position: absolute;
-  width: 90%;
-  margin-left: calc((100% - 90%) / 2);
-  bottom: 110px;
-  left: 0px;
-}
+// .sunArc {
+//   position: absolute;
+//   width: 90%;
+//   margin-left: calc((100% - 90%) / 2);
+//   bottom: 110px;
+//   left: 0px;
+// }
 
 .sunInfoContainer {
   position: relative;
   margin: 0 10px;
+  bottom: 18px;
 }

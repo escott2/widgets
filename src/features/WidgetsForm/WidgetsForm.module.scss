@@ -1,0 +1,45 @@
+@use "../../styles/abstracts/" as *;
+
+.formContainer {
+  grid-column: 1 / 4;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  max-width: 375px;
+}
+
+.zipCodeLabel {
+  flex-basis: 100%;
+}
+
+.zipCodeInput {
+  flex-grow: 1;
+}
+
+.zipCodeButton {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: $primary-color;
+  color: white;
+  border: 2px solid $primary-color;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  margin: $form-element-margin;
+  margin-left: 5px;
+
+  &:hover {
+    background-color: white;
+    color: $primary-color;
+    .arrowForwardSvg {
+      fill: $primary-color;
+    }
+  }
+
+  .arrowForwardSvg {
+    margin-left: 2px;
+  }
+}

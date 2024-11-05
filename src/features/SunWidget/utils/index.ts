@@ -31,17 +31,17 @@ const getSunPosition = (sunriseEpoch: number, sunsetEpoch: number) => {
   const rangeInMilliseconds = (sunsetEpoch - sunriseEpoch) * 1000;
   const currentEpochInMilliseconds = new Date().getTime();
   // const currentEpochInMilliseconds = new Date(
-  //   "November 2, 24 25:00:00"
+  //   "November 4, 24 06:00:00"
   // ).getTime();
 
   const sunRemainingInMilliseconds =
     sunsetEpoch * 1000 - currentEpochInMilliseconds;
 
   if (sunRemainingInMilliseconds >= 0) {
-    const percentageRemaining = Math.floor(
+    const percentageRemaining = Math.ceil(
       (sunRemainingInMilliseconds / rangeInMilliseconds) * 100
     );
-    console.log(percentageRemaining);
+    console.log(percentageRemaining, "percent remains");
     return percentageRemaining;
   } else {
     return null;
