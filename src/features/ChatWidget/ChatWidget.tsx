@@ -10,6 +10,19 @@ interface ChatTextObject {
   speakerType: "computer" | "user";
 }
 
+interface UserInputObject {
+  id: string;
+  inputType: string;
+  options:
+    | {
+        id: string;
+        value: string;
+        transition: string;
+      }[]
+    | null;
+  transition: string | null;
+}
+
 interface ChatWidgetProps {
   saveUsername: (name: string) => void;
 }
@@ -20,12 +33,20 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
   ]);
   const [displayChat, setDisplayChat] = useState<boolean>(false);
   const [userResponse, setUserResponse] = useState<string>("");
-  const [currentChatId, setCurrentChatId] = useState<number>(1);
-  const [nextChatId, setNextChatId] = useState<number>(2);
+  const [currentChatId, setCurrentChatId] = useState<string>("introduction");
+  const [nextChatId, setNextChatId] = useState<string>("weather");
   const [nameValue, setNameValue] = useState<string>("");
   const [zipCodeValue, setZipCodeValue] = useState<string>();
+  console.log(currentChatId);
 
-  console.log(chatText);
+  // chat flow
+  // introduction
+  // weather
+  // -- weather-good
+  // -- weather-bad
+  // -- weather-okay
+  // -- weather-unknown
+  // weather-retrieve
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameValue(e.target.value);
@@ -33,31 +54,31 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserResponse(e.target.value);
-    const transitionId = Number(e.target.dataset.transition);
-    setNextChatId(transitionId);
+    const transitionId = e.target.dataset.transition;
+    transitionId && setNextChatId(transitionId);
   };
 
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setZipCodeValue(e.target.value);
     setUserResponse(e.target.value);
-    const transitionId = Number(e.target.dataset.transition);
-    setNextChatId(transitionId);
+    const transitionId = e.target.dataset.transition;
+    transitionId && setNextChatId(transitionId);
   };
 
-  const displayInputTest = (currentChatId: number) => {
+  const displayInputTest = (currentChatId: string) => {
     switch (currentChatId) {
-      case 1:
+      case "introduction":
         return (
           <input type="text" value={nameValue} onChange={handleNameChange} />
         );
-      case 2:
+      case "weather":
         return (
           <form>
             <div>
               {userInputDisplay[1].options &&
                 userInputDisplay[1].options.map((option) => {
                   return (
-                    <div>
+                    <fieldset>
                       <input
                         type="radio"
                         id={option.id}
@@ -66,14 +87,14 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
                         onChange={handleOptionChange}
                         data-transition={option.transition}
                       />
-                      <label htmlFor={option.value}>{option.value}</label>
-                    </div>
+                      <label htmlFor={option.id}>{option.value}</label>
+                    </fieldset>
                   );
                 })}
             </div>
           </form>
         );
-      case 6:
+      case "weather-unknown":
         return (
           <input
             type={userInputDisplay[2].inputType}
@@ -82,25 +103,48 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
             data-transition={userInputDisplay[2].transition}
           />
         );
+      case "weather-good":
+      case "weather-bad":
+      case "weather-okay": {
+        const targetInput: UserInputObject | undefined = userInputDisplay.find(
+          (element) => "weather-convo-choice" === element.id
+        );
+        console.log(targetInput, "targetInput");
+        console.log(targetInput?.options);
 
-      // case 3:
-      //   return <Error text={text} />
+        if (targetInput?.options) {
+          return targetInput.options
+            ? targetInput.options.map((option) => {
+                return (
+                  <fieldset>
+                    <input
+                      type="radio"
+                      id={option.id}
+                      name="choice"
+                      value={option.value}
+                      // onChange={handleOptionChange}
+                      data-transition={option.transition}
+                    />
+                    <label htmlFor={option.id}>{option.value}</label>
+                  </fieldset>
+                );
+              })
+            : null;
+        }
+        break;
+      }
       default:
         return null;
     }
   };
 
   const handleChat = () => {
-    // Create chat bubbles and append them to chat.
-    // -- Chat bubble component with prop for message.
-    // -- Apphend text to array. Map over array to display each chat bubble.
-    // -- Array of objects with ids.
     setDisplayChat(true);
   };
 
   const addChatTextToConversation = (
-    currentChatId: number,
-    newChatId: number,
+    currentChatId: string,
+    newChatId: string,
     name: string,
     userResponse: string
   ) => {
@@ -121,9 +165,9 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     }
   };
 
-  const handleSubmit = (currentChatId: number) => {
+  const handleSubmit = (currentChatId: string) => {
     switch (currentChatId) {
-      case 1:
+      case "introduction":
         saveUsername(nameValue);
         addChatTextToConversation(
           currentChatId,
@@ -131,10 +175,10 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           nameValue,
           nameValue
         );
-        setCurrentChatId(2);
+        setCurrentChatId("weather");
         setNameValue("");
         break;
-      case 2:
+      case "weather":
         addChatTextToConversation(
           currentChatId,
           nextChatId,
@@ -144,7 +188,7 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
         setCurrentChatId(nextChatId);
         setUserResponse("");
         break;
-      case 6:
+      case "find-weather":
         addChatTextToConversation(
           currentChatId,
           nextChatId,
