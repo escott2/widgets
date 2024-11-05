@@ -2,16 +2,12 @@ import { useState } from "react";
 import { WidgetContainer } from "../../components/layout";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
+import { isValidZipCode } from "../WidgetsForm/utils";
 
 interface ChatTextObject {
   id: string;
   text: string;
   speakerType: "computer" | "user";
-}
-
-interface UserTextObject {
-  id: string;
-  text: string;
 }
 
 interface ChatWidgetProps {
@@ -23,14 +19,29 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     chatQuestions[0],
   ]);
   const [displayChat, setDisplayChat] = useState<boolean>(false);
-  const [userText, setUserText] = useState<UserTextObject[]>();
+  const [userResponse, setUserResponse] = useState<string>("");
   const [currentChatId, setCurrentChatId] = useState<number>(1);
+  const [nextChatId, setNextChatId] = useState<number>(2);
   const [nameValue, setNameValue] = useState<string>("");
+  const [zipCodeValue, setZipCodeValue] = useState<string>();
 
   console.log(chatText);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameValue(e.target.value);
+  };
+
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserResponse(e.target.value);
+    const transitionId = Number(e.target.dataset.transition);
+    setNextChatId(transitionId);
+  };
+
+  const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setZipCodeValue(e.target.value);
+    setUserResponse(e.target.value);
+    const transitionId = Number(e.target.dataset.transition);
+    setNextChatId(transitionId);
   };
 
   const displayInputTest = (currentChatId: number) => {
@@ -40,7 +51,38 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           <input type="text" value={nameValue} onChange={handleNameChange} />
         );
       case 2:
-        return <input type="radio"></input>;
+        return (
+          <form>
+            <div>
+              {userInputDisplay[1].options &&
+                userInputDisplay[1].options.map((option) => {
+                  return (
+                    <div>
+                      <input
+                        type="radio"
+                        id={option.id}
+                        name="weather"
+                        value={option.value}
+                        onChange={handleOptionChange}
+                        data-transition={option.transition}
+                      />
+                      <label htmlFor={option.value}>{option.value}</label>
+                    </div>
+                  );
+                })}
+            </div>
+          </form>
+        );
+      case 6:
+        return (
+          <input
+            type={userInputDisplay[2].inputType}
+            value={zipCodeValue}
+            onChange={handleZipCodeChange}
+            data-transition={userInputDisplay[2].transition}
+          />
+        );
+
       // case 3:
       //   return <Error text={text} />
       default:
@@ -83,9 +125,32 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     switch (currentChatId) {
       case 1:
         saveUsername(nameValue);
-        addChatTextToConversation(currentChatId, 2, nameValue, nameValue);
+        addChatTextToConversation(
+          currentChatId,
+          nextChatId,
+          nameValue,
+          nameValue
+        );
         setCurrentChatId(2);
         setNameValue("");
+        break;
+      case 2:
+        addChatTextToConversation(
+          currentChatId,
+          nextChatId,
+          nameValue,
+          userResponse
+        );
+        setCurrentChatId(nextChatId);
+        setUserResponse("");
+        break;
+      case 6:
+        addChatTextToConversation(
+          currentChatId,
+          nextChatId,
+          nameValue,
+          userResponse
+        );
         break;
       // case 2:
       //   return <Warning} />

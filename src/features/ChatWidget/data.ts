@@ -12,12 +12,37 @@ interface ChatTextObject {
 const chatQuestions: ChatTextObject[] = [
   {
     id: "1-computer",
-    text: "Hello! My name is Emily, have we met before? What's your name?",
+    text: "Hello, I don't think we've met before. I'm Emily, what's your name?",
     speakerType: "computer",
   },
   {
     id: "2-computer",
-    text: "Hi. Nice to meet you ***000***. How about the weather today?",
+    text: "Nice to meet you ***000***! How about the weather today?",
+    speakerType: "computer",
+  },
+  {
+    id: "3-computer",
+    text: "That's great! I have to get back to my desk.",
+    speakerType: "computer",
+  },
+  {
+    id: "4-computer",
+    text: "That's too bad. I have to get back to my desk.",
+    speakerType: "computer",
+  },
+  {
+    id: "5-computer",
+    text: "Yeah. I have to get back to my desk.",
+    speakerType: "computer",
+  },
+  {
+    id: "6-computer",
+    text: "I can help you figure that out! What's your zip code?",
+    speakerType: "computer",
+  },
+  {
+    id: "7-computer",
+    text: "Hold on one moment....",
     speakerType: "computer",
   },
 ];
@@ -27,16 +52,40 @@ const userInputDisplay = [
     id: 1,
     inputType: "text",
     options: null,
+    transition: 2,
   },
   {
     id: 2,
-    inputType: "select",
+    inputType: "radio",
     options: [
-      "I don't know about the weather today",
-      "It's nice!",
-      "It's extreme",
-      "I don't like to talk about the weather",
+      {
+        id: "nice",
+        value: "The weather is nice test!",
+        transition: 3,
+      },
+      {
+        id: "bad",
+        value: "The weather is bad!",
+        transition: 4,
+      },
+      {
+        id: "okay",
+        value: "The weather is okay",
+        transition: 5,
+      },
+      {
+        id: "unknown",
+        value: "I don't know what the weather is like right now.",
+        transition: 6,
+      },
     ],
+    transition: null,
+  },
+  {
+    id: 6,
+    inputType: "text",
+    options: null,
+    transition: 7,
   },
 ];
 
