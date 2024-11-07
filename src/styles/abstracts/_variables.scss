@@ -1,5 +1,14 @@
 $primary-color: #223945;
+$error-color: #ff0000;
+
+$error-text-color: $error-color;
 
 $media-breakpoint-medium: 768px;
 $layout-padding: 20px;
 $form-element-margin: 5px 5px 5px 0;
+
+$input-border: 2px solid #dddddd;
+$input-margin: 5px;
+$input-padding: 5px;
+$input-border-radius: 5px;
+$input-height: 40px;

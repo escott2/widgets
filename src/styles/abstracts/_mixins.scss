@@ -5,3 +5,11 @@
   margin: 0 auto;
   padding: $padding;
 }
+
+@mixin text-input {
+  border: $input-border;
+  margin: $input-margin;
+  padding: $input-padding;
+  border-radius: $input-border-radius;
+  height: $input-height;
+}

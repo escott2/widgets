@@ -1,9 +1,13 @@
+@use "../../styles/abstracts/" as *;
+
 .chatWidgetContainer {
   grid-row: 3/6;
   grid-column: 3;
   padding: 0;
   border: none;
   height: 695px;
+  display: flex;
+  flex-direction: column;
 }
 
 .computer,
@@ -63,14 +67,23 @@
   margin: -1px;
   overflow: hidden;
   padding: 0;
-  position: absolute;
   width: 1px;
   white-space: nowrap;
+  margin: 10px;
+  margin: 18px 0;
+  position: absolute;
+  transform: translateX(10px);
 }
 
 .dialogContainer {
-  height: 375px;
-  overflow: scroll;
+  height: 350px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dialogContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .dialog {
@@ -84,10 +97,44 @@
 
 .submitContainer {
   padding: 10px;
-  margin: 15px;
-  border: 1px solid #efefef;
+  flex: 1;
 }
 
-// .submitButton {
+.submitForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 
-// }
+.submitButton {
+  display: flex;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.radioLabel {
+  background-color: #efefef;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  display: inline-block;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.textInput {
+  @include text-input;
+  margin-bottom: auto;
+}
+
+.responseContainer {
+  border: $input-border;
+  padding: 5px;
+  border-radius: $input-border-radius;
+}
+
+.chatError {
+  margin: 0 auto;
+  color: $error-text-color;
+}
