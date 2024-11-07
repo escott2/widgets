@@ -3,18 +3,20 @@
   grid-column: 3;
   padding: 0;
   border: none;
+  height: 695px;
 }
 
 .computer,
 .user {
-  padding: 10px;
-  margin: 15px;
+  padding: 8px 15px;
+  margin: 10px;
   max-width: 250px;
   border-radius: 15px;
 }
 
 .computer {
   background-color: #edf5f8;
+  margin-right: auto;
 }
 
 .user {
@@ -48,3 +50,44 @@
 .chatInfo {
   text-align: center;
 }
+
+.weatherResponseOptions {
+  border: none;
+  padding: 0;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.dialogContainer {
+  height: 375px;
+  overflow: scroll;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 5px;
+  min-height: 100%;
+}
+
+.submitContainer {
+  padding: 10px;
+  margin: 15px;
+  border: 1px solid #efefef;
+}
+
+// .submitButton {
+
+// }

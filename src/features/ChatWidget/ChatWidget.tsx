@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { WidgetContainer } from "../../components/layout";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
+import { BaseButton } from "../../components/ui/Button";
 import { isValidZipCode } from "../WidgetsForm/utils";
 
 interface ChatTextObject {
@@ -18,6 +19,7 @@ interface UserInputObject {
         id: string;
         value: string;
         transition: string;
+        checked: boolean;
       }[]
     | null;
   transition: string | null;
@@ -37,7 +39,17 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
   const [nextChatId, setNextChatId] = useState<string>("weather");
   const [nameValue, setNameValue] = useState<string>("");
   const [zipCodeValue, setZipCodeValue] = useState<string>();
+  const [chatError, setChatError] = useState<string>("");
+
   console.log(currentChatId);
+
+  const scrollableRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollableRef.current) {
+      scrollableRef.current.scrollTop = scrollableRef.current.scrollHeight;
+    }
+  }, [chatText]);
 
   // chat flow
   // introduction
@@ -58,6 +70,14 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     transitionId && setNextChatId(transitionId);
   };
 
+  const isOptionSelected = (userResponse: string): boolean => {
+    if (userResponse) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setZipCodeValue(e.target.value);
     setUserResponse(e.target.value);
@@ -73,26 +93,24 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
         );
       case "weather":
         return (
-          <form>
-            <div>
-              {userInputDisplay[1].options &&
-                userInputDisplay[1].options.map((option) => {
-                  return (
-                    <fieldset>
-                      <input
-                        type="radio"
-                        id={option.id}
-                        name="weather"
-                        value={option.value}
-                        onChange={handleOptionChange}
-                        data-transition={option.transition}
-                      />
-                      <label htmlFor={option.id}>{option.value}</label>
-                    </fieldset>
-                  );
-                })}
-            </div>
-          </form>
+          userInputDisplay[1].options &&
+          userInputDisplay[1].options.map((option) => {
+            return (
+              <fieldset className={styles.weatherResponseOptions}>
+                <input
+                  type="radio"
+                  id={option.id}
+                  name="weather"
+                  value={option.value}
+                  onChange={handleOptionChange}
+                  data-transition={option.transition}
+                  checked={userResponse === option.value}
+                  className={styles.visuallyHidden}
+                />
+                <label htmlFor={option.id}>{option.value}</label>
+              </fieldset>
+            );
+          })
         );
       case "weather-unknown":
         return (
@@ -116,14 +134,15 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           return targetInput.options
             ? targetInput.options.map((option) => {
                 return (
-                  <fieldset>
+                  <fieldset className={styles.weatherResponseOptions}>
                     <input
                       type="radio"
                       id={option.id}
-                      name="choice"
+                      name="weather-convo-choice-options"
                       value={option.value}
-                      // onChange={handleOptionChange}
+                      onChange={handleOptionChange}
                       data-transition={option.transition}
+                      className={styles.visuallyHidden}
                     />
                     <label htmlFor={option.id}>{option.value}</label>
                   </fieldset>
@@ -165,9 +184,13 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     }
   };
 
-  const handleSubmit = (currentChatId: string) => {
+  const handleSubmit = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    currentChatId: string
+  ) => {
     switch (currentChatId) {
       case "introduction":
+        e.preventDefault();
         saveUsername(nameValue);
         addChatTextToConversation(
           currentChatId,
@@ -179,16 +202,24 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
         setNameValue("");
         break;
       case "weather":
-        addChatTextToConversation(
-          currentChatId,
-          nextChatId,
-          nameValue,
-          userResponse
-        );
-        setCurrentChatId(nextChatId);
-        setUserResponse("");
+        e.preventDefault();
+        if (isOptionSelected(userResponse)) {
+          setChatError("");
+          addChatTextToConversation(
+            currentChatId,
+            nextChatId,
+            nameValue,
+            userResponse
+          );
+          setCurrentChatId(nextChatId);
+          setUserResponse("");
+        } else {
+          setChatError("Please select a response");
+        }
+
         break;
       case "find-weather":
+        e.preventDefault();
         addChatTextToConversation(
           currentChatId,
           nextChatId,
@@ -196,10 +227,24 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           userResponse
         );
         break;
-      // case 2:
-      //   return <Warning} />
-      // case 3:
-      //   return <Error text={text} />
+      case "weather-good":
+      case "weather-bad":
+      case "weather-okay":
+        e.preventDefault();
+        if (isOptionSelected(userResponse)) {
+          setChatError("");
+          addChatTextToConversation(
+            currentChatId,
+            nextChatId,
+            nameValue,
+            userResponse
+          );
+          setCurrentChatId(nextChatId);
+          setUserResponse("");
+        } else {
+          setChatError("Please select a response");
+        }
+        break;
       default:
         return null;
     }
@@ -216,19 +261,42 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           <p>Emily</p>
         </div>
       </div>
-      {!displayChat && <button onClick={handleChat}>Start Chat</button>}
+      <div className={styles.dialogContainer} ref={scrollableRef}>
+        <div className={styles.dialog}>
+          {!displayChat && (
+            <BaseButton
+              onClick={handleChat}
+              customClasses={styles.startChatButton}
+            >
+              Start Chat
+            </BaseButton>
+          )}
 
-      {displayChat &&
-        chatText.map((chatBubble) => {
-          return (
-            <div key={chatBubble.id} className={styles[chatBubble.speakerType]}>
-              {chatBubble.text}
-            </div>
-          );
-        })}
-
-      {displayChat && displayInputTest(currentChatId)}
-      <button onClick={() => handleSubmit(currentChatId)}>submit</button>
+          {displayChat &&
+            chatText.map((chatBubble) => {
+              return (
+                <div
+                  key={chatBubble.id}
+                  className={styles[chatBubble.speakerType]}
+                >
+                  {chatBubble.text}
+                </div>
+              );
+            })}
+        </div>
+      </div>
+      {chatError && chatError}
+      <div className={styles.submitContainer}>
+        <form>
+          {displayChat && displayInputTest(currentChatId)}
+          <BaseButton
+            customClasses={styles.submitButton}
+            onClick={(e) => handleSubmit(e, currentChatId)}
+          >
+            Submit
+          </BaseButton>
+        </form>
+      </div>
     </WidgetContainer>
   );
 }

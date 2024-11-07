@@ -45,6 +45,11 @@ const chatQuestions: ChatTextObject[] = [
     text: "Hold on one moment....",
     speakerType: "computer",
   },
+  {
+    id: "weather-convo-continue-computer",
+    text: "Let me see....",
+    speakerType: "computer",
+  },
 ];
 
 interface UserInputObject {
@@ -55,6 +60,7 @@ interface UserInputObject {
         id: string;
         value: string;
         transition: string;
+        checked: boolean;
       }[]
     | null;
   transition: string | null;
@@ -75,21 +81,25 @@ const userInputDisplay: UserInputObject[] = [
         id: "nice",
         value: "The weather is nice!",
         transition: "weather-good",
+        checked: true,
       },
       {
         id: "bad",
         value: "The weather is not very nice!",
         transition: "weather-bad",
+        checked: false,
       },
       {
         id: "okay",
         value: "The weather is okay.",
         transition: "weather-okay",
+        checked: false,
       },
       {
         id: "unknown",
         value: "I haven't checked the weather yet.",
         transition: "weather-unknown",
+        checked: false,
       },
     ],
     transition: null,
@@ -101,13 +111,15 @@ const userInputDisplay: UserInputObject[] = [
       {
         id: "weather-convo-choice-ask",
         value: "What's the weather like where you are?",
-        transition: "weather-convo-response",
+        transition: "weather-convo-continue",
+        checked: true,
       },
       {
         id: "weather-convo-choice-end",
         value:
           "Look at the time! I need to get back to work. It was nice talking.",
         transition: "weather-convo-end",
+        checked: false,
       },
     ],
     transition: null,
