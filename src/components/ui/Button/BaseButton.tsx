@@ -8,10 +8,10 @@ interface BaseButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 function BaseButton({
   children,
   customClasses = "",
-  ...rest
+  ...props
 }: BaseButtonProps) {
   return (
-    <button className={`${styles.buttonBase} ${customClasses}`} {...rest}>
+    <button className={`${styles.buttonBase} ${customClasses}`} {...props}>
       {children}
     </button>
   );

@@ -1,8 +1,4 @@
-interface ChatTextObject {
-  id: string;
-  text: string;
-  speakerType: "computer" | "user";
-}
+import { UserInputObject, ChatTextObject } from "./types";
 
 const chatQuestions: ChatTextObject[] = [
   {
@@ -51,20 +47,6 @@ const chatQuestions: ChatTextObject[] = [
     speakerType: "computer",
   },
 ];
-
-interface UserInputObject {
-  id: string;
-  inputType: string;
-  options:
-    | {
-        id: string;
-        value: string;
-        transition: string;
-        checked: boolean;
-      }[]
-    | null;
-  transition: string | null;
-}
 
 const userInputDisplay: UserInputObject[] = [
   {

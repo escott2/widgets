@@ -9,12 +9,12 @@ interface FullAreaButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 function FullAreaButton({
   children,
   customClasses = "",
-  ...rest
+  ...props
 }: FullAreaButtonProps) {
   return (
     <BaseButton
       customClasses={`${styles.fullAreaButton} + ${customClasses}`}
-      {...rest}
+      {...props}
     >
       {children}
     </BaseButton>

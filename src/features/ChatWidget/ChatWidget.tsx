@@ -3,6 +3,7 @@ import { WidgetContainer } from "../../components/layout";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
 import { PrimaryButton, FullAreaButton } from "../../components/ui/Button";
+import { UserResponseRadioButton } from "./components";
 import { isValidZipCode } from "../WidgetsForm/utils";
 
 interface ChatTextObject {
@@ -80,28 +81,32 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     const targetInput: UserInputObject | undefined = userInputDisplay.find(
       (element) => "weather-convo-choice" === element.id
     );
-    console.log(targetInput);
-    console.log(targetInput?.options);
     if (targetInput?.options) {
       return (
         <>
           {targetInput.options.map((option) => {
             return (
-              <fieldset className={styles.weatherResponseOptions}>
-                <input
-                  type="radio"
-                  id={option.id}
-                  name="weather-convo-choice-options"
-                  value={option.value}
-                  onChange={handleOptionChange}
-                  data-transition={option.transition}
-                  className={styles.visuallyHidden}
-                  checked={userResponse === option.value}
-                />
-                <label htmlFor={option.id} className={styles.radioLabel}>
-                  {option.value}
-                </label>
-              </fieldset>
+              <UserResponseRadioButton
+                option={option}
+                isChecked={userResponse === option.value}
+                handleOptionChange={handleOptionChange}
+              />
+
+              // <fieldset className={styles.weatherResponseOptions}>
+              //   <input
+              //     type="radio"
+              //     id={option.id}
+              //     name="weather-convo-choice-options"
+              //     value={option.value}
+              //     onChange={handleOptionChange}
+              //     data-transition={option.transition}
+              //     className={styles.visuallyHidden}
+              //     checked={userResponse === option.value}
+              //   />
+              //   <label htmlFor={option.id} className={styles.radioLabel}>
+              //     {option.value}
+              //   </label>
+              // </fieldset>
             );
           })}
         </>
@@ -135,21 +140,27 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
             {userInputDisplay[1].options &&
               userInputDisplay[1].options.map((option) => {
                 return (
-                  <fieldset className={styles.weatherResponseOptions}>
-                    <input
-                      type="radio"
-                      id={option.id}
-                      name="weather"
-                      value={option.value}
-                      onChange={handleOptionChange}
-                      data-transition={option.transition}
-                      checked={userResponse === option.value}
-                      className={styles.visuallyHidden}
-                    />
-                    <label htmlFor={option.id} className={styles.radioLabel}>
-                      {option.value}
-                    </label>
-                  </fieldset>
+                  <UserResponseRadioButton
+                    option={option}
+                    isChecked={userResponse === option.value}
+                    handleOptionChange={handleOptionChange}
+                  />
+
+                  // <fieldset className={styles.weatherResponseOptions}>
+                  //   <input
+                  //     type="radio"
+                  //     id={option.id}
+                  //     name="weather"
+                  //     value={option.value}
+                  //     onChange={handleOptionChange}
+                  //     data-transition={option.transition}
+                  //     checked={userResponse === option.value}
+                  //     className={styles.visuallyHidden}
+                  //   />
+                  //   <label htmlFor={option.id} className={styles.radioLabel}>
+                  //     {option.value}
+                  //   </label>
+                  // </fieldset>
                 );
               })}
           </>
@@ -315,12 +326,14 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
             </div>
           </div>
 
-          {chatError && <p className={styles.chatError}>{chatError}</p>}
           <div className={styles.submitContainer}>
             <form className={styles.submitForm}>
               <div className={styles.responseContainer}>
                 {displayInputTest(currentChatId)}
               </div>
+
+              <p className={styles.chatError}>{chatError && chatError}</p>
+
               <PrimaryButton
                 customClasses={styles.submitButton}
                 onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>

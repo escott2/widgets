@@ -1,0 +1,41 @@
+@use "../../../../styles/abstracts/" as *;
+
+.radioButtonField {
+  border: none;
+  padding: 0;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+  white-space: nowrap;
+  margin: 10px;
+  margin: 18px 0;
+  position: absolute;
+  transform: translateX(10px);
+}
+
+.radioLabel {
+  background-color: #efefef;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  display: inline-block;
+  line-height: 1.5;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.radioLabelChecked {
+  background-color: $primary-color;
+  color: white;
+}

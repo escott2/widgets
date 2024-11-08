@@ -56,26 +56,6 @@
   text-align: center;
 }
 
-.weatherResponseOptions {
-  border: none;
-  padding: 0;
-}
-
-.visuallyHidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  width: 1px;
-  white-space: nowrap;
-  margin: 10px;
-  margin: 18px 0;
-  position: absolute;
-  transform: translateX(10px);
-}
-
 .dialogContainer {
   height: 350px;
   overflow-y: scroll;
@@ -110,21 +90,11 @@
 }
 
 .submitButton {
-  margin-top: 10px;
-}
-
-.radioLabel {
-  background-color: #efefef;
-  padding: 5px 10px;
-  margin: 5px 0;
-  border-radius: 10px;
-  display: inline-block;
-  line-height: 1.5;
-  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .textInput {
-  padding: 5px 5px 165px;
+  padding: 5px 5px 145px;
   margin: 0;
   width: 100%;
   border: none;
@@ -132,21 +102,24 @@
 
 .responseContainer {
   border: $input-border;
-  padding: 5px;
+  padding: 0 5px;
   border-radius: $input-border-radius;
-  height: 200px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .chatError {
   margin: 0 auto;
   color: $error-text-color;
+  height: 22px;
+  font-size: 14px;
 }
 
 .enterChatButton {
-  font-size: 20px;
-  height: 100px;
   position: relative;
-  top: 140px;
+  top: 120px;
 }
 
 .preChatContainer {

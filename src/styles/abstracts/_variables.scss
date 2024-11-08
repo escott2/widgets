@@ -1,4 +1,9 @@
 $primary-color: #223945;
+$pale-blue: #edf5f8;
+$light-cyan: #c8e1ea;
+$grey: #efefef;
+$white: #fff;
+$black: #000;
 $error-color: #ff0000;
 
 $error-text-color: $error-color;
@@ -12,3 +17,14 @@ $input-margin: 5px;
 $input-padding: 5px;
 $input-border-radius: 5px;
 $input-height: 40px;
+
+$primary-button-font-size: 18px;
+$primary-button-padding: 10px 20px;
+$primary-button-color: #fff;
+$primary-button-border: 2px solid #223945;
+$primary-button-border-radius: 10px;
+$primary-button-cursor: pointer;
+$primary-button-background-color: $primary-color;
+$primary-button-hover-background-color: $light-cyan;
+$primary-button-hover-color: $black;
+$primary-button-hover-border-color: $light-cyan;

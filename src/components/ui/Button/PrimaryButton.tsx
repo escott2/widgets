@@ -8,10 +8,10 @@ interface PrimaryButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 function PrimaryButton({
   children,
   customClasses = "",
-  ...rest
+  ...props
 }: PrimaryButtonProps) {
   return (
-    <BaseButton customClasses={customClasses} {...rest}>
+    <BaseButton customClasses={customClasses} {...props}>
       {children}
     </BaseButton>
   );

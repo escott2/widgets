@@ -1,10 +1,5 @@
 @use "../../../styles/abstracts/" as *;
 
 .buttonBase {
-  background-color: $primary-color;
-  padding: 10px 20px;
-  color: #fff;
-  border: 1px solid $primary-color;
-  border-radius: 10px;
-  cursor: pointer;
+  @include primary-button;
 }
