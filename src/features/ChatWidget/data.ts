@@ -117,7 +117,7 @@ const userInputDisplay: UserInputObject[] = [
       {
         id: "weather-convo-choice-end",
         value:
-          "Look at the time! I need to get back to work. It was nice talking.",
+          "Look at the time! I should get back to work. It was nice talking to you.",
         transition: "weather-convo-end",
         checked: false,
       },

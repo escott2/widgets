@@ -1,13 +1,19 @@
-import { BaseButton } from "../Button";
-import styles from "./PrimaryButton.module.scss";
+import { default as BaseButton } from "./BaseButton";
 
-interface PrimaryButtonProps {
+interface PrimaryButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
+  customClasses?: string;
 }
 
-function PrimaryButton({ children }: PrimaryButtonProps) {
+function PrimaryButton({
+  children,
+  customClasses = "",
+  ...rest
+}: PrimaryButtonProps) {
   return (
-    <BaseButton customClasses={styles.primaryButton}>{children}</BaseButton>
+    <BaseButton customClasses={customClasses} {...rest}>
+      {children}
+    </BaseButton>
   );
 }
 

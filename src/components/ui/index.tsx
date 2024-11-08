@@ -1,2 +1,2 @@
-export { BaseButton } from "./Button";
+export { PrimaryButton, FullAreaButton } from "./Button";
 export { Input } from "./Input";

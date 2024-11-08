@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { WidgetContainer } from "../../components/layout";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
-import { BaseButton } from "../../components/ui/Button";
+import { PrimaryButton, FullAreaButton } from "../../components/ui/Button";
 import { isValidZipCode } from "../WidgetsForm/utils";
 
 interface ChatTextObject {
@@ -84,7 +84,7 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
     console.log(targetInput?.options);
     if (targetInput?.options) {
       return (
-        <div className={styles.responseContainer}>
+        <>
           {targetInput.options.map((option) => {
             return (
               <fieldset className={styles.weatherResponseOptions}>
@@ -104,15 +104,11 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
               </fieldset>
             );
           })}
-        </div>
+        </>
       );
     } else {
       return <p>N/A</p>;
     }
-  };
-
-  const renderTest = () => {
-    return <p>test</p>;
   };
 
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,14 +124,14 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
         return (
           <input
             className={styles.textInput}
-            type="text"
+            type="textbox"
             value={nameValue}
             onChange={handleNameChange}
           />
         );
       case "weather":
         return (
-          <div className={styles.responseContainer}>
+          <>
             {userInputDisplay[1].options &&
               userInputDisplay[1].options.map((option) => {
                 return (
@@ -156,7 +152,7 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
                   </fieldset>
                 );
               })}
-          </div>
+          </>
         );
       case "weather-unknown":
         return (
@@ -277,16 +273,28 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
       customClasses={styles.chatWidgetContainer}
     >
       <div className={styles.chatHeader}>
-        <div className={styles.chatInfo}>
-          <div className={styles.circle}></div>
-          <p>Emily</p>
-        </div>
+        {displayChat ? (
+          <div className={styles.chatInfo}>
+            <div className={styles.circle}></div>
+            <p>Emily</p>
+          </div>
+        ) : (
+          <p>
+            You're working hard today — time for a water break! Join me at the
+            office water cooler for a simulated chat.
+          </p>
+        )}
       </div>
 
       {!displayChat && (
-        <BaseButton onClick={handleChat} customClasses={styles.startChatButton}>
-          Start Chat
-        </BaseButton>
+        <div className={styles.preChatContainer}>
+          <PrimaryButton
+            onClick={handleChat}
+            customClasses={styles.enterChatButton}
+          >
+            Enter Chat
+          </PrimaryButton>
+        </div>
       )}
 
       {displayChat && (
@@ -310,13 +318,17 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
           {chatError && <p className={styles.chatError}>{chatError}</p>}
           <div className={styles.submitContainer}>
             <form className={styles.submitForm}>
-              {displayInputTest(currentChatId)}
-              <BaseButton
+              <div className={styles.responseContainer}>
+                {displayInputTest(currentChatId)}
+              </div>
+              <PrimaryButton
                 customClasses={styles.submitButton}
-                onClick={(e) => handleSubmit(e, currentChatId)}
+                onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+                  handleSubmit(e, currentChatId)
+                }
               >
                 Submit
-              </BaseButton>
+              </PrimaryButton>
             </form>
           </div>
         </>

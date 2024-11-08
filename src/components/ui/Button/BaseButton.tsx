@@ -1,21 +1,17 @@
 import styles from "./BaseButton.module.scss";
 
-interface BaseButtonProps {
+interface BaseButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   customClasses?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 function BaseButton({
   children,
   customClasses = "",
-  onClick,
+  ...rest
 }: BaseButtonProps) {
   return (
-    <button
-      className={`${styles.buttonBase} ${customClasses}`}
-      onClick={onClick}
-    >
+    <button className={`${styles.buttonBase} ${customClasses}`} {...rest}>
       {children}
     </button>
   );

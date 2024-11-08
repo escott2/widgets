@@ -30,7 +30,7 @@
 }
 
 .chatHeader {
-  padding: 30px 0 10px;
+  padding: 30px 30px 10px;
   background-color: rgba(237, 245, 248, 0.25);
   backdrop-filter: blur(20px);
   border-top-left-radius: 15px;
@@ -41,6 +41,7 @@
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
+  height: 150px;
 }
 
 .circle {
@@ -98,6 +99,7 @@
 .submitContainer {
   padding: 10px;
   flex: 1;
+  background-color: #fff;
 }
 
 .submitForm {
@@ -108,8 +110,6 @@
 }
 
 .submitButton {
-  display: flex;
-  margin-left: auto;
   margin-top: 10px;
 }
 
@@ -124,17 +124,39 @@
 }
 
 .textInput {
-  @include text-input;
-  margin-bottom: auto;
+  padding: 5px 5px 165px;
+  margin: 0;
+  width: 100%;
+  border: none;
 }
 
 .responseContainer {
   border: $input-border;
   padding: 5px;
   border-radius: $input-border-radius;
+  height: 200px;
 }
 
 .chatError {
   margin: 0 auto;
   color: $error-text-color;
+}
+
+.enterChatButton {
+  font-size: 20px;
+  height: 100px;
+  position: relative;
+  top: 140px;
+}
+
+.preChatContainer {
+  background: no-repeat url("../../assets/water-cooler.svg");
+  background-size: contain;
+  background-position: center 20px;
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
