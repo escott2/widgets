@@ -2,29 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { WidgetContainer } from "../../components/layout";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
-import { PrimaryButton, FullAreaButton } from "../../components/ui/Button";
+import { PrimaryButton } from "../../components/ui/Button";
 import { UserResponseRadioButton } from "./components";
 import { isValidZipCode } from "../WidgetsForm/utils";
-
-interface ChatTextObject {
-  id: string;
-  text: string;
-  speakerType: "computer" | "user";
-}
-
-interface UserInputObject {
-  id: string;
-  inputType: string;
-  options:
-    | {
-        id: string;
-        value: string;
-        transition: string;
-        checked: boolean;
-      }[]
-    | null;
-  transition: string | null;
-}
+import { ChatTextObject, UserInputObject } from "./types";
+import TypingAnimation from "../../components/animation/TypingAnimation";
 
 interface ChatWidgetProps {
   saveUsername: (name: string) => void;
@@ -49,15 +31,6 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
       scrollableRef.current.scrollTop = scrollableRef.current.scrollHeight;
     }
   }, [chatText]);
-
-  // chat flow
-  // introduction
-  // weather
-  // -- weather-good
-  // -- weather-bad
-  // -- weather-okay
-  // -- weather-unknown
-  // weather-retrieve
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameValue(e.target.value);
@@ -91,22 +64,6 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
                 isChecked={userResponse === option.value}
                 handleOptionChange={handleOptionChange}
               />
-
-              // <fieldset className={styles.weatherResponseOptions}>
-              //   <input
-              //     type="radio"
-              //     id={option.id}
-              //     name="weather-convo-choice-options"
-              //     value={option.value}
-              //     onChange={handleOptionChange}
-              //     data-transition={option.transition}
-              //     className={styles.visuallyHidden}
-              //     checked={userResponse === option.value}
-              //   />
-              //   <label htmlFor={option.id} className={styles.radioLabel}>
-              //     {option.value}
-              //   </label>
-              // </fieldset>
             );
           })}
         </>
@@ -145,22 +102,6 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
                     isChecked={userResponse === option.value}
                     handleOptionChange={handleOptionChange}
                   />
-
-                  // <fieldset className={styles.weatherResponseOptions}>
-                  //   <input
-                  //     type="radio"
-                  //     id={option.id}
-                  //     name="weather"
-                  //     value={option.value}
-                  //     onChange={handleOptionChange}
-                  //     data-transition={option.transition}
-                  //     checked={userResponse === option.value}
-                  //     className={styles.visuallyHidden}
-                  //   />
-                  //   <label htmlFor={option.id} className={styles.radioLabel}>
-                  //     {option.value}
-                  //   </label>
-                  // </fieldset>
                 );
               })}
           </>
@@ -314,6 +255,15 @@ function ChatWidget({ saveUsername }: ChatWidgetProps) {
             <div className={styles.dialog}>
               {displayChat &&
                 chatText.map((chatBubble) => {
+                  if (chatBubble.id === `${currentChatId}-computer`) {
+                    return (
+                      <TypingAnimation
+                        key={chatBubble.id}
+                        customClasses={styles[chatBubble.speakerType]}
+                        text={chatBubble.text}
+                      />
+                    );
+                  }
                   return (
                     <div
                       key={chatBubble.id}

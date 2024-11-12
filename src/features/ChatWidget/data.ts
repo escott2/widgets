@@ -1,5 +1,14 @@
 import { UserInputObject, ChatTextObject } from "./types";
 
+// chat flow
+// introduction
+// weather
+// -- weather-good
+// -- weather-bad
+// -- weather-okay
+// -- weather-unknown
+// weather-retrieve
+
 const chatQuestions: ChatTextObject[] = [
   {
     id: "introduction-computer",
