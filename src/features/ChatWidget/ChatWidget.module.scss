@@ -5,7 +5,7 @@
   grid-column: 3;
   padding: 0;
   border: none;
-  height: 695px;
+  height: 675px;
   display: flex;
   flex-direction: column;
 }
@@ -119,13 +119,12 @@
 
 .enterChatButton {
   position: relative;
-  top: 120px;
 }
 
 .preChatContainer {
-  background: no-repeat url("../../assets/water-cooler.svg");
-  background-size: contain;
-  background-position: center 20px;
+  background: no-repeat url("../../assets/water-cooler-bubbles.svg");
+  background-size: 175px;
+  background-position: center top;
   height: 100%;
   width: auto;
   display: flex;

@@ -2,9 +2,10 @@
 
 .label {
   padding-right: 10px;
+  padding-left: 5px;
   margin: $form-element-margin;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .input {
@@ -14,6 +15,8 @@
 .hint {
   margin: $form-element-margin;
   margin-top: 0;
+  padding-left: 5px;
+  font-size: 14px;
 }
 
 .error {

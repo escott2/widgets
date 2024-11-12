@@ -48,6 +48,7 @@ function Home() {
           <ClockWidget />
           <ChatWidget saveUsername={saveUsername} />
           <SunWidget />
+          <ClockWidget />
         </div>
       </section>
       <AboutMe />

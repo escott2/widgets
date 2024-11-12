@@ -2,10 +2,14 @@
 
 .formContainer {
   grid-column: 1 / 4;
+  padding: 20px 20px;
+  background: #efefef;
+}
+
+.zipInputContainer {
+  max-width: 375px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 5px;
-  max-width: 375px;
 }
 
 .zipCodeLabel {

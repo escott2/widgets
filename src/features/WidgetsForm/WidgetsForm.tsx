@@ -30,25 +30,27 @@ function WidgetsForm() {
 
   return (
     <form className={styles.formContainer}>
-      <Input
-        label="ZIP Code"
-        type="text"
-        value={zipCode}
-        onChange={handleZipCodeChange}
-        hint="Enter your ZIP code to see local information."
-        error={error}
-        customInputClasses={styles.zipCodeInput}
-        customLabelClasses={styles.zipCodeLabel}
-      />
-      <motion.button
-        type="submit"
-        onClick={handleFindWeatherClick}
-        className={styles.zipCodeButton}
-        whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <ArrowForwardSVG customClasses={styles.arrowForwardSvg} />
-      </motion.button>
+      <div className={styles.zipInputContainer}>
+        <Input
+          label="ZIP Code"
+          type="text"
+          value={zipCode}
+          onChange={handleZipCodeChange}
+          hint="Enter your ZIP code to see local information."
+          error={error}
+          customInputClasses={styles.zipCodeInput}
+          customLabelClasses={styles.zipCodeLabel}
+        />
+        <motion.button
+          type="submit"
+          onClick={handleFindWeatherClick}
+          className={styles.zipCodeButton}
+          whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <ArrowForwardSVG customClasses={styles.arrowForwardSvg} />
+        </motion.button>
+      </div>
     </form>
   );
 }
