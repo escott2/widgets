@@ -4,6 +4,7 @@ import { Input, ArrowForwardSVG } from "../../../../components/";
 import { motion } from "framer-motion";
 import { isValidZipCode } from "../../utils";
 import { WeatherContext } from "../../../../context";
+import { IconButton } from "../../../../components/ui/Button";
 
 function WeatherForm() {
   const [zipCode, setZipCode] = useState("");
@@ -40,7 +41,7 @@ function WeatherForm() {
         customInputClasses={styles.zipCodeInput}
         customLabelClasses={styles.zipCodeLabel}
       />
-      <motion.button
+      {/* <motion.button
         type="submit"
         onClick={handleFindWeatherClick}
         className={styles.zipCodeButton}
@@ -48,7 +49,13 @@ function WeatherForm() {
         whileTap={{ scale: 0.9 }}
       >
         <ArrowForwardSVG customClasses={styles.arrowForwardSvg} />
-      </motion.button>
+      </motion.button> */}
+      <IconButton
+        onClick={handleFindWeatherClick}
+        customClasses={styles.zipCodeButton}
+      >
+        <ArrowForwardSVG customClasses={styles.arrowForwardSvg} />
+      </IconButton>
     </form>
   );
 }

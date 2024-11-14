@@ -1,53 +1,87 @@
 import styles from "./PomodoroWidget.module.scss";
-import { WidgetContainer } from "../../components/layout";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { PrimaryButton } from "../../components";
+import { PlaySVG, PauseSVG, ClearSVG, WidgetContainer } from "../../components";
+import { IconButton } from "../../components/ui/Button";
 
 const PomodoroWidget = () => {
-  const timerLength = 1800000;
-  // const timerLength = 40000;
-
-  const [timeRemaining, setTimeRemaining] = useState(timerLength);
-  // const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
-  const percentRemaining = timeRemaining / timerLength;
-
+  const focusTotalSeconds = 1500;
+  const breakTotalSeconds = 300;
+  const [timerIsRunning, setTimerIsRunning] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(1500);
+  const [minutes, setMinutes] = useState("25");
+  const [seconds, setSeconds] = useState("00");
+  const [isFocusMode, setIsFocusMode] = useState(true);
+  const percentRemaining = isFocusMode
+    ? timeRemaining / focusTotalSeconds
+    : timeRemaining / breakTotalSeconds;
+  const timeHasElapsed = percentRemaining < 1;
   let intervalId: number;
+
+  const stopTimer = () => {
+    clearInterval(intervalId);
+    setTimerIsRunning(false);
+  };
+
+  const startTimer = () => {
+    setTimerIsRunning(true);
+  };
+
+  const clearTimer = () => {
+    if (isFocusMode) {
+      setFocusTimer();
+    } else {
+      setBreakTimer();
+    }
+  };
+
+  const setFocusTimer = () => {
+    stopTimer();
+    setTimeRemaining(focusTotalSeconds);
+    setMinutes("25");
+    setSeconds("00");
+    setIsFocusMode(true);
+  };
+
+  const setBreakTimer = () => {
+    stopTimer();
+    setTimeRemaining(breakTotalSeconds);
+    setMinutes("05");
+    setSeconds("00");
+    setIsFocusMode(false);
+  };
+
+  const setMinutesAndSeconds = (timeRemaining: number) => {
+    const newMinutes = Math.floor(timeRemaining / 60)
+      .toString()
+      .padStart(2, "0");
+    const newSeconds = (timeRemaining % 60).toString().padStart(2, "0");
+    setMinutes(newMinutes);
+    setSeconds(newSeconds);
+  };
 
   const countDown = (timeRemaining: number) => {
     if (timeRemaining > 0) {
-      const newTimeRemaining = timeRemaining - 1000;
+      const newTimeRemaining = timeRemaining - 1;
       setTimeRemaining(newTimeRemaining);
-      const hours = Math.floor(newTimeRemaining / (1000 * 60 * 60))
-        .toString()
-        .padStart(2, "0");
-      const minutes = Math.floor((newTimeRemaining / (1000 * 60)) % 60)
-        .toString()
-        .padStart(2, "0");
-      const seconds = Math.floor((newTimeRemaining / 1000) % 60)
-        .toString()
-        .padStart(2, "0");
-      // setHours(hours);
-      setMinutes(minutes);
-      setSeconds(seconds);
+      setMinutesAndSeconds(newTimeRemaining);
     } else {
       clearInterval(intervalId);
+      setTimerIsRunning(false);
     }
   };
 
   useEffect(() => {
-    intervalId = setInterval(() => countDown(timeRemaining), 1000);
+    if (timerIsRunning === true) {
+      intervalId = setInterval(() => countDown(timeRemaining), 1000);
+    }
     return () => clearInterval(intervalId);
-  }, [timeRemaining]);
+  }, [timeRemaining, timerIsRunning]);
 
   const circleVariants = {
-    initial: {
-      pathLength: 0,
-    },
     animate: {
       pathLength: percentRemaining,
+      transition: { duration: 0.1, delay: 0, ease: "linear" },
     },
   };
 
@@ -56,6 +90,13 @@ const PomodoroWidget = () => {
       customClasses={styles.pomodoroWidgetContainer}
       title="Pomodoro"
     >
+      <div className={styles.timerControlsContainer}>
+        {timeHasElapsed && (
+          <IconButton onClick={clearTimer} customClasses={styles.clearButton}>
+            <ClearSVG customClasses={styles.controlSVG} />
+          </IconButton>
+        )}
+      </div>
       <div className={styles.timerContainer}>
         <svg width="200" height="200">
           <circle
@@ -70,7 +111,7 @@ const PomodoroWidget = () => {
             cx="100"
             cy="100"
             r="90"
-            stroke="#c8e1ea"
+            {...(isFocusMode ? { stroke: "#c8e1ea" } : { stroke: "#ffffff" })}
             strokeWidth="10"
             fill="none"
             variants={circleVariants}
@@ -78,16 +119,36 @@ const PomodoroWidget = () => {
             animate="animate"
           />
         </svg>
-        <div className={styles.timeContainer}>
-          {minutes}:{seconds}
+        <div className={styles.timerInfoAndControls}>
+          <div className={styles.timeContainer}>
+            {minutes}:{seconds}
+          </div>
+          {timerIsRunning ? (
+            <IconButton onClick={stopTimer} customClasses={styles.stopButton}>
+              <PauseSVG customClasses={styles.controlSVG} />
+            </IconButton>
+          ) : (
+            <IconButton onClick={startTimer} customClasses={styles.playButton}>
+              <PlaySVG customClasses={styles.controlSVG} />
+            </IconButton>
+          )}
         </div>
       </div>
-      <div className={styles.goalContainer}>
-        <h3 className={styles.goalHeading}>Goal</h3>
-        <p>Solve bug</p>
+
+      <div className={styles.timerType}>
+        <button
+          onClick={setFocusTimer}
+          className={`${styles.timerTypeButton} ${styles.focusButton}`}
+        >
+          Focus
+        </button>
+        <button
+          onClick={setBreakTimer}
+          className={`${styles.timerTypeButton} ${styles.breakButton}`}
+        >
+          Break
+        </button>
       </div>
-      <PrimaryButton>pause</PrimaryButton>
-      <PrimaryButton>reset</PrimaryButton>
     </WidgetContainer>
   );
 };

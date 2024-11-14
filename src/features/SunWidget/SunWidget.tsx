@@ -46,7 +46,7 @@ function SunWidget() {
               percentage={percentDaylightRemaining}
               customClasses={styles.sunArc}
             />
-            {/* <SunPositionSVG percentage={0} customClasses={styles.sunArc} /> */}
+            {/* <SunPositionSVG percentage={50} customClasses={styles.sunArc} /> */}
           </div>
           <div className={styles.sunInfoContainer}>
             <div className={styles.sunTimeContainer}>

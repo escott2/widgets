@@ -1,3 +1,3 @@
 export { Input, PrimaryButton, FullAreaButton } from "./ui";
-export { ArrowForwardSVG } from "./svg";
-export { Header } from "./layout";
+export { ArrowForwardSVG, PlaySVG, PauseSVG, ClearSVG } from "./svg";
+export { Header, WidgetContainer } from "./layout";

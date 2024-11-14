@@ -45,11 +45,11 @@ function Home() {
         <div className={styles.widgetsGrid}>
           <WidgetsForm />
           <WelcomeWidget name={name} />
-          <WeatherWidget />
+          <SunWidget />
           <ClockWidget />
           <ChatWidget saveUsername={saveUsername} />
-          <SunWidget />
-          <PomodoroWidget targetTime={new Date("2024-11-12T24:00:00Z")} />
+          <WeatherWidget />
+          <PomodoroWidget />
         </div>
       </section>
       <AboutMe />

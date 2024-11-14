@@ -4,6 +4,7 @@ import { Input, ArrowForwardSVG } from "../../components";
 import { motion } from "framer-motion";
 import { isValidZipCode } from "./utils";
 import { WeatherContext } from "../../context";
+import { IconButton } from "../../components/ui/Button";
 
 function WidgetsForm() {
   const [zipCode, setZipCode] = useState("");

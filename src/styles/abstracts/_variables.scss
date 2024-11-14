@@ -1,10 +1,17 @@
-$primary-color: #223945;
+$dark-blue: #223945;
 $pale-blue: #edf5f8;
 $light-cyan: #c8e1ea;
 $grey: #efefef;
+$orange: #ec6e4c;
+// $grey: #f2f2f2;
 $white: #fff;
 $black: #000;
-$error-color: #ff0000;
+$red: #ff0000;
+
+$error-color: $red;
+$primary-color: $dark-blue;
+$secondary-color: $light-cyan;
+$accent-color: $orange;
 
 $error-text-color: $error-color;
 
@@ -25,6 +32,6 @@ $primary-button-border: 2px solid #223945;
 $primary-button-border-radius: 10px;
 $primary-button-cursor: pointer;
 $primary-button-background-color: $primary-color;
-$primary-button-hover-background-color: $pale-blue;
+$primary-button-hover-background-color: $white;
 $primary-button-hover-color: $black;
-$primary-button-hover-border-color: $pale-blue;
+$primary-button-hover-border-color: $primary-color;

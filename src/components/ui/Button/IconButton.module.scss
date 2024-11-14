@@ -1,0 +1,19 @@
+@use "../../../styles/abstracts/" as *;
+
+.iconButton {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: white;
+    color: $primary-color;
+    svg {
+      fill: $primary-color;
+    }
+  }
+}

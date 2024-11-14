@@ -1,33 +1,93 @@
+@use "../../styles/abstracts/" as *;
+
 .pomodoroWidgetContainer {
   height: 325px;
-}
-
-.timeCircle {
-  width: 100%;
-  height: 100%;
 }
 
 .timerContainer {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  top: -20px;
+}
+
+.timerInfoAndControls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -40%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timeContainer {
-  position: absolute;
-  top: 80px;
-  left: 112px;
   font-weight: 700;
   font-size: 30px;
-  width: 120px;
+  margin-bottom: 5px;
+  width: 92px;
+  text-align: left;
 }
 
-.goalContainer {
+.timerControlsContainer {
   display: flex;
-  margin-top: 5px;
+  justify-content: flex-end;
+  width: 90%;
+  height: 30px;
+  position: relative;
+  z-index: 1;
 }
 
-.goalHeading {
+.pauseSVG,
+.playSVG,
+.clearSVG,
+.controlSVG {
+  width: auto;
+  height: 15px;
+}
+
+.stopButton,
+.playButton,
+.clearButton {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
   margin-right: 5px;
+}
+
+.playButton {
+  padding: 5px 2px 5px 5px;
+}
+
+.clearButton {
+  background-color: $accent-color;
+}
+
+.timerType {
+  display: flex;
+  width: 90%;
+  margin: 10px auto 0;
+}
+
+.timerTypeButton {
+  flex: 1;
+  border: 0;
+  padding: 5px 10px;
+  border: 2px solid $primary-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $white;
+  }
+}
+
+.focusButton {
+  background-color: $secondary-color;
+  border-right-width: 1px;
+}
+
+.breakButton {
+  background-color: $white;
+  border-left-width: 1px;
 }
