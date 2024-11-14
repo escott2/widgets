@@ -10,6 +10,7 @@ import {
 import ScrollVideo from "../../features/ScrollVideo/ScrollVideo";
 import WelcomeWidget from "../../features/WelcomeWidget/WelcomeWidget";
 import { WidgetsForm } from "../../features/WidgetsForm";
+import { PomodoroWidget } from "../../features/PomodoroWidget";
 function Home() {
   const [name, setName] = useState("");
 
@@ -48,7 +49,7 @@ function Home() {
           <ClockWidget />
           <ChatWidget saveUsername={saveUsername} />
           <SunWidget />
-          <ClockWidget />
+          <PomodoroWidget targetTime={new Date("2024-11-12T24:00:00Z")} />
         </div>
       </section>
       <AboutMe />
