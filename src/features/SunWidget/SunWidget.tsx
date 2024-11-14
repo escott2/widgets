@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { WeatherContext } from "../../context";
 import { WidgetContainer } from "../../components/layout/";
 import styles from "./SunWidget.module.scss";
-import { SunHorizonSVG, SunPositionSVG } from "../../components/svg";
+import { SunPositionSVG } from "../../components/svg";
 import {
   convertUnixTimeToLocal,
   getSunPosition,
