@@ -1,7 +1,7 @@
 @use "../../../styles/abstracts/" as *;
 
 .header {
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid $grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,6 +17,7 @@
 .pageTitle {
   font-weight: 700;
   font-size: 20px;
+  margin-right: 20px;
 }
 
 .navList {
@@ -40,4 +41,14 @@
   right: 0;
   height: 2px;
   background: black;
+}
+
+.profileImg {
+  width: 80px;
+  height: 80px;
+}
+
+.titleImageContainer {
+  display: flex;
+  align-items: center;
 }

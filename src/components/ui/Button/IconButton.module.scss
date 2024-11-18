@@ -1,6 +1,7 @@
 @use "../../../styles/abstracts/" as *;
 
 .iconButton {
+  background-color: $primary-color;
   border-radius: 50%;
   height: 40px;
   width: 40px;

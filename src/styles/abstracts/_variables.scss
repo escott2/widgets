@@ -1,9 +1,9 @@
 $dark-blue: #223945;
 $pale-blue: #edf5f8;
 $light-cyan: #c8e1ea;
-$grey: #efefef;
 $orange: #ec6e4c;
-// $grey: #f2f2f2;
+$dark-orange: #79240d;
+$grey: #f2f2f2;
 $white: #fff;
 $black: #000;
 $red: #ff0000;
@@ -12,6 +12,8 @@ $error-color: $red;
 $primary-color: $dark-blue;
 $secondary-color: $light-cyan;
 $accent-color: $orange;
+$dark-accent-color: $dark-orange;
+$text-color: $black;
 
 $error-text-color: $error-color;
 
@@ -26,12 +28,12 @@ $input-border-radius: 5px;
 $input-height: 40px;
 
 $primary-button-font-size: 18px;
-$primary-button-padding: 10px 20px;
-$primary-button-color: #fff;
+$primary-button-padding: 5px 25px;
+$primary-button-color: $text-color;
 $primary-button-border: 2px solid #223945;
 $primary-button-border-radius: 10px;
 $primary-button-cursor: pointer;
-$primary-button-background-color: $primary-color;
-$primary-button-hover-background-color: $white;
-$primary-button-hover-color: $black;
+$primary-button-background-color: $secondary-color;
+$primary-button-hover-background-color: $primary-color;
+$primary-button-hover-color: $white;
 $primary-button-hover-border-color: $primary-color;

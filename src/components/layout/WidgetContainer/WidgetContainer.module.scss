@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts/" as *;
+
 .widgetContainer {
   // min-width: 350px;
   border: 2px solid #ffffff;
@@ -9,7 +11,7 @@
 }
 
 .empty {
-  background-color: #efefef;
+  background-color: $grey;
   box-shadow: none;
   border-color: none;
 }
@@ -18,7 +20,7 @@
   position: absolute;
   z-index: 2;
   top: -15px;
-  background-color: white;
+  background-color: $white;
   padding: 5px 20px;
   border-radius: 25px;
   font-size: 20px;

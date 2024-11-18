@@ -7,6 +7,7 @@ import { IconButton } from "../../components/ui/Button";
 const PomodoroWidget = () => {
   const focusTotalSeconds = 1500;
   const breakTotalSeconds = 300;
+
   const [timerIsRunning, setTimerIsRunning] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(1500);
   const [minutes, setMinutes] = useState("25");
@@ -17,6 +18,8 @@ const PomodoroWidget = () => {
     : timeRemaining / breakTotalSeconds;
   const timeHasElapsed = percentRemaining < 1;
   let intervalId: number;
+
+  console.log(timeRemaining, "time");
 
   const stopTimer = () => {
     clearInterval(intervalId);
@@ -79,9 +82,12 @@ const PomodoroWidget = () => {
   }, [timeRemaining, timerIsRunning]);
 
   const circleVariants = {
+    initial: {
+      pathLength: 2,
+    },
     animate: {
       pathLength: percentRemaining,
-      transition: { duration: 0.1, delay: 0, ease: "linear" },
+      transition: { duration: 0, delay: 0 },
     },
   };
 
@@ -102,36 +108,43 @@ const PomodoroWidget = () => {
           <circle
             cx="100"
             cy="100"
-            r="90"
+            r="80"
             stroke="#223945"
-            strokeWidth="20"
+            strokeWidth="30"
             fill="none"
           />
           <motion.circle
             cx="100"
             cy="100"
-            r="90"
+            r="80"
             {...(isFocusMode ? { stroke: "#c8e1ea" } : { stroke: "#ffffff" })}
-            strokeWidth="10"
+            strokeWidth="20"
             fill="none"
             variants={circleVariants}
             initial="initial"
-            animate="animate"
+            animate={timerIsRunning || timeHasElapsed ? "animate" : "initial"}
           />
         </svg>
         <div className={styles.timerInfoAndControls}>
           <div className={styles.timeContainer}>
             {minutes}:{seconds}
           </div>
-          {timerIsRunning ? (
-            <IconButton onClick={stopTimer} customClasses={styles.stopButton}>
-              <PauseSVG customClasses={styles.controlSVG} />
-            </IconButton>
-          ) : (
-            <IconButton onClick={startTimer} customClasses={styles.playButton}>
-              <PlaySVG customClasses={styles.controlSVG} />
-            </IconButton>
-          )}
+          <div className={styles.controlButtonsContainer}>
+            {timerIsRunning && timeRemaining > 0 ? (
+              <IconButton onClick={stopTimer} customClasses={styles.stopButton}>
+                <PauseSVG customClasses={styles.controlSVG} />
+              </IconButton>
+            ) : (
+              timeRemaining > 0 && (
+                <IconButton
+                  onClick={startTimer}
+                  customClasses={styles.playButton}
+                >
+                  <PlaySVG customClasses={styles.controlSVG} />
+                </IconButton>
+              )
+            )}
+          </div>
         </div>
       </div>
 

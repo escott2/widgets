@@ -1,3 +1,5 @@
+@use "../../styles/abstracts/" as *;
+
 .sunWidgetContainerEmpty,
 .sunWidgetContainer {
   height: 325px;
@@ -8,7 +10,7 @@
   justify-content: space-between;
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid $grey;
 }
 
 .sunriseContainer,

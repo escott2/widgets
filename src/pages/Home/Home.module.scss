@@ -10,7 +10,7 @@
   text-align: center;
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    font-size: 28px;
+    font-size: 35px;
     text-align: left;
   }
 }
@@ -42,20 +42,79 @@
   padding: 25px;
 }
 
-.introText {
-  padding: 20px;
-  font-size: 18px;
-  max-width: 650px;
-  margin-right: 20px;
-}
-
-.scrollVideo {
-  margin: 0 auto;
-}
-
 .landingContainer {
-  margin: 40px 0 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.introContainer {
+  padding: 40px;
+  padding: 50px 0 100px;
+}
+
+.introLine {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.infoList {
+  position: relative;
+  max-width: 800px;
+  font-size: 18px;
+  margin-left: 60px;
+  margin-bottom: 25px;
+}
+
+.infoItem {
+  padding: 10px 20px 10px 50px;
+  margin-bottom: 15px;
+  background-color: rgba(237, 245, 248, 0.5);
+  border-radius: 10px;
+  position: relative;
+
+  h4 {
+    font-size: 18px;
+  }
+
+  ::before {
+    content: "";
+    width: 80px;
+    height: 80px;
+    background-color: $light-cyan;
+
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    left: -40px;
+    top: 10px;
+    z-index: -1;
+  }
+}
+
+.infoHeading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.infoText {
+  max-width: 800px;
+  font-size: 18px;
+}
+
+.glanceInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.introInfoContainer {
+  margin-top: 10px;
+  margin-left: 50px;
 }

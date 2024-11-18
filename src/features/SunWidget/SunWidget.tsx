@@ -11,7 +11,7 @@ import {
 import { NightDisplay } from "./components/NightDisplay";
 
 function SunWidget() {
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData, geoLocationData } = useContext(WeatherContext);
   const { sunrise, sunset } = weatherData?.sys || {};
 
   const percentDaylightRemaining =
@@ -41,6 +41,8 @@ function SunWidget() {
     <>
       {percentDaylightRemaining ? (
         <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
+          <h3>Location: {geoLocationData?.zip}</h3>
+
           <div className={styles.sunPositionContainer}>
             <SunPositionSVG
               percentage={percentDaylightRemaining}

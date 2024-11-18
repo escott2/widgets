@@ -1,6 +1,7 @@
 import styles from "./Header.module.scss";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import profilePic from "../../../assets/profile-mask-blue.png";
 
 function Header() {
   const [selectedTab, setSelectedTab] = useState("");
@@ -10,7 +11,10 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <p className={styles.pageTitle}>Emily Scott</p>
+      <div className={styles.titleImageContainer}>
+        <p className={styles.pageTitle}>Emily Scott</p>
+        <img src={profilePic} className={styles.profileImg} />
+      </div>
       <ul className={styles.navList}>
         <li onClick={() => handleTabClick("About")}>
           About
