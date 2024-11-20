@@ -29,3 +29,15 @@
     border-color: $primary-button-hover-border-color;
   }
 }
+
+@mixin nav-link {
+  margin-right: 20px;
+  padding: 5px 0;
+  position: relative;
+  font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid black;
+  }
+}
