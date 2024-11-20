@@ -3,7 +3,8 @@
 .formContainer {
   grid-column: 1 / 4;
   padding: 20px 20px;
-  background: $grey;
+  background: $white;
+  border: 2px solid $grey;
 }
 
 .zipInputContainer {

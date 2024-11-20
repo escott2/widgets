@@ -1,7 +1,6 @@
 @use "../../../styles/abstracts/" as *;
 
 .header {
-  border-bottom: 2px solid $grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

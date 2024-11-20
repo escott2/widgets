@@ -1,24 +1,24 @@
 @use "../../styles/abstracts/" as *;
 
 .homeContainer {
-  @include layout-container;
+  // @include layout-container;
   // padding: $layout-padding;
 }
+.titleContainer {
+  background-color: $light-cyan;
+  padding: 30px 0;
+}
 
-.homeHeading {
+.homeHeading,
+.sectionTitle {
   font-size: 24px;
   text-align: center;
+  @include layout-container;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: 35px;
     text-align: left;
   }
-}
-
-.keyPointsList {
-  list-style-type: disc;
-  list-style-position: inside;
-  margin: 20px 0;
 }
 
 .widgetsContainer {
@@ -48,73 +48,43 @@
   justify-content: space-between;
 }
 
-.introContainer {
-  padding: 40px;
-  padding: 50px 0 100px;
-}
-
-.introLine {
-  height: 100%;
-  width: auto;
-  position: absolute;
-  top: 20px;
-  left: 30px;
-}
-
-.infoList {
-  position: relative;
-  max-width: 800px;
-  font-size: 18px;
-  margin-left: 60px;
-  margin-bottom: 25px;
-}
-
-.infoItem {
-  padding: 10px 20px 10px 50px;
-  margin-bottom: 15px;
-  background-color: rgba(237, 245, 248, 0.5);
-  border-radius: 10px;
-  position: relative;
-
-  h4 {
-    font-size: 18px;
-  }
-
-  ::before {
-    content: "";
-    width: 80px;
-    height: 80px;
-    background-color: $light-cyan;
-
-    display: block;
-    border-radius: 50%;
-    position: absolute;
-    left: -40px;
-    top: 10px;
-    z-index: -1;
-  }
-}
-
-.infoHeading {
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-right: 10px;
-}
-
 .infoText {
   max-width: 800px;
   font-size: 18px;
 }
 
-.glanceInfoContainer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.introSectionContainer {
+  @include layout-container;
+  position: relative;
+  background-color: rgba(237, 245, 248, 0.5);
 }
 
-.introInfoContainer {
-  margin-top: 10px;
-  margin-left: 50px;
+.sectionContainer {
+  @include layout-container;
+}
+
+.introContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 18px;
+}
+
+.introText {
+  padding: 0 30px;
+  margin: 20px;
+  max-width: 650px;
+  border-left: 2px solid black;
+
+  a {
+    font-weight: 700;
+    color: $dark-accent-color;
+  }
+}
+
+.desk {
+  height: 500px;
+  width: auto;
+  padding-left: 20px;
 }

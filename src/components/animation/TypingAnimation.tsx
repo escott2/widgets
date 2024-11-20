@@ -13,7 +13,7 @@ function TypingAnimation({ text, customClasses = "" }: TypingAnimationProps) {
     animate: (index: number) => ({
       opacity: 1,
       transition: {
-        delay: 0.05 * index,
+        delay: 0.02 * index,
       },
     }),
   };

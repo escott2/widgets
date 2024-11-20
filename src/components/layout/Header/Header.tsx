@@ -12,7 +12,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.titleImageContainer}>
-        <p className={styles.pageTitle}>Emily Scott</p>
+        <h1 className={styles.pageTitle}>Emily Scott</h1>
         <img src={profilePic} className={styles.profileImg} />
       </div>
       <ul className={styles.navList}>
