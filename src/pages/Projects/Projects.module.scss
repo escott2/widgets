@@ -1,0 +1,38 @@
+@use "../../styles/abstracts/" as *;
+
+//TODO - create scss mixin for this
+.sectionTitle {
+  font-size: 24px;
+  text-align: center;
+  @include layout-container;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    font-size: 35px;
+    text-align: left;
+  }
+}
+
+.widgetsContainer {
+  padding: 25px;
+}
+
+.widgetsTitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.widgetsGrid {
+  padding: 20px 0;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.sectionContainer {
+  @include layout-container;
+}

@@ -1,9 +1,8 @@
-import { motion } from "framer-motion";
 import styles from "./AboutMe.module.scss";
 
 function AboutMe() {
   return (
-    <section className={styles.aboutMeContainer}>
+    <section className={styles.aboutMeContainer} id="about">
       <h2>About Me</h2>
       <h3 className={styles.infoHeading}>
         I'm an experienced front-end engineer with two bachelor degrees and many

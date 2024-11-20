@@ -77,9 +77,14 @@
   max-width: 650px;
   border-left: 2px solid black;
 
-  a {
+  .link {
     font-weight: 700;
     color: $dark-accent-color;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -87,4 +92,8 @@
   height: 500px;
   width: auto;
   padding-left: 20px;
+}
+
+.contactSection {
+  min-height: 100vh;
 }
