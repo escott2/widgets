@@ -1,13 +1,8 @@
 import { useState } from "react";
-import {
-  WeatherWidget,
-  SunWidget,
-  ClockWidget,
-  ChatWidget,
-} from "../../features";
-import WelcomeWidget from "../../features/WelcomeWidget/WelcomeWidget";
-import { WidgetsForm } from "../../features/WidgetsForm";
-import { PomodoroWidget } from "../../features/PomodoroWidget";
+import { WeatherWidget, SunWidget, ClockWidget, ChatWidget } from "..";
+import WelcomeWidget from "../WelcomeWidget/WelcomeWidget";
+import { WidgetsForm } from "../WidgetsForm";
+import { PomodoroWidget } from "../PomodoroWidget";
 import styles from "./Projects.module.scss";
 import { Element } from "react-scroll";
 

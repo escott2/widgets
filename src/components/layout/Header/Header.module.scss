@@ -32,10 +32,6 @@
   align-items: center;
   margin: 10px 0;
 
-  @media screen and (min-width: $media-breakpoint-medium) {
-    margin-left: auto;
-  }
-
   .link {
     margin: 0 20px;
     @include nav-link;
@@ -43,6 +39,10 @@
     @media screen and (min-width: $media-breakpoint-medium) {
       margin: 0 20px 0 0;
     }
+  }
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    margin-left: auto;
   }
 }
 

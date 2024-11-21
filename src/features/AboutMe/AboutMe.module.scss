@@ -1,8 +1,12 @@
 @use "../../styles/abstracts/" as *;
 
-.aboutMeContainer {
-  margin-top: 20px;
+.sectionContainer {
+  @include layout-container;
   min-height: 100vh;
+}
+
+.sectionTitle {
+  @include section-title;
 }
 
 .testMotionDiv {

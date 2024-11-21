@@ -1,10 +1,16 @@
 @use "./variables" as *;
 
+// START LAYOUT MIXINS
+
 @mixin layout-container($padding: $layout-padding) {
   max-width: 1250px;
   margin: 0 auto;
   padding: $padding;
 }
+
+// END LAYOUT MIXINS
+
+// START FORM MIXINS
 
 @mixin text-input {
   border: $input-border;
@@ -13,6 +19,10 @@
   border-radius: $input-border-radius;
   height: $input-height;
 }
+
+// END FORM MIXINS
+
+// START BUTTON MIXINS
 
 @mixin primary-button {
   font-size: $primary-button-font-size;
@@ -30,6 +40,10 @@
   }
 }
 
+//END BUTTON MIXINS
+
+// START NAV MIXINS
+
 @mixin nav-link {
   margin-right: 20px;
   padding: 5px 0;
@@ -41,3 +55,21 @@
     border-bottom: 2px solid black;
   }
 }
+
+// END NAV MIXINS
+
+// START TYPOGRAPHY MIXINS
+
+@mixin section-title {
+  font-size: $section-title-font-size-mobile;
+  font-weight: $section-title-font-weight;
+  text-align: center;
+  padding: 40px 0;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    font-size: $section-title-font-size;
+    text-align: left;
+  }
+}
+
+// END TYPOGRAPHY MIXINS

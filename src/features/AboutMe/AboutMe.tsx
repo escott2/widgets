@@ -3,9 +3,9 @@ import { Element } from "react-scroll";
 
 function AboutMe() {
   return (
-    <section className={styles.aboutMeContainer}>
+    <section className={styles.sectionContainer}>
       <Element name="about">
-        <h2>About Me</h2>
+        <h2 className={styles.sectionTitle}>About Me</h2>
         <h3 className={styles.infoHeading}>
           I'm an experienced front-end engineer with two bachelor degrees and
           many skills.

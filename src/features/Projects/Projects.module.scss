@@ -1,15 +1,11 @@
 @use "../../styles/abstracts/" as *;
 
-//TODO - create scss mixin for this
-.sectionTitle {
-  font-size: 24px;
-  text-align: center;
+.sectionContainer {
   @include layout-container;
+}
 
-  @media screen and (min-width: $media-breakpoint-medium) {
-    font-size: 35px;
-    text-align: left;
-  }
+.sectionTitle {
+  @include section-title;
 }
 
 .widgetsContainer {
@@ -31,8 +27,4 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 25px;
-}
-
-.sectionContainer {
-  @include layout-container;
 }

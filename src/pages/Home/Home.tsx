@@ -1,7 +1,6 @@
 import styles from "./Home.module.scss";
-import { AboutMe } from "../../features";
+import { AboutMe, Projects, Contact } from "../../features";
 import deskImg from "../../assets/landing-desk.jpeg";
-import { Projects } from "../Projects";
 import { useEffect } from "react";
 
 import { Link, animateScroll as scroll, Element } from "react-scroll";
@@ -34,66 +33,66 @@ function Home({ hasScrolledDown }: HomeProps) {
 
   return (
     <>
-      <Element name="landing"></Element>
       <main className={styles.homeContainer}>
-        <div className={styles.titleContainer}>
-          <h2 className={styles.sectionTitle}>
-            Hello, I'm Emily Scott a front-end engineer and design enthusiast.
-          </h2>
-        </div>
-
-        <div className={styles.introSectionContainer}>
-          <div className={styles.introContent}>
-            <p className={styles.introText}>
-              I'm passionate about creating exceptional web experiences that are
-              not only visually appealing but also intuitive and
-              well-engineered. I'm an experienced engineer excited for the next
-              adventure. Explore{" "}
-              <Link
-                to="projects"
-                spy={true}
-                smooth={true}
-                offset={30}
-                duration={0}
-                className={styles.link}
-              >
-                my work
-              </Link>
-              , learn more{" "}
-              <Link
-                to="about"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={0}
-                className={styles.link}
-              >
-                about me
-              </Link>
-              , and{" "}
-              <Link
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={0}
-                className={styles.link}
-              >
-                reach out
-              </Link>{" "}
-              if you're interested in working together!
-            </p>
-            <img src={deskImg} className={styles.desk} alt="macbook on desk" />
+        <Element name="landing">
+          <div className={styles.titleContainer}>
+            <h2 className={styles.sectionTitle}>
+              Hello, I'm Emily Scott a front-end engineer and design enthusiast.
+            </h2>
           </div>
-        </div>
 
+          <div className={styles.introSectionContainer}>
+            <div className={styles.introContent}>
+              <p className={styles.introText}>
+                I'm passionate about creating exceptional web experiences that
+                are not only visually appealing but also intuitive and
+                well-engineered. I'm an experienced engineer excited for the
+                next adventure. Explore{" "}
+                <Link
+                  to="projects"
+                  spy={true}
+                  smooth={true}
+                  offset={-120}
+                  duration={0}
+                  className={styles.link}
+                >
+                  my work
+                </Link>
+                , learn more{" "}
+                <Link
+                  to="about"
+                  spy={true}
+                  smooth={true}
+                  offset={-120}
+                  duration={0}
+                  className={styles.link}
+                >
+                  about me
+                </Link>
+                , and{" "}
+                <Link
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+                  offset={-120}
+                  duration={0}
+                  className={styles.link}
+                >
+                  reach out
+                </Link>{" "}
+                if you're interested in working together!
+              </p>
+              <img
+                src={deskImg}
+                className={styles.desk}
+                alt="macbook on desk"
+              />
+            </div>
+          </div>
+        </Element>
         <Projects />
         <AboutMe />
-        <section className={styles.contactSection}>
-          <Element name="contact">
-            <h2>Contact</h2>
-          </Element>
-        </section>
+        <Contact />
         {hasScrolledDown && (
           <div ref={scope} className={styles.buttonContainer}>
             <IconButton

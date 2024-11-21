@@ -14,6 +14,8 @@ function Header({ hasScrolledDown }: HeaderProps) {
     setSelectedTab(tabName);
   };
 
+  console.log(selectedTab);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -28,7 +30,7 @@ function Header({ hasScrolledDown }: HeaderProps) {
               to="projects"
               spy={true}
               smooth={true}
-              offset={0}
+              offset={-120}
               duration={0}
               className={styles.link}
               onSetActive={() => handleTabClick("Projects")}
@@ -44,7 +46,7 @@ function Header({ hasScrolledDown }: HeaderProps) {
               to="about"
               spy={true}
               smooth={true}
-              offset={0}
+              offset={-120}
               duration={0}
               className={styles.link}
               onSetActive={() => handleTabClick("About")}
@@ -60,7 +62,7 @@ function Header({ hasScrolledDown }: HeaderProps) {
               to="contact"
               spy={true}
               smooth={true}
-              offset={0}
+              offset={-120}
               duration={0}
               className={styles.link}
               onSetActive={() => handleTabClick("Contact")}
