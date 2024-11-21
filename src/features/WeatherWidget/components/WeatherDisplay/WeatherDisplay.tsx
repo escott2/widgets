@@ -30,7 +30,6 @@ function WeatherDisplay() {
     <>
       {weatherData && geoLocationData && (
         <div className={styles.weatherDisplayContainer}>
-          <h3>Location: {geoLocationData?.zip}</h3>
           <div className={styles.primaryWeatherContainer}>
             <div className={styles.temperatureContainer}>
               {temperature}&deg;F

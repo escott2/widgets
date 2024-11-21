@@ -1,39 +1,35 @@
 @use "../../../styles/abstracts/" as *;
 
 .widgetContainer {
-  // min-width: 350px;
-  border: 2px solid #ffffff;
   padding: 30px 20px 20px;
-  background-color: #fff;
+  background-color: $light-cyan;
   border-radius: 15px;
   position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8)
+  );
+  backdrop-filter: blur(20px);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .empty {
-  background-color: $grey;
-  box-shadow: none;
-  border-color: none;
+  background-color: $light-grey;
 }
 
 .title {
   position: absolute;
   z-index: 2;
-  top: -15px;
+  top: -10px;
   background-color: $white;
+  color: $black;
   padding: 5px 20px;
   border-radius: 25px;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
 }

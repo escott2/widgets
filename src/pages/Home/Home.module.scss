@@ -23,7 +23,7 @@
 }
 
 .widgetsTitle {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
   margin-top: 20px;
 }
@@ -54,7 +54,7 @@
   @include layout-container;
   margin-bottom: 50px;
   position: relative;
-  background-color: rgba(237, 245, 248, 0.5);
+  background-color: $light-grey;
 }
 
 .sectionContainer {

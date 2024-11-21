@@ -3,6 +3,7 @@ import styles from "./WeatherWidget.module.scss";
 import { WeatherDisplay } from "./components";
 import { WidgetContainer } from "../../components/layout";
 import { WeatherContext } from "../../context";
+import { Location } from "../Location";
 
 function WeatherWidget() {
   const { weatherData } = useContext(WeatherContext);
@@ -14,6 +15,7 @@ function WeatherWidget() {
           customClasses={styles.weatherWidgetContainer}
           title="Weather"
         >
+          <Location />
           <WeatherDisplay />
         </WidgetContainer>
       ) : (

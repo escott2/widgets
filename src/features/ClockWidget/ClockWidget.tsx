@@ -26,7 +26,7 @@ function ClockWidget() {
   });
 
   return (
-    <WidgetContainer customClasses={styles.clockWidgetContainer}>
+    <WidgetContainer customClasses={styles.clockWidgetContainer} title="Clock">
       <p className={styles.clock}>{formattedTime}</p>
       <p className={styles.date}>{formattedDate}</p>
     </WidgetContainer>
