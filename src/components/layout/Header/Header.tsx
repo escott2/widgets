@@ -80,7 +80,9 @@ function Header({ hasScrolledDown }: HeaderProps) {
           smooth={true}
           offset={-200}
           duration={500}
-          className={styles.scrollToTopButton}
+          className={`${styles.scrollToTopButton} ${
+            hasScrolledDown && styles.emphasizeButton
+          }`}
           onSetActive={() => handleTabClick("Landing")}
         >
           Back to Top

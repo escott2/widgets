@@ -29,9 +29,9 @@
   padding: $primary-button-padding;
   color: $primary-button-color;
   border: $primary-button-border;
-  border-radius: $primary-button-border-radius;
   cursor: $primary-button-cursor;
   background-color: $primary-button-background-color;
+  line-height: 27px;
 
   &:hover {
     background-color: $primary-button-hover-background-color;

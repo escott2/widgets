@@ -70,11 +70,16 @@
 
   @media screen and (min-width: $media-breakpoint-medium) {
     display: block;
-    border-bottom: 2px solid #000;
+    border: 2px solid $black;
     line-height: 27px;
     background-color: transparent;
     @include nav-link;
     padding: $primary-button-padding;
     margin: 10px 0 10px 25px;
+    transition: all 0.25s linear;
+
+    &.emphasizeButton {
+      background-color: $light-cyan;
+    }
   }
 }
