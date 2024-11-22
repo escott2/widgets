@@ -8,11 +8,11 @@
 .sunTimeContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 10px 40px;
+  margin: 0 50px 10px 50px;
+  padding: 5px 0;
   position: relative;
-  top: -33px;
-  border-top: 2px solid black;
+  top: -32.6px;
+  border-top: 6px solid $primary-color;
 }
 
 .sunriseContainer,
@@ -22,7 +22,8 @@
 
 .sunInfoContainer {
   position: relative;
-  margin: 0 10px;
+  height: 68px;
+  margin: 15px 0;
 }
 
 .sunPositionContainer {
@@ -30,5 +31,14 @@
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  margin-top: 100px;
+  margin-top: 20px;
+}
+.hoursInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  padding-top: 5px;
+
+  > * {
+    line-height: 1.2;
+  }
 }

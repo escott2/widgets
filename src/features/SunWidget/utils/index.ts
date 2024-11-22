@@ -27,25 +27,28 @@ const getLightDurationData = (
   return { dayLengthInHours, nightLengthInHours };
 };
 
-const getSunPosition = (sunriseEpoch: number, sunsetEpoch: number) => {
+const getSunPercentRemaining = (sunriseEpoch: number, sunsetEpoch: number) => {
   const rangeInMilliseconds = (sunsetEpoch - sunriseEpoch) * 1000;
   const currentEpochInMilliseconds = new Date().getTime();
   // const currentEpochInMilliseconds = new Date(
-  //   "November 4, 24 06:00:00"
+  //   "November 22, 24 07:20:00"
   // ).getTime();
 
   const sunRemainingInMilliseconds =
     sunsetEpoch * 1000 - currentEpochInMilliseconds;
+  console.log(sunRemainingInMilliseconds, "sun remains");
 
   if (sunRemainingInMilliseconds >= 0) {
-    const percentageRemaining = Math.ceil(
-      (sunRemainingInMilliseconds / rangeInMilliseconds) * 100
-    );
-    console.log(percentageRemaining, "percent remains");
-    return percentageRemaining;
+    const percentageRemaining =
+      (sunRemainingInMilliseconds / rangeInMilliseconds) * 100;
+    if (percentageRemaining > 1) {
+      return Math.floor(percentageRemaining);
+    } else {
+      return Math.ceil(percentageRemaining);
+    }
   } else {
     return null;
   }
 };
 
-export { convertUnixTimeToLocal, getSunPosition, getLightDurationData };
+export { convertUnixTimeToLocal, getSunPercentRemaining, getLightDurationData };

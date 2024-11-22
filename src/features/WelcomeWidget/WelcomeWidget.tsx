@@ -8,7 +8,7 @@ interface WelcomeWidgetProps {
 function WelcomeWidget({ name }: WelcomeWidgetProps) {
   return (
     <WidgetContainer customClasses={styles.welcomeWidgetContainer}>
-      <p>Good Morning{name && ` ${name}`}</p>
+      <p>Welcome{name && ` ${name}`}</p>
     </WidgetContainer>
   );
 }
