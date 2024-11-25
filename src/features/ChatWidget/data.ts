@@ -22,37 +22,27 @@ const chatQuestions: ChatTextObject[] = [
   },
   {
     id: "weather-good-computer",
-    text: "That's great!",
+    text: "That's wonderful!",
     speakerType: "computer",
   },
   {
     id: "weather-bad-computer",
-    text: "That's too bad.",
+    text: "That's too bad. I suppose it's a good day to enjoy the great indoors.",
     speakerType: "computer",
   },
   {
     id: "weather-okay-computer",
-    text: "I understand that. It's not the best and not the worst. Maybe it will get nicer soon.",
+    text: "Ah yes, mediocre weather indeed.",
     speakerType: "computer",
   },
   {
     id: "weather-unknown-computer",
-    text: "I can help you figure that out! What's your zip code?",
-    speakerType: "computer",
-  },
-  {
-    id: "weather-retrieve-computer",
-    text: "Hold on one moment....",
-    speakerType: "computer",
-  },
-  {
-    id: "weather-retrieve-computer",
-    text: "Hold on one moment....",
+    text: "I created a weather widget. Feel free to give it a try if you're interested in checking your current weather!",
     speakerType: "computer",
   },
   {
     id: "weather-convo-continue-computer",
-    text: "Let me see....",
+    text: "Sun's shining, birds are singing, but my break's ending. Nice to meet you, ***000***!",
     speakerType: "computer",
   },
 ];
@@ -109,17 +99,30 @@ const userInputDisplay: UserInputObject[] = [
         id: "weather-convo-choice-end",
         value:
           "Look at the time! I should get back to work. It was nice talking to you.",
-        transition: "weather-convo-end",
+        transition: "conversation-ended",
         checked: false,
       },
     ],
     transition: null,
   },
   {
-    id: "weather-unknown",
-    inputType: "text",
-    options: null,
-    transition: "weather-retrieve",
+    id: "weather-convo-continue",
+    inputType: "radio",
+    options: [
+      {
+        id: "goodbye",
+        value: "Bye!",
+        transition: "conversation-ended",
+        checked: true,
+      },
+      {
+        id: "see-you",
+        value: "Talk to you later!",
+        transition: "conversation-ended",
+        checked: false,
+      },
+    ],
+    transition: null,
   },
 ];
 

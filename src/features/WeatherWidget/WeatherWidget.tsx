@@ -6,21 +6,22 @@ import { WeatherContext } from "../../context";
 import { Location } from "../Location";
 
 function WeatherWidget() {
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData, isFetching } = useContext(WeatherContext);
 
   return (
     <>
-      {weatherData ? (
-        <WidgetContainer
-          customClasses={styles.weatherWidgetContainer}
-          title="Weather"
-        >
-          <Location />
-          <WeatherDisplay />
-        </WidgetContainer>
-      ) : (
-        <WidgetContainer empty={true}></WidgetContainer>
-      )}
+      <WidgetContainer
+        customClasses={styles.weatherWidgetContainer}
+        title="Weather"
+      >
+        {isFetching && <p>Loading</p>}
+        {!isFetching && weatherData && (
+          <>
+            <Location />
+            <WeatherDisplay />
+          </>
+        )}
+      </WidgetContainer>
     </>
   );
 }

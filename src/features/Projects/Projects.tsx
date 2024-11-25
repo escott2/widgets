@@ -13,6 +13,8 @@ function Projects() {
     setName(name);
   };
 
+  console.log(name);
+
   return (
     <section className={styles.sectionContainer}>
       <Element name="projects">
@@ -25,7 +27,7 @@ function Projects() {
             <WelcomeWidget name={name} />
             <SunWidget />
             <ClockWidget />
-            <ChatWidget saveUsername={saveUsername} />
+            <ChatWidget saveUsername={saveUsername} name={name} />
             <WeatherWidget />
             <PomodoroWidget />
           </div>

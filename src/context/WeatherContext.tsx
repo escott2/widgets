@@ -3,19 +3,25 @@ import { WeatherData, GeoLocationData } from "../types/weatherDataTypes";
 
 interface ActionsContextType {
   findWeather: ((zipCode: string) => Promise<void>) | null;
+  setIsWeatherFetchError: (isError: boolean) => void;
 }
 
 interface WeatherContextValue {
   weatherData: WeatherData | null;
   geoLocationData: GeoLocationData | null;
+  isWeatherFetchError: boolean;
+  isFetching: boolean;
   actions: ActionsContextType;
 }
 
 const defaultContextValue: WeatherContextValue = {
   weatherData: null,
   geoLocationData: null,
+  isWeatherFetchError: false,
+  isFetching: false,
   actions: {
     findWeather: null,
+    setIsWeatherFetchError: () => {},
   },
 };
 
@@ -30,6 +36,10 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
   const [geoLocationData, setGeoLocationData] =
     useState<GeoLocationData | null>(null);
 
+  const [isWeatherFetchError, setIsWeatherFetchError] =
+    useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+
   const apiKey = "922176d7fe6aa80866789eaaf2e9d26d";
 
   async function getJSON<T>(url: string): Promise<T> {
@@ -38,6 +48,7 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
       const json = await response.json();
       return json as T;
     } catch (error) {
+      console.log("test error");
       throw error;
     }
   }
@@ -56,15 +67,21 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
 
   const findWeather = async (zipCode: string) => {
     try {
+      setIsFetching(true);
       const geoData = await getGeoLocationData(zipCode);
-      if (geoData) {
+      if (geoData?.lat && geoData?.lon) {
         setGeoLocationData(geoData);
         const { lat, lon } = geoData;
         const weatherData = await getWeatherData(lat, lon);
         setWeatherData(weatherData);
+      } else {
+        setIsWeatherFetchError(true);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setIsWeatherFetchError(true);
+    } finally {
+      setIsFetching(false);
     }
   };
 
@@ -73,8 +90,11 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
       value={{
         weatherData,
         geoLocationData,
+        isWeatherFetchError,
+        isFetching,
         actions: {
-          findWeather: findWeather,
+          findWeather,
+          setIsWeatherFetchError,
         },
       }}
     >

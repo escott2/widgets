@@ -12,7 +12,7 @@ import { Location } from "../Location";
 import { SunStatus } from "./components/SunStatus";
 
 function SunWidget() {
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData, isFetching } = useContext(WeatherContext);
   const { sunrise, sunset } = weatherData?.sys || {};
 
   const percentDaylightRemaining =
@@ -43,47 +43,79 @@ function SunWidget() {
   const renderSunWidget = (
     <>
       <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
-        <Location />
+        <>
+          <Location />
 
-        <div className={styles.sunInfoContainer}>
-          <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
+          <div className={styles.sunInfoContainer}>
+            <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
 
-          {dayLengthInHours && nightLengthInHours && (
-            <div className={styles.hoursInfo}>
-              <h4>Total light:</h4> <p>{dayLengthInHours} hours</p>
-              <h4>Total dark:</h4>
-              <p>{nightLengthInHours} hours</p>
+            {dayLengthInHours && nightLengthInHours && (
+              <div className={styles.hoursInfo}>
+                <h4>Total light:</h4> <p>{dayLengthInHours} hours</p>
+                <h4>Total dark:</h4>
+                <p>{nightLengthInHours} hours</p>
+              </div>
+            )}
+          </div>
+          <div className={styles.sunPositionContainer}>
+            <SunPositionSVG
+              percentDaylightRemaining={percentDaylightRemaining}
+            />
+            {/* <SunPositionSVG percentDaylightRemaining={50} /> */}
+          </div>
+          <div className={styles.sunTimeContainer}>
+            <div className={styles.sunriseContainer}>
+              <h4>Sunrise</h4>
+              {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
             </div>
-          )}
-        </div>
-        <div className={styles.sunPositionContainer}>
-          <SunPositionSVG percentDaylightRemaining={percentDaylightRemaining} />
-          {/* <SunPositionSVG percentDaylightRemaining={50} /> */}
-        </div>
-        <div className={styles.sunTimeContainer}>
-          <div className={styles.sunriseContainer}>
-            <h4>Sunrise</h4>
-            {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
+            <div className={styles.sunsetContainer}>
+              <h4>Sunset</h4>
+              {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
+            </div>
           </div>
-          <div className={styles.sunsetContainer}>
-            <h4>Sunset</h4>
-            {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
-          </div>
-        </div>
+        </>
       </WidgetContainer>
     </>
   );
 
   return (
     <>
-      {weatherData ? (
-        renderSunWidget
-      ) : (
-        <WidgetContainer
-          empty={true}
-          customClasses={styles.sunWidgetContainerEmpty}
-        ></WidgetContainer>
-      )}
+      <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
+        {isFetching && <p>Loading</p>}
+        {!isFetching && weatherData && (
+          <>
+            <Location />
+
+            <div className={styles.sunInfoContainer}>
+              <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
+
+              {dayLengthInHours && nightLengthInHours && (
+                <div className={styles.hoursInfo}>
+                  <h4>Total light:</h4> <p>{dayLengthInHours} hours</p>
+                  <h4>Total dark:</h4>
+                  <p>{nightLengthInHours} hours</p>
+                </div>
+              )}
+            </div>
+            <div className={styles.sunPositionContainer}>
+              <SunPositionSVG
+                percentDaylightRemaining={percentDaylightRemaining}
+              />
+              {/* <SunPositionSVG percentDaylightRemaining={50} /> */}
+            </div>
+            <div className={styles.sunTimeContainer}>
+              <div className={styles.sunriseContainer}>
+                <h4>Sunrise</h4>
+                {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
+              </div>
+              <div className={styles.sunsetContainer}>
+                <h4>Sunset</h4>
+                {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
+              </div>
+            </div>
+          </>
+        )}
+      </WidgetContainer>
     </>
   );
 }

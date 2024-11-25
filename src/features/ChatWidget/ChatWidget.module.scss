@@ -89,7 +89,8 @@
   justify-content: flex-end;
 }
 
-.submitButton {
+.submitButton,
+.restartButton {
   margin-bottom: 5px;
 }
 
@@ -98,6 +99,7 @@
   margin: 0;
   width: 100%;
   border: none;
+  line-height: 1;
 }
 
 .responseContainer {
@@ -140,4 +142,10 @@
   border-radius: 50%;
   display: inline-block;
   margin: 0 2px;
+}
+
+.chatEndMessage {
+  font-weight: 700;
+  text-align: center;
+  color: $accent-color;
 }

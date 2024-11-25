@@ -8,7 +8,7 @@ export interface UserInputObject {
 export interface UserInputOption {
   id: string;
   value: string;
-  transition: string;
+  transition: string | null;
   checked: boolean;
 }
 

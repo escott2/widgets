@@ -4,12 +4,13 @@ import { Input, ArrowForwardSVG } from "../../components";
 import { motion } from "framer-motion";
 import { isValidZipCode } from "./utils";
 import { WeatherContext } from "../../context";
-import { IconButton } from "../../components/ui/Button";
 
 function WidgetsForm() {
   const [zipCode, setZipCode] = useState("");
   const [error, setError] = useState("");
-  const { actions } = useContext(WeatherContext);
+  const { actions, isWeatherFetchError } = useContext(WeatherContext);
+
+  const { setIsWeatherFetchError } = actions;
   const findWeather = actions?.findWeather ? actions.findWeather : null;
 
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,7 @@ function WidgetsForm() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setIsWeatherFetchError(false);
     if (zipCode && isValidZipCode(zipCode)) {
       setError("");
       findWeather && findWeather(zipCode);
@@ -38,7 +40,11 @@ function WidgetsForm() {
           value={zipCode}
           onChange={handleZipCodeChange}
           hint="Enter your ZIP code to see local information."
-          error={error}
+          error={
+            isWeatherFetchError
+              ? "We couldn't find a location for that ZIP code. Please double-check the ZIP code and try again."
+              : error
+          }
           customInputClasses={styles.zipCodeInput}
           customLabelClasses={styles.zipCodeLabel}
         />
