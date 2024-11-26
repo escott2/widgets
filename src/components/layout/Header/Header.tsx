@@ -14,8 +14,6 @@ function Header({ hasScrolledDown }: HeaderProps) {
     setSelectedTab(tabName);
   };
 
-  console.log(selectedTab);
-
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>

@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 import { AboutMe, Projects, Contact } from "../../features";
-import deskImg from "../../assets/landing-desk.jpeg";
+import deskImg from "../../assets/landing-desk.jpg";
 import { useEffect } from "react";
 
 import { Link, animateScroll as scroll, Element } from "react-scroll";

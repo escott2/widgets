@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./WeatherWidget.module.scss";
 import { WeatherDisplay } from "./components";
-import { WidgetContainer } from "../../components/layout";
+import { Loader, WidgetContainer } from "../../components";
 import { WeatherContext } from "../../context";
 import { Location } from "../Location";
 
@@ -14,7 +14,7 @@ function WeatherWidget() {
         customClasses={styles.weatherWidgetContainer}
         title="Weather"
       >
-        {isFetching && <p>Loading</p>}
+        {isFetching && <Loader />}
         {!isFetching && weatherData && (
           <>
             <Location />

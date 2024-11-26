@@ -36,7 +36,6 @@ const getSunPercentRemaining = (sunriseEpoch: number, sunsetEpoch: number) => {
 
   const sunRemainingInMilliseconds =
     sunsetEpoch * 1000 - currentEpochInMilliseconds;
-  console.log(sunRemainingInMilliseconds, "sun remains");
 
   if (sunRemainingInMilliseconds >= 0) {
     const percentageRemaining =

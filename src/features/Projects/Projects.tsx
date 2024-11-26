@@ -13,8 +13,6 @@ function Projects() {
     setName(name);
   };
 
-  console.log(name);
-
   return (
     <section className={styles.sectionContainer}>
       <Element name="projects">

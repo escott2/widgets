@@ -145,7 +145,6 @@ function ChatWidget({ saveUsername, name }: ChatWidgetProps) {
       (element) => `${newChatId}-computer` === element.id
     );
     if (newText) {
-      console.log("reached new text, checking name", name);
       const editedText = newText.text.replace("***000***", name);
       const newTextObject = { ...newText, text: editedText };
       setChatText((prevItems) => [...prevItems, newTextObject]);

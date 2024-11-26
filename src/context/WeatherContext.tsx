@@ -48,7 +48,6 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
       const json = await response.json();
       return json as T;
     } catch (error) {
-      console.log("test error");
       throw error;
     }
   }

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { WeatherContext } from "../../context";
-import { WidgetContainer } from "../../components/layout/";
+import { Loader, WidgetContainer } from "../../components";
 import styles from "./SunWidget.module.scss";
 import { SunPositionSVG } from "../../components/svg";
 import {
@@ -17,8 +17,6 @@ function SunWidget() {
 
   const percentDaylightRemaining =
     sunrise && sunset ? getSunPercentRemaining(sunrise, sunset) : undefined;
-
-  console.log(percentDaylightRemaining);
 
   interface LightDuration {
     dayLengthInHours: number;
@@ -40,52 +38,13 @@ function SunWidget() {
     weatherData?.sys?.sunset !== undefined &&
     convertUnixTimeToLocal(weatherData.sys.sunset);
 
-  const renderSunWidget = (
-    <>
-      <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
-        <>
-          <Location />
-
-          <div className={styles.sunInfoContainer}>
-            <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
-
-            {dayLengthInHours && nightLengthInHours && (
-              <div className={styles.hoursInfo}>
-                <h4>Total light:</h4> <p>{dayLengthInHours} hours</p>
-                <h4>Total dark:</h4>
-                <p>{nightLengthInHours} hours</p>
-              </div>
-            )}
-          </div>
-          <div className={styles.sunPositionContainer}>
-            <SunPositionSVG
-              percentDaylightRemaining={percentDaylightRemaining}
-            />
-            {/* <SunPositionSVG percentDaylightRemaining={50} /> */}
-          </div>
-          <div className={styles.sunTimeContainer}>
-            <div className={styles.sunriseContainer}>
-              <h4>Sunrise</h4>
-              {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
-            </div>
-            <div className={styles.sunsetContainer}>
-              <h4>Sunset</h4>
-              {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
-            </div>
-          </div>
-        </>
-      </WidgetContainer>
-    </>
-  );
-
   return (
     <>
       <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
-        {isFetching && <p>Loading</p>}
+        {isFetching && <Loader />}
         {!isFetching && weatherData && (
           <>
             <Location />
-
             <div className={styles.sunInfoContainer}>
               <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
 

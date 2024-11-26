@@ -14,7 +14,6 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({
   useEffect(() => {
     if (scrollableRef.current) {
       scrollableRef.current.scrollTop = scrollableRef.current.scrollHeight;
-      console.log("test");
     }
   }, []);
 

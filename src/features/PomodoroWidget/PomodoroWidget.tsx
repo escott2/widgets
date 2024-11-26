@@ -19,8 +19,6 @@ const PomodoroWidget = () => {
   const timeHasElapsed = percentRemaining < 1;
   let intervalId: number;
 
-  console.log(timeRemaining, "time");
-
   const stopTimer = () => {
     clearInterval(intervalId);
     setTimerIsRunning(false);

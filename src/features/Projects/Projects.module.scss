@@ -23,7 +23,7 @@
 .widgetsGrid {
   min-height: 500px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, 1fr);
   gap: 25px;
   padding: 25px;
   padding-bottom: 0;
@@ -31,6 +31,10 @@
   margin-top: 10px;
   border-radius: 10px;
   background-color: $light-grey;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  }
 }
 
 .projectSection {
