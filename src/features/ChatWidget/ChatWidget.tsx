@@ -32,6 +32,16 @@ function ChatWidget({ saveUsername, name }: ChatWidgetProps) {
     }
   }, [chatText]);
 
+  function validateInputValue(value: string) {
+    const trimmedValue = value.trim();
+
+    if (trimmedValue === "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   const handleRestartChat = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -151,15 +161,21 @@ function ChatWidget({ saveUsername, name }: ChatWidgetProps) {
     switch (currentChatId) {
       case "introduction":
         e.preventDefault();
-        saveUsername(nameValue);
-        addChatTextToConversation(
-          currentChatId,
-          nextChatId,
-          nameValue,
-          nameValue
-        );
-        setCurrentChatId("weather");
-        setNameValue("");
+        if (validateInputValue(nameValue)) {
+          setChatError("");
+          saveUsername(nameValue);
+          addChatTextToConversation(
+            currentChatId,
+            nextChatId,
+            nameValue,
+            nameValue
+          );
+          setCurrentChatId("weather");
+          setNameValue("");
+        } else {
+          setChatError("Please enter your name.");
+          setNameValue("");
+        }
         break;
       case "weather":
         e.preventDefault();

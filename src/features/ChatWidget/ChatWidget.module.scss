@@ -16,6 +16,7 @@
   margin: 10px;
   max-width: 250px;
   border-radius: 15px;
+  word-break: break-word;
 }
 
 .computer {
@@ -80,6 +81,8 @@
   padding: 10px;
   flex: 1;
   background-color: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .submitForm {
@@ -113,14 +116,16 @@
 }
 
 .chatError {
-  margin: 0 auto;
+  margin: 2px auto;
   color: $error-text-color;
   height: 22px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .enterChatButton {
   position: relative;
+  margin: 50px;
 }
 
 .preChatContainer {
@@ -130,7 +135,7 @@
   height: 100%;
   width: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
 }
