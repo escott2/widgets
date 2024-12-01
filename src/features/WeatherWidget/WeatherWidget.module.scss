@@ -1,3 +1,9 @@
+@use "../../styles/abstracts/" as *;
+
 .weatherWidgetContainer {
-  // padding: 30px;
+  grid-area: weather;
+}
+
+.noDataMessage {
+  @include widget-no-data-message;
 }

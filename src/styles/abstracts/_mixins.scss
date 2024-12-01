@@ -72,4 +72,11 @@
   }
 }
 
+@mixin widget-no-data-message {
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 300px;
+}
+
 // END TYPOGRAPHY MIXINS

@@ -42,7 +42,7 @@ function SunWidget() {
     <>
       <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
         {isFetching && <Loader />}
-        {!isFetching && weatherData && (
+        {!isFetching && weatherData ? (
           <>
             <Location />
             <div className={styles.sunInfoContainer}>
@@ -73,6 +73,10 @@ function SunWidget() {
               </div>
             </div>
           </>
+        ) : (
+          <p className={styles.noDataMessage}>
+            Enter your ZIP code in the form above for local sun information.
+          </p>
         )}
       </WidgetContainer>
     </>

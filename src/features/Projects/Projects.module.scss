@@ -14,31 +14,62 @@
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 10px;
-  margin-left: 40px;
+  // margin-left: 10px;
   margin-right: 40px;
   text-align: left;
   padding: 10px;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    margin-left: 40px;
+  }
 }
 
 .widgetsGrid {
   min-height: 500px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "form"
+    "welcome"
+    "clock"
+    "weather"
+    "sun"
+    "pomodoro"
+    "water-cooler"
+    "water-cooler";
   gap: 25px;
-  padding: 25px;
-  padding-bottom: 0;
-  margin: 40px;
+  padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
   background-color: $light-grey;
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-template-columns: repeat(2, minmax(310px, 1fr));
+    grid-template-areas:
+      "form form"
+      "welcome welcome"
+      "clock weather"
+      "sun water-cooler"
+      "pomodoro water-cooler";
+    margin: 40px;
+    padding: 25px;
+  }
+
+  @media screen and (min-width: $media-breakpoint-extra-large) {
+    grid-template-columns: repeat(3, minmax(310px, 1fr));
+    grid-template-areas:
+      "form form form"
+      "welcome welcome welcome"
+      "weather clock water-cooler"
+      "sun pomodoro water-cooler";
   }
 }
 
 .projectSection {
-  // background-color: $light-grey;
-  padding: 20px;
+  padding: 10px;
   margin-top: 20px;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    padding: 20px;
+  }
 }

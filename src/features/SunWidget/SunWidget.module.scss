@@ -3,6 +3,7 @@
 .sunWidgetContainerEmpty,
 .sunWidgetContainer {
   height: 325px;
+  grid-area: sun;
 }
 
 .sunTimeContainer {
@@ -11,8 +12,8 @@
   margin: 0 25px 10px 25px;
   padding: 5px 0;
   position: relative;
-  top: -32.6px;
-  border-top: 4px solid $primary-color;
+  top: -32px;
+  border-top: 2px solid $primary-color;
 }
 
 .sunriseContainer,
@@ -41,4 +42,8 @@
   > * {
     line-height: 1.2;
   }
+}
+
+.noDataMessage {
+  @include widget-no-data-message;
 }

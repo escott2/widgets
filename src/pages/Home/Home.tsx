@@ -43,45 +43,46 @@ function Home({ hasScrolledDown }: HomeProps) {
 
           <div className={styles.introSectionContainer}>
             <div className={styles.introContent}>
-              <p className={styles.introText}>
-                I'm passionate about creating exceptional web experiences that
-                are not only visually appealing but also intuitive and
-                well-engineered. I'm an experienced engineer excited for the
-                next adventure. Explore{" "}
-                <Link
-                  to="projects"
-                  spy={true}
-                  smooth={true}
-                  offset={-120}
-                  duration={0}
-                  className={styles.link}
-                >
-                  my work
-                </Link>
-                , learn more{" "}
-                <Link
-                  to="about"
-                  spy={true}
-                  smooth={true}
-                  offset={-120}
-                  duration={0}
-                  className={styles.link}
-                >
-                  about me
-                </Link>
-                , and{" "}
-                <Link
-                  to="contact"
-                  spy={true}
-                  smooth={true}
-                  offset={-120}
-                  duration={0}
-                  className={styles.link}
-                >
-                  reach out
-                </Link>{" "}
-                if you're interested in working together!
-              </p>
+              <div className={styles.introText}>
+                <p>
+                  With three years of hands-on experience, I specialize in
+                  creating well-engineered, responsive, and user-friendly
+                  websites. Explore{" "}
+                  <Link
+                    to="projects"
+                    spy={true}
+                    smooth={true}
+                    offset={-120}
+                    duration={0}
+                    className={styles.link}
+                  >
+                    my featured projects
+                  </Link>
+                  , learn more{" "}
+                  <Link
+                    to="about"
+                    spy={true}
+                    smooth={true}
+                    offset={-120}
+                    duration={0}
+                    className={styles.link}
+                  >
+                    about me
+                  </Link>
+                  , and{" "}
+                  <Link
+                    to="contact"
+                    spy={true}
+                    smooth={true}
+                    offset={-120}
+                    duration={0}
+                    className={styles.link}
+                  >
+                    reach out
+                  </Link>{" "}
+                  if you're interested in working together.
+                </p>
+              </div>
               <img
                 src={deskImg}
                 className={styles.desk}

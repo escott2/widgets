@@ -15,11 +15,15 @@ function WeatherWidget() {
         title="Weather"
       >
         {isFetching && <Loader />}
-        {!isFetching && weatherData && (
+        {!isFetching && weatherData ? (
           <>
             <Location />
             <WeatherDisplay />
           </>
+        ) : (
+          <p className={styles.noDataMessage}>
+            Enter your ZIP code in the form above for local weather information.
+          </p>
         )}
       </WidgetContainer>
     </>

@@ -12,7 +12,7 @@ function SunStatus({ percentDaylightRemaining }: SunStatusProps) {
       {isBeforeSunrise
         ? "The sun has not risen yet."
         : isSunUp
-        ? `The sun is up - ${percentDaylightRemaining}% daylight remains`
+        ? `The sun is up. ${percentDaylightRemaining}% daylight remains`
         : "The sun has set for the day."}
     </p>
   );

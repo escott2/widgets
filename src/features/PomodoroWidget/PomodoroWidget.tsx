@@ -116,7 +116,7 @@ const PomodoroWidget = () => {
             cy="100"
             r="80"
             {...(isFocusMode ? { stroke: "#c8e1ea" } : { stroke: "#ffffff" })}
-            strokeWidth="22"
+            strokeWidth="24"
             fill="none"
             variants={circleVariants}
             initial="initial"
