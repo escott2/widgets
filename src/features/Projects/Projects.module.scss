@@ -6,8 +6,10 @@
 
 .sectionTitle {
   @include section-title;
-  padding: 20px;
-  margin-bottom: 30px;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    padding-left: 20px;
+  }
 }
 
 .widgetsTitle {
@@ -43,8 +45,13 @@
   border-radius: 10px;
   background-color: $light-grey;
 
+  @media screen and (min-width: $media-breakpoint-small) {
+    margin: 40px;
+    padding: 25px;
+  }
+
   @media screen and (min-width: $media-breakpoint-medium) {
-    grid-template-columns: repeat(2, minmax(310px, 1fr));
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
     grid-template-areas:
       "form form"
       "welcome welcome"

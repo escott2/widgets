@@ -16,6 +16,9 @@
 .sectionTitle {
   @include section-title;
   @include layout-container;
+  @media screen and (min-width: $media-breakpoint-medium) {
+    padding-left: 20px;
+  }
 }
 
 .widgetsContainer {
