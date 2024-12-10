@@ -16,8 +16,10 @@
 .sectionTitle {
   @include section-title;
   @include layout-container;
+  text-align: center;
   @media screen and (min-width: $media-breakpoint-medium) {
     padding-left: 20px;
+    text-align: left;
   }
 }
 

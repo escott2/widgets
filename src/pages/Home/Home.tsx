@@ -37,7 +37,7 @@ function Home({ hasScrolledDown }: HomeProps) {
         <Element name="landing">
           <div className={styles.titleContainer}>
             <h2 className={styles.sectionTitle}>
-              Hello, I'm Emily Scott a front-end engineer and design enthusiast.
+              Hello, I'm Emily Scott, a front-end engineer.
             </h2>
           </div>
 

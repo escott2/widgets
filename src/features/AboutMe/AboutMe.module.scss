@@ -3,11 +3,35 @@
 .sectionContainer {
   @include layout-container;
   min-height: 100vh;
+
+  h3 {
+    @include heading-3;
+  }
+
+  h4 {
+    @include heading-4;
+  }
 }
 
 .sectionTitle {
   @include section-title;
+  // display: inline-block;
+  // margin: 0 auto;
+  // position: relative;
 }
+
+// .sectionTitle::before {
+//   content: "";
+//   height: 400px;
+//   width: 400px;
+
+//   background: url("../../assets/shape.svg") no-repeat center;
+//   background-size: contain;
+//   position: absolute;
+//   top: -120px;
+//   left: -50px;
+//   z-index: -1;
+// }
 
 .testMotionDiv {
   width: 300px;
@@ -28,11 +52,10 @@
 .infoItem {
   padding: 15px 20px 15px 40px;
   margin-bottom: 25px;
-  background-color: rgba(237, 245, 248, 0.5);
-  background-color: $pale-blue;
+  // background-color: $pale-blue;
   border-radius: 10px;
   position: relative;
-  border: 4px solid $primary-color;
+  // border: 4px solid $primary-color;
 }
 
 .infoHeading {
@@ -41,4 +64,62 @@
   margin-top: 15px;
   margin-bottom: 25px;
   margin-right: 10px;
+}
+
+.overviewContainer {
+  padding: 20px;
+  padding-left: 0;
+  max-width: 650px;
+  font-size: 18px;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+
+  li {
+    background-color: $light-cyan;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0;
+  }
+}
+
+.backgroundSection {
+  padding: 10px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  @media screen and (min-width: $media-breakpoint-small) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.backgroundLocation {
+  font-weight: 700;
+}
+
+.backgroundLogo {
+  height: 40px;
+  width: auto;
+  margin: 20px;
+  margin-left: 0;
+
+  @media screen and (min-width: $media-breakpoint-small) {
+    margin-left: 20px;
+    min-width: 70px;
+  }
+}
+
+.experienceBackgroundLogo {
+  width: 70px;
+  height: auto;
+}
+
+.aboutInformation {
+  background-color: $light-grey;
+  padding: 20px;
 }

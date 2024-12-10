@@ -68,9 +68,19 @@
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: $section-title-font-size;
-    text-align: left;
     padding: 40px 0;
   }
+}
+
+@mixin heading-3 {
+  font-size: 20px;
+  text-align: left;
+  padding: 10px 0;
+}
+
+@mixin heading-4 {
+  text-align: left;
+  padding: 10px 0;
 }
 
 @mixin widget-no-data-message {
