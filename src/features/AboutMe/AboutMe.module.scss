@@ -69,8 +69,25 @@
 .overviewContainer {
   padding: 20px;
   padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.overviewImg {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border: 10px solid $white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.overviewText {
   max-width: 650px;
+  width: 100%;
   font-size: 18px;
+  padding: 40px;
 }
 
 .skillsContainer {
@@ -122,4 +139,10 @@
 .aboutInformation {
   background-color: $light-grey;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.aboutSection {
+  padding: 30px;
 }
