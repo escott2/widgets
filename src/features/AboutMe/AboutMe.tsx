@@ -55,7 +55,7 @@ function AboutMe() {
             </ul>
           </section>
           <section className={styles.aboutSection}>
-            <h3>Front-End Experience</h3>
+            <h3>Experience</h3>
             <div className={styles.backgroundSection}>
               <img
                 className={combineClasses(

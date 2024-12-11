@@ -16,6 +16,8 @@ $accent-color: $orange;
 $dark-accent-color: $dark-orange;
 $text-color: $black;
 
+$common-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
 $error-text-color: $error-color;
 
 $media-breakpoint-small: 576px;
@@ -45,3 +47,5 @@ $primary-button-hover-border-color: $primary-color;
 $section-title-font-size-mobile: 24px;
 $section-title-font-size: 40px;
 $section-title-font-weight: 700;
+$main-section-border-radius: 10px;
+$main-section-box-shadow: $common-box-shadow;

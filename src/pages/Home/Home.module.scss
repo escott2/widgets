@@ -16,11 +16,6 @@
 .sectionTitle {
   @include section-title;
   @include layout-container;
-  text-align: center;
-  @media screen and (min-width: $media-breakpoint-medium) {
-    padding-left: 20px;
-    text-align: left;
-  }
 }
 
 .widgetsContainer {
@@ -57,9 +52,7 @@
 
 .introSectionContainer {
   @include layout-container;
-  margin-bottom: 50px;
   position: relative;
-  background-color: $light-grey;
 }
 
 .sectionContainer {
@@ -72,6 +65,10 @@
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
+  background-color: $light-grey;
+  box-shadow: $main-section-box-shadow;
+  border-radius: $main-section-border-radius;
+  padding: 20px;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     flex-direction: row;
@@ -80,16 +77,14 @@
 }
 
 .introText {
-  padding: 0 30px;
-  margin: 30px 20px;
+  padding: 30px;
+  margin: 0 auto;
   max-width: 650px;
   min-width: 300px;
-  border-left: 2px solid black;
   flex: 1;
 
   .link {
     font-weight: 700;
-    color: $dark-accent-color;
     cursor: pointer;
 
     &:hover {
@@ -107,12 +102,13 @@
   width: 100%;
   max-width: 295px;
   width: 100%;
-  padding-left: 20px;
   flex: 1;
   object-fit: contain;
+  border-radius: 10px;
+  margin: 20px auto;
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    max-width: 395px;
+    max-width: 600px;
   }
 }
 

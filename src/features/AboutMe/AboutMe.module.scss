@@ -15,23 +15,7 @@
 
 .sectionTitle {
   @include section-title;
-  // display: inline-block;
-  // margin: 0 auto;
-  // position: relative;
 }
-
-// .sectionTitle::before {
-//   content: "";
-//   height: 400px;
-//   width: 400px;
-
-//   background: url("../../assets/shape.svg") no-repeat center;
-//   background-size: contain;
-//   position: absolute;
-//   top: -120px;
-//   left: -50px;
-//   z-index: -1;
-// }
 
 .testMotionDiv {
   width: 300px;
@@ -70,8 +54,13 @@
   padding: 20px;
   padding-left: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }
 
 .overviewImg {
@@ -80,7 +69,7 @@
   height: auto;
   border: 10px solid $white;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: $common-box-shadow;
 }
 
 .overviewText {
@@ -139,10 +128,14 @@
 .aboutInformation {
   background-color: $light-grey;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: $main-section-border-radius;
+  box-shadow: $main-section-box-shadow;
 }
 
 .aboutSection {
-  padding: 30px;
+  padding: 10px;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    padding: 30px;
+  }
 }

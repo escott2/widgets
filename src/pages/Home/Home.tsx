@@ -1,7 +1,9 @@
 import styles from "./Home.module.scss";
 import { AboutMe, Projects, Contact } from "../../features";
-// import deskImg from "../../assets/landing-desk.jpg";
-import deskImg from "../../assets/1.jpeg";
+import laptopImg from "../../assets/laptop.jpg";
+// import aboutWaveOne from "../../assets/wave-one.jpg";
+// import aboutWaveTwo from "../../assets/wave-two.jpg";
+// import { default as ImageAnimation } from "../../components/animation/ImageAnimation/ImageAnimation";
 
 import { useEffect } from "react";
 
@@ -47,8 +49,7 @@ function Home({ hasScrolledDown }: HomeProps) {
             <div className={styles.introContent}>
               <div className={styles.introText}>
                 <p>
-                  With three years of hands-on experience, I specialize in
-                  creating well-engineered, responsive, and user-friendly
+                  I build well-engineered, responsive, and user-friendly
                   websites. Explore{" "}
                   <Link
                     to="projects"
@@ -82,18 +83,19 @@ function Home({ hasScrolledDown }: HomeProps) {
                   >
                     reach out
                   </Link>{" "}
-                  if you're interested in working together.
+                  if you're interested in working together!
                 </p>
               </div>
               <img
-                src={deskImg}
+                src={laptopImg}
                 className={styles.desk}
-                alt="macbook on desk"
+                alt="macbook on concrete surface"
               />
+              {/* <ImageAnimation image1={aboutWaveOne} image2={aboutWaveTwo} /> */}
             </div>
           </div>
         </Element>
-        <Projects />
+        {/* <Projects /> */}
         <AboutMe />
         <Contact />
         {hasScrolledDown && (
