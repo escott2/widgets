@@ -5,6 +5,7 @@ import { WidgetsForm } from "../WidgetsForm";
 import { PomodoroWidget } from "../PomodoroWidget";
 import styles from "./Projects.module.scss";
 import { Element } from "react-scroll";
+import { MainSectionHeading } from "../../components";
 
 function Projects() {
   const [name, setName] = useState("");
@@ -16,11 +17,11 @@ function Projects() {
   return (
     <section className={styles.sectionContainer}>
       <Element name="projects">
-        <h2 className={styles.sectionTitle}>Projects</h2>
+        <MainSectionHeading sectionName="Projects" />
 
         <section className={styles.projectSection}>
           <h3 className={styles.widgetsTitle}>Widgets</h3>
-          <div className={styles.widgetsGrid}>
+          {/* <div className={styles.widgetsGrid}>
             <WidgetsForm />
             <WelcomeWidget name={name} />
             <SunWidget />
@@ -28,7 +29,7 @@ function Projects() {
             <ChatWidget saveUsername={saveUsername} name={name} />
             <WeatherWidget />
             <PomodoroWidget />
-          </div>
+          </div> */}
         </section>
         <section className={styles.projectSection}></section>
       </Element>

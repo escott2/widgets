@@ -1,10 +1,9 @@
 @use "../../styles/abstracts/" as *;
 
 .sectionContainer {
-  @include layout-container;
-  min-height: 100vh;
+  @include main-section-container;
 }
 
 .sectionTitle {
-  @include section-title;
+  @include main-section-title;
 }

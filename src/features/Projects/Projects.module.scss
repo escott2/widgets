@@ -1,11 +1,11 @@
 @use "../../styles/abstracts/" as *;
 
 .sectionContainer {
-  @include layout-container(0);
+  @include main-section-container;
 }
 
 .sectionTitle {
-  @include section-title;
+  @include main-section-title;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     padding-left: 20px;

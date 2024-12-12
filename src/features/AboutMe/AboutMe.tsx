@@ -5,12 +5,24 @@ import winonaStateLogo from "../../assets/winona-state-logo.svg";
 import mPulseLogo from "../../assets/mPulse-logo.png";
 import aboutImage from "../../assets/about-img.jpeg";
 import { combineClasses } from "../../utils";
+import { motion } from "framer-motion";
+import { MainSectionHeading } from "../../components";
+import testMask from "../../assets/test-mask.svg";
 
 function AboutMe() {
+  const titleOutlineVariants = {
+    hidden: { rotate: 180, pathLength: 0 },
+    visible: {
+      pathLength: 1,
+      transition: { duration: 2 },
+    },
+  };
+
   return (
     <section className={styles.sectionContainer}>
       <Element name="about">
-        <h2 className={styles.sectionTitle}>About Me</h2>
+        <MainSectionHeading sectionName="About" />
+
         <div className={styles.aboutInformation}>
           <section
             className={combineClasses(

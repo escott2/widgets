@@ -1,11 +1,12 @@
 import { Element } from "react-scroll";
 import styles from "./Contact.module.scss";
+import { MainSectionHeading } from "../../components";
 
 function Contact() {
   return (
     <section className={styles.sectionContainer}>
       <Element name="contact">
-        <h2 className={styles.sectionTitle}>Contact</h2>
+        <MainSectionHeading sectionName="Contact" />
       </Element>
     </section>
   );

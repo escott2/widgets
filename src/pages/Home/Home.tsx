@@ -95,7 +95,7 @@ function Home({ hasScrolledDown }: HomeProps) {
             </div>
           </div>
         </Element>
-        {/* <Projects /> */}
+        <Projects />
         <AboutMe />
         <Contact />
         {hasScrolledDown && (

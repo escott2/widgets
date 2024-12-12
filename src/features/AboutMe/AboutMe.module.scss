@@ -1,8 +1,7 @@
 @use "../../styles/abstracts/" as *;
 
 .sectionContainer {
-  @include layout-container;
-  min-height: 100vh;
+  @include main-section-container;
 
   h3 {
     @include heading-3;
@@ -13,8 +12,16 @@
   }
 }
 
+.sectionTitleContainer {
+  position: relative;
+  top: 60px;
+}
+
 .sectionTitle {
-  @include section-title;
+  @include main-section-title;
+  position: absolute;
+  top: 60px;
+  width: 100%;
 }
 
 .testMotionDiv {
@@ -128,6 +135,7 @@
 .aboutInformation {
   background-color: $light-grey;
   padding: 20px;
+  margin: 20px;
   border-radius: $main-section-border-radius;
   box-shadow: $main-section-box-shadow;
 }

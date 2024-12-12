@@ -14,8 +14,13 @@
 }
 
 .sectionTitle {
-  @include section-title;
+  @include main-section-title;
   @include layout-container;
+  color: $black;
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    font-size: 40px;
+  }
 }
 
 .widgetsContainer {
@@ -52,6 +57,7 @@
 
 .introSectionContainer {
   @include layout-container;
+  margin-bottom: 150px;
   position: relative;
 }
 
@@ -101,7 +107,6 @@
   height: auto;
   width: 100%;
   max-width: 295px;
-  width: 100%;
   flex: 1;
   object-fit: contain;
   border-radius: 10px;

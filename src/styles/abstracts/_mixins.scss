@@ -8,6 +8,10 @@
   padding: $padding;
 }
 
+@mixin main-section-container {
+  @include layout-container(0);
+}
+
 // END LAYOUT MIXINS
 
 // START FORM MIXINS
@@ -60,14 +64,15 @@
 
 // START TYPOGRAPHY MIXINS
 
-@mixin section-title {
-  font-size: $section-title-font-size-mobile;
-  font-weight: $section-title-font-weight;
+@mixin main-section-title {
+  font-size: $main-section-title-font-size-mobile;
+  font-weight: $main-section-title-font-weight;
+  color: $main-section-title-color;
   text-align: center;
   padding: 60px 0 40px;
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    font-size: $section-title-font-size;
+    font-size: $main-section-title-font-size;
     padding: 40px 0;
   }
 }
