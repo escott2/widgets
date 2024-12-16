@@ -9,7 +9,16 @@
 }
 
 @mixin main-section-container {
-  @include layout-container(0);
+  @include layout-container(60px 20px);
+
+  @media screen and (min-width: $media-breakpoint-medium) {
+    padding: 20px;
+  }
+}
+
+@mixin main-section-content {
+  background-color: $light-grey;
+  box-shadow: $common-box-shadow;
 }
 
 // END LAYOUT MIXINS
@@ -69,11 +78,10 @@
   font-weight: $main-section-title-font-weight;
   color: $main-section-title-color;
   text-align: center;
-  padding: 60px 0 40px;
+  padding: 50px 0;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: $main-section-title-font-size;
-    padding: 40px 0;
   }
 }
 

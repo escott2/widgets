@@ -4,8 +4,7 @@ import WelcomeWidget from "../WelcomeWidget/WelcomeWidget";
 import { WidgetsForm } from "../WidgetsForm";
 import { PomodoroWidget } from "../PomodoroWidget";
 import styles from "./Projects.module.scss";
-import { Element } from "react-scroll";
-import { MainSectionHeading } from "../../components";
+import { MainSectionContainer, MainSectionHeading } from "../../components";
 
 function Projects() {
   const [name, setName] = useState("");
@@ -15,13 +14,12 @@ function Projects() {
   };
 
   return (
-    <section className={styles.sectionContainer}>
-      <Element name="projects">
-        <MainSectionHeading sectionName="Projects" />
+    <MainSectionContainer sectionName="projects">
+      <MainSectionHeading sectionName="Projects" />
 
-        <section className={styles.projectSection}>
-          <h3 className={styles.widgetsTitle}>Widgets</h3>
-          {/* <div className={styles.widgetsGrid}>
+      <section className={styles.projectSection}>
+        <h3 className={styles.widgetsTitle}>Widgets</h3>
+        {/* <div className={styles.widgetsGrid}>
             <WidgetsForm />
             <WelcomeWidget name={name} />
             <SunWidget />
@@ -30,10 +28,9 @@ function Projects() {
             <WeatherWidget />
             <PomodoroWidget />
           </div> */}
-        </section>
-        <section className={styles.projectSection}></section>
-      </Element>
-    </section>
+      </section>
+      <section className={styles.projectSection}></section>
+    </MainSectionContainer>
   );
 }
 

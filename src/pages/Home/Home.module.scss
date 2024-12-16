@@ -16,7 +16,9 @@
 .sectionTitle {
   @include main-section-title;
   @include layout-container;
-  color: $black;
+  & {
+    color: $black;
+  }
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: 40px;

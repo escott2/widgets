@@ -1,4 +1,4 @@
-export { AboutMe } from "./AboutMe";
+export { About } from "./About";
 export { Projects } from "./Projects";
 export { Contact } from "./Contact";
 export { WeatherWidget } from "./WeatherWidget";

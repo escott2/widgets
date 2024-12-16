@@ -1,0 +1,9 @@
+@use "../../../styles/abstracts/" as *;
+
+.sectionContainer {
+  @include main-section-container;
+}
+
+.sectionContent {
+  @include main-section-content;
+}

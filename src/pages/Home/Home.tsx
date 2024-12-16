@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import { AboutMe, Projects, Contact } from "../../features";
+import { About, Projects, Contact } from "../../features";
 import laptopImg from "../../assets/laptop.jpg";
 // import aboutWaveOne from "../../assets/wave-one.jpg";
 // import aboutWaveTwo from "../../assets/wave-two.jpg";
@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 import { IconButton } from "../../components/ui/Button";
 import { useAnimate } from "framer-motion";
+import { SectionDivide } from "../../components/ui/SectionDivide";
 
 interface HomeProps {
   hasScrolledDown: boolean;
@@ -96,7 +97,7 @@ function Home({ hasScrolledDown }: HomeProps) {
           </div>
         </Element>
         <Projects />
-        <AboutMe />
+        <About />
         <Contact />
         {hasScrolledDown && (
           <div ref={scope} className={styles.buttonContainer}>

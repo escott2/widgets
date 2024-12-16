@@ -2,6 +2,7 @@
 
 .sectionContainer {
   @include main-section-container;
+  height: 100vh;
 }
 
 .sectionTitle {
