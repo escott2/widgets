@@ -2,11 +2,25 @@ import styles from "./About.module.scss";
 import stScholasticaLogo from "../../assets/st-scholastica-logo.svg";
 import winonaStateLogo from "../../assets/winona-state-logo.svg";
 import mPulseLogo from "../../assets/mPulse-logo.png";
-import aboutImage from "../../assets/about-overview-img.png";
+import aboutImage from "../../assets/profile-mask-blue.png";
 import { combineClasses } from "../../utils";
 import { MainSectionContainer, MainSectionHeading } from "../../components";
+import { motion } from "framer-motion";
 
 function About() {
+  const listVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.75 },
+    show: { opacity: 1, scale: 1 },
+  };
+
   return (
     <MainSectionContainer sectionName="about">
       <MainSectionHeading sectionName="About" />
@@ -21,7 +35,7 @@ function About() {
         >
           <img
             src={aboutImage}
-            alt="smiling woman reflection on a computer displaying code"
+            alt="smiling woman profile picture"
             className={styles.overviewImg}
           />
           <p className={styles.overviewText}>
@@ -36,12 +50,17 @@ function About() {
         <section className={styles.aboutSubsection}>
           <h3 className={styles.headingThree}>Skills</h3>
           <h4>Programming Languages</h4>
-          <ul className={styles.skillsContainer}>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-          </ul>
+          <motion.ul
+            className={styles.skillsContainer}
+            variants={listVariants}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.li variants={itemVariants}>HTML</motion.li>
+            <motion.li variants={itemVariants}>CSS</motion.li>
+            <motion.li variants={itemVariants}>JavaScript</motion.li>
+            <motion.li variants={itemVariants}>TypeScript</motion.li>
+          </motion.ul>
           <h4>Tools and Technologies</h4>
           <ul className={styles.skillsContainer}>
             <li>React</li>
@@ -53,7 +72,13 @@ function About() {
             <li>Jira</li>
           </ul>
         </section>
-        <section className={styles.aboutSubsection}>
+        <section
+          className={combineClasses(
+            styles,
+            "backgroundContainer",
+            "aboutSubsection"
+          )}
+        >
           <h3>Experience</h3>
           <div className={styles.backgroundSection}>
             <img
@@ -74,7 +99,13 @@ function About() {
             </div>
           </div>
         </section>
-        <section className={styles.aboutSubsection}>
+        <section
+          className={combineClasses(
+            styles,
+            "backgroundContainer",
+            "aboutSubsection"
+          )}
+        >
           <h3>Education</h3>
           <div className={styles.backgroundSection}>
             <img

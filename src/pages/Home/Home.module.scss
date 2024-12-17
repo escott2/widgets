@@ -10,12 +10,30 @@
 
 .titleContainer {
   background-color: $light-cyan;
-  padding: 30px 0;
+  padding: 10px 0;
+}
+
+.titleContainerContent {
+  @include layout-container;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media screen and (min-width: $media-breakpoint-large) {
+    flex-direction: row;
+  }
+}
+
+.handWaveOutline {
+  height: 50px;
+  width: 50px;
 }
 
 .sectionTitle {
   @include main-section-title;
-  @include layout-container;
+  padding: 20px;
+
   & {
     color: $black;
   }

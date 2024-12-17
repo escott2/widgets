@@ -77,9 +77,14 @@
     padding: $primary-button-padding;
     margin: 10px 0 10px 25px;
     transition: all 0.25s linear;
+    border-radius: 10px;
 
     &.emphasizeButton {
       background-color: $light-cyan;
+
+      &:hover {
+        background-color: $white;
+      }
     }
   }
 }
