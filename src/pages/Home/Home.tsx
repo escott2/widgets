@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import styles from "./Home.module.scss";
 import { About, Projects, Contact } from "../../features";
 import laptopImg from "../../assets/laptop.jpg";
@@ -6,13 +7,26 @@ import { useEffect } from "react";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 import { IconButton } from "../../components/ui/Button";
 import { useAnimate, motion, AnimatePresence } from "framer-motion";
+import { default as CursorEffect } from "../../features/CursorEffect/CursorEffect";
 
 interface HomeProps {
   hasScrolledDown: boolean;
 }
 
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
 function Home({ hasScrolledDown }: HomeProps) {
   const [scope, animate] = useAnimate();
+  const cursorContainerRef = useRef(null);
+  const [isTitleHovered, setIsTitleHovered] = useState(false);
+
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     if (hasScrolledDown) {
@@ -35,15 +49,64 @@ function Home({ hasScrolledDown }: HomeProps) {
     animate: { rotate: [-45, 0, -45, 0] },
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseOver = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setIsTitleHovered(true);
+  };
+
+  const handleMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setIsTitleHovered(false);
+  };
+
+  console.log(isTitleHovered);
+
+  const cursorVariants = {
+    default: {
+      x: mousePosition.x - 10,
+      y: mousePosition.y - 20,
+      transition: {
+        type: "smooth",
+        duration: 0,
+      },
+    },
+  };
+
   return (
     <>
       <main className={styles.homeContainer}>
         <Element name="landing">
-          <div className={styles.titleContainer}>
+          <AnimatePresence>
+            {isTitleHovered && (
+              <motion.div
+                className={styles.cursor}
+                variants={cursorVariants}
+                // exit={{
+                //   opacity: 0,
+
+                //   transition: {
+                //     duration: 0,
+                //   },
+                // }}
+                animate="default"
+              ></motion.div>
+            )}
+          </AnimatePresence>
+          <div
+            className={styles.titleContainer}
+            ref={cursorContainerRef}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            onMouseMove={handleMouseMove}
+          >
             <div className={styles.titleContainerContent}>
               <h2 className={styles.sectionTitle}>
                 Hello, I'm Emily Scott, a front-end engineer.
               </h2>
+              {/* <CursorEffect targetDivRef={cursorContainerRef} /> */}
+
               <motion.img
                 src={handWaveOutline}
                 alt="hand wave outline"
@@ -52,6 +115,8 @@ function Home({ hasScrolledDown }: HomeProps) {
                 animate="animate"
               />
             </div>
+            <div className={styles.testDivTop}></div>
+            <div className={styles.testDivBottom}></div>
           </div>
 
           <div className={styles.introSectionContainer}>

@@ -1,6 +1,5 @@
 import styles from "./MainSectionHeading.module.scss";
 import backgroundImg from "../../../assets/title-background-blue.jpg";
-// import backgroundImg from "../../../assets/pixels.jpg";
 
 interface MainSectionHeadingProps {
   sectionName: string;

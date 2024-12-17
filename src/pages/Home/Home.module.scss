@@ -10,11 +10,45 @@
 
 .titleContainer {
   background-color: $light-cyan;
-  padding: 10px 0;
+  padding-bottom: 20px;
+  position: relative;
+  cursor: none;
+}
+
+.cursor {
+  opacity: 1;
+  background-color: $light-cyan;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+// .testDivTop {
+//   height: 10px;
+//   width: 100%;
+//   position: absolute;
+//   top: 0;
+//   z-index: 5;
+//   background-color: $light-cyan;
+// }
+.testDivBottom {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  background-color: $white;
 }
 
 .titleContainerContent {
-  @include layout-container;
+  @include layout-container(30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +113,7 @@
   @include layout-container;
   margin-bottom: 150px;
   position: relative;
+  padding-top: 0;
 }
 
 .sectionContainer {
@@ -95,6 +130,8 @@
   box-shadow: $main-section-box-shadow;
   border-radius: $main-section-border-radius;
   padding: 20px;
+  position: relative;
+  z-index: 10;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     flex-direction: row;
