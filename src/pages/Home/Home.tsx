@@ -5,6 +5,7 @@ function Home() {
   return (
     <>
       <main className={styles.homeContainer}>
+        <h2 className={styles.pageTitle}>Widgets</h2>
         <Widgets />
       </main>
     </>

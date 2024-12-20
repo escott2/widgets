@@ -8,14 +8,6 @@
   padding: $padding;
 }
 
-@mixin main-section-container {
-  @include layout-container(60px 30px);
-
-  @media screen and (min-width: $media-breakpoint-medium) {
-    padding: 30px;
-  }
-}
-
 // END LAYOUT MIXINS
 
 // START FORM MIXINS
@@ -52,24 +44,17 @@
 
 // START TYPOGRAPHY MIXINS
 
-@mixin main-section-title {
+@mixin main-title {
   font-size: $main-section-title-font-size-mobile;
   font-weight: $main-section-title-font-weight;
+  font-family: $main-section-title-font-family;
   color: $main-section-title-color;
   text-align: center;
-  padding-bottom: 20px;
-  position: relative;
-  top: -30px;
+  padding: 40px 0;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: $main-section-title-font-size;
   }
-}
-
-@mixin heading-3 {
-  font-size: 24px;
-  text-align: left;
-  padding: 10px 0;
 }
 
 @mixin widget-no-data-message {

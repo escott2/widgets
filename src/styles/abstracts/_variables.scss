@@ -16,6 +16,8 @@ $accent-color: $orange;
 $dark-accent-color: $dark-orange;
 $text-color: $black;
 
+$font-family-secondary: "Rammetto One", serif;
+
 $common-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 
 $error-text-color: $error-color;
@@ -27,6 +29,7 @@ $media-breakpoint-extra-large: 1200px;
 
 $layout-padding: 20px;
 $form-element-margin: 5px 5px 5px 0;
+$form-element-padding: 0 0 0 5px;
 
 $input-border: 1px solid #dddddd;
 $input-margin: 5px;
@@ -47,6 +50,7 @@ $primary-button-hover-border-color: $primary-color;
 $main-section-title-font-size-mobile: 28px;
 $main-section-title-font-size: 30px;
 $main-section-title-font-weight: 700;
+$main-section-title-font-family: $font-family-secondary;
 $main-section-title-color: $black;
 $main-section-border-radius: 10px;
 $main-section-box-shadow: $common-box-shadow;

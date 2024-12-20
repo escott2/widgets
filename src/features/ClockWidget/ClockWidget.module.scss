@@ -1,3 +1,5 @@
+@use "../../styles/abstracts/" as *;
+
 .clockWidgetContainer {
   display: flex;
   flex-direction: column;
@@ -8,7 +10,7 @@
 }
 
 .clock {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
 }
 

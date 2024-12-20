@@ -1,9 +1,14 @@
 @use "../../styles/abstracts/" as *;
 
 .homeContainer {
-  padding-top: 167px;
+  @include layout-container;
+  padding-top: 122px;
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    padding-top: 120px;
+    padding-top: 70px;
   }
+}
+
+.pageTitle {
+  @include main-title;
 }

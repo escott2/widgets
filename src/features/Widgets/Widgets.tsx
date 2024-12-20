@@ -13,8 +13,7 @@ function Widgets() {
   };
 
   return (
-    <section className={styles.projectSection}>
-      <h3 className={styles.widgetsTitle}>Widgets</h3>
+    <section>
       <div className={styles.widgetsGrid}>
         <WidgetsForm />
         <WelcomeWidget name={name} />

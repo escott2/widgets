@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import "./styles/global.scss";
 import { Header } from "./components";
 import { WeatherProvider } from "./context";
