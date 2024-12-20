@@ -40,7 +40,7 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
     useState<boolean>(false);
   const [isFetching, setIsFetching] = useState<boolean>(false);
 
-  const apiKey = "922176d7fe6aa80866789eaaf2e9d26d";
+  const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
   async function getJSON<T>(url: string): Promise<T> {
     try {
@@ -53,7 +53,7 @@ export function WeatherProvider({ children }: WeatherProviderProps) {
   }
 
   const getGeoLocationData = async (zipCode: string) => {
-    const geoURL = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode}&appid=${apiKey}`;
+    const geoURL = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode}&appid=${apiKey}`;
     const geoLocationJSON = await getJSON<GeoLocationData>(geoURL);
     return geoLocationJSON;
   };
