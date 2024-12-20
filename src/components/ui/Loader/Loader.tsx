@@ -1,4 +1,4 @@
-import { RotateLoader } from "react-spinners";
+import { PuffLoader } from "react-spinners";
 import styles from "./Loader.module.scss";
 
 function Loader() {
@@ -9,7 +9,7 @@ function Loader() {
 
   return (
     <div className={styles.loaderContainer}>
-      <RotateLoader
+      <PuffLoader
         color="#000000"
         loading={true}
         cssOverride={loaderOverride}

@@ -16,13 +16,6 @@
   }
 }
 
-@mixin main-section-content {
-  // background-color: $light-grey;
-  background-color: $white;
-  border-radius: 10px 10px 0 0;
-  box-shadow: $common-box-shadow;
-}
-
 // END LAYOUT MIXINS
 
 // START FORM MIXINS
@@ -57,22 +50,6 @@
 
 //END BUTTON MIXINS
 
-// START NAV MIXINS
-
-@mixin nav-link {
-  margin-right: 20px;
-  padding: 5px 0;
-  position: relative;
-  font-size: 18px;
-
-  &:hover {
-    cursor: pointer;
-    border-bottom: 2px solid $black;
-  }
-}
-
-// END NAV MIXINS
-
 // START TYPOGRAPHY MIXINS
 
 @mixin main-section-title {
@@ -91,12 +68,6 @@
 
 @mixin heading-3 {
   font-size: 24px;
-  text-align: left;
-  padding: 10px 0;
-}
-
-@mixin heading-4 {
-  font-size: 18px;
   text-align: left;
   padding: 10px 0;
 }

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WeatherContext } from "../../context";
+import { WeatherContext } from "../../../context";
 import styles from "./Location.module.scss";
 
 function Location() {

@@ -3,7 +3,7 @@ import styles from "./WeatherWidget.module.scss";
 import { WeatherDisplay } from "./components";
 import { Loader, WidgetContainer } from "../../components";
 import { WeatherContext } from "../../context";
-import { Location } from "../Location";
+import { Location } from "../common";
 
 function WeatherWidget() {
   const { weatherData, isFetching } = useContext(WeatherContext);

@@ -1,1 +1,1 @@
-export { default as WelcomeWidgetProps } from "./WelcomeWidget";
+export { default as WelcomeWidget } from "./WelcomeWidget";

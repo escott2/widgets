@@ -8,7 +8,7 @@ import {
   getSunPercentRemaining,
   getLightDurationData,
 } from "./utils";
-import { Location } from "../Location";
+import { Location } from "../common";
 import { SunStatus } from "./components/SunStatus";
 
 function SunWidget() {

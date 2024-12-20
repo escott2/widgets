@@ -6,17 +6,9 @@ import { WeatherProvider } from "./context";
 import { Home } from "./pages";
 
 function App() {
-  const [hasScrolledDown, setHasScrolledDown] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 0) {
-        setHasScrolledDown(true);
-      } else {
-        setHasScrolledDown(false);
-      }
-    });
     setIsLoading(false);
   }, []);
 
@@ -24,8 +16,8 @@ function App() {
     <WeatherProvider>
       {isLoading && <p>Loading</p>}
       <div className="app-container">
-        <Header hasScrolledDown={hasScrolledDown} />
-        <Home hasScrolledDown={hasScrolledDown} />
+        <Header />
+        <Home />
       </div>
     </WeatherProvider>
   );
