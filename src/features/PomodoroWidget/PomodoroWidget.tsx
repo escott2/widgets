@@ -17,7 +17,7 @@ const PomodoroWidget = () => {
     ? timeRemaining / focusTotalSeconds
     : timeRemaining / breakTotalSeconds;
   const timeHasElapsed = percentRemaining < 1;
-  let intervalId: number;
+  let intervalId: NodeJS.Timeout;
 
   const stopTimer = () => {
     clearInterval(intervalId);
