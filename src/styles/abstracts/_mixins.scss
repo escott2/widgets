@@ -9,15 +9,17 @@
 }
 
 @mixin main-section-container {
-  @include layout-container(60px 20px);
+  @include layout-container(60px 30px);
 
   @media screen and (min-width: $media-breakpoint-medium) {
-    padding: 20px;
+    padding: 30px;
   }
 }
 
 @mixin main-section-content {
-  background-color: $light-grey;
+  // background-color: $light-grey;
+  background-color: $white;
+  border-radius: 10px 10px 0 0;
   box-shadow: $common-box-shadow;
 }
 
@@ -65,7 +67,7 @@
 
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $black;
   }
 }
 
@@ -78,7 +80,9 @@
   font-weight: $main-section-title-font-weight;
   color: $main-section-title-color;
   text-align: center;
-  padding: 40px 0 20px;
+  padding-bottom: 20px;
+  position: relative;
+  top: -30px;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     font-size: $main-section-title-font-size;

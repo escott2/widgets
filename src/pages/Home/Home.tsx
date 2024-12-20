@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 import { IconButton } from "../../components/ui/Button";
 import { useAnimate, motion, AnimatePresence } from "framer-motion";
-import { default as CursorEffect } from "../../features/CursorEffect/CursorEffect";
 
 interface HomeProps {
   hasScrolledDown: boolean;
@@ -22,11 +21,25 @@ function Home({ hasScrolledDown }: HomeProps) {
   const [scope, animate] = useAnimate();
   const cursorContainerRef = useRef(null);
   const [isTitleHovered, setIsTitleHovered] = useState(false);
-
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: 0,
     y: 0,
   });
+
+  const cursorVariants = {
+    default: {
+      x: mousePosition.x - 15,
+      y: mousePosition.y - 30,
+      opacity: 1,
+
+      transition: {
+        default: {
+          type: "smooth",
+          duration: 0,
+        },
+      },
+    },
+  };
 
   useEffect(() => {
     if (hasScrolledDown) {
@@ -63,17 +76,6 @@ function Home({ hasScrolledDown }: HomeProps) {
 
   console.log(isTitleHovered);
 
-  const cursorVariants = {
-    default: {
-      x: mousePosition.x - 10,
-      y: mousePosition.y - 20,
-      transition: {
-        type: "smooth",
-        duration: 0,
-      },
-    },
-  };
-
   return (
     <>
       <main className={styles.homeContainer}>
@@ -83,13 +85,6 @@ function Home({ hasScrolledDown }: HomeProps) {
               <motion.div
                 className={styles.cursor}
                 variants={cursorVariants}
-                // exit={{
-                //   opacity: 0,
-
-                //   transition: {
-                //     duration: 0,
-                //   },
-                // }}
                 animate="default"
               ></motion.div>
             )}
@@ -105,7 +100,6 @@ function Home({ hasScrolledDown }: HomeProps) {
               <h2 className={styles.sectionTitle}>
                 Hello, I'm Emily Scott, a front-end engineer.
               </h2>
-              {/* <CursorEffect targetDivRef={cursorContainerRef} /> */}
 
               <motion.img
                 src={handWaveOutline}
@@ -116,7 +110,7 @@ function Home({ hasScrolledDown }: HomeProps) {
               />
             </div>
             <div className={styles.testDivTop}></div>
-            <div className={styles.testDivBottom}></div>
+            <div className={styles.titleContainerBottom}></div>
           </div>
 
           <div className={styles.introSectionContainer}>
@@ -162,8 +156,8 @@ function Home({ hasScrolledDown }: HomeProps) {
               </div>
               <img
                 src={laptopImg}
-                className={styles.desk}
-                alt="macbook on concrete surface"
+                className={styles.introImg}
+                alt="computer on concrete cube"
               />
             </div>
           </div>
@@ -176,7 +170,7 @@ function Home({ hasScrolledDown }: HomeProps) {
           {hasScrolledDown && (
             <motion.div
               ref={scope}
-              className={styles.buttonContainer}
+              className={styles.scrollButtonContainer}
               exit={{ scale: 1, opacity: 0 }}
               transition={{
                 scale: { type: "spring", duration: 0.5 },

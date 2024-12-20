@@ -10,17 +10,16 @@
 
 .titleContainer {
   background-color: $light-cyan;
-  padding-bottom: 20px;
+  padding: 20px 0 50px;
   position: relative;
   cursor: none;
 }
 
 .cursor {
-  opacity: 1;
-  background-color: $light-cyan;
-  height: 20px;
-  width: 20px;
+  background-color: #944621;
   border-radius: 50%;
+  height: 30px;
+  width: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,25 +29,17 @@
   mix-blend-mode: difference;
 }
 
-// .testDivTop {
-//   height: 10px;
-//   width: 100%;
-//   position: absolute;
-//   top: 0;
-//   z-index: 5;
-//   background-color: $light-cyan;
-// }
-.testDivBottom {
-  height: 20px;
+.titleContainerBottom {
+  height: 30px;
   width: 100%;
   position: absolute;
   bottom: 0;
-  z-index: 5;
+  z-index: 1;
   background-color: $white;
 }
 
 .titleContainerContent {
-  @include layout-container(30px);
+  @include layout-container(0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,10 +57,11 @@
 
 .sectionTitle {
   @include main-section-title;
-  padding: 20px;
 
   & {
     color: $black;
+    padding: 20px;
+    top: 0;
   }
 
   @media screen and (min-width: $media-breakpoint-medium) {
@@ -77,47 +69,11 @@
   }
 }
 
-.widgetsContainer {
-  padding: 25px;
-}
-
-.widgetsTitle {
-  font-size: 28px;
-  font-weight: 400;
-  margin-top: 20px;
-}
-
-.widgetsGrid {
-  padding: 20px 0;
-  min-height: 500px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 25px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 25px;
-}
-
-.landingContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.infoText {
-  max-width: 800px;
-  font-size: 18px;
-}
-
 .introSectionContainer {
-  @include layout-container;
+  @include layout-container(30px);
   margin-bottom: 150px;
   position: relative;
   padding-top: 0;
-}
-
-.sectionContainer {
-  @include layout-container;
 }
 
 .introContent {
@@ -131,7 +87,7 @@
   border-radius: $main-section-border-radius;
   padding: 20px;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 
   @media screen and (min-width: $media-breakpoint-medium) {
     flex-direction: row;
@@ -160,7 +116,7 @@
   }
 }
 
-.desk {
+.introImg {
   height: auto;
   width: 100%;
   max-width: 295px;
@@ -174,7 +130,7 @@
   }
 }
 
-.buttonContainer {
+.scrollButtonContainer {
   opacity: 0;
   position: fixed;
   bottom: 0;

@@ -1,5 +1,5 @@
 import styles from "./MainSectionHeading.module.scss";
-import backgroundImg from "../../../assets/title-background-blue.jpg";
+import sectionTitleShape from "../../../assets/section-title-shape.svg";
 
 interface MainSectionHeadingProps {
   sectionName: string;
@@ -7,10 +7,11 @@ interface MainSectionHeadingProps {
 
 function MainSectionHeading({ sectionName }: MainSectionHeadingProps) {
   return (
-    <div className={styles.sectionContainer}>
-      <div className={styles.backgroundImgContainer}>
-        <img src={backgroundImg} className={styles.backgroundImg} />
+    <div>
+      <div className={styles.sectionDividerContainer}>
+        <div className={styles.sectionDividerShape}></div>
       </div>
+      <img src={sectionTitleShape} className={styles.sectionTitleShape} />
       <h2 className={styles.sectionTitle}>{sectionName}</h2>
     </div>
   );

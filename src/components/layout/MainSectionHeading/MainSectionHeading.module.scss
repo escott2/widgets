@@ -1,24 +1,26 @@
 @use "../../../styles/abstracts/" as *;
 
-.backgroundImgContainer {
-  background: url("../../../assets/title-background.jpg");
-  background-size: cover;
-  background-position: center -80px;
-  height: 100px;
+.sectionDividerContainer {
+  background-color: $light-grey;
+  height: 75px;
   width: 100%;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
 }
 
-.backgroundImg {
-  height: 100px;
-  width: 100%;
+.sectionDividerShape {
+  height: 75px;
+  width: auto;
   background-color: $light-cyan;
   mask-image: url("../../../assets/shape.svg");
   mask-size: contain;
   mask-position: center;
-  object-fit: cover;
-  object-position: center -80px;
+}
+
+.sectionTitleShape {
+  height: 75px;
+  width: auto;
+  margin: 0 auto;
 }
 
 .sectionTitle {
