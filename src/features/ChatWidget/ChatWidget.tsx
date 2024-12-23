@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { WidgetContainer } from "../../components/layout";
+import {
+  WidgetContainer,
+  PrimaryButton,
+  TypingAnimation,
+} from "../../components";
 import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
-import { PrimaryButton } from "../../components/ui/Button";
 import { UserResponseRadioButton } from "./components";
 import { ChatTextObject, UserInputObject } from "./types";
-import TypingAnimation from "../../components/animation/TypingAnimation";
 
 interface ChatWidgetProps {
   saveUsername: (name: string) => void;

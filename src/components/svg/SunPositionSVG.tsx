@@ -83,7 +83,7 @@ const SunPositionSVG = ({ percentDaylightRemaining }: SunPositionSVGProps) => {
           id="sun-arc-top-path"
           d="M82 389.5C82 301.05 117.136 216.223 179.68 153.68C242.223 91.1365 327.05 56 415.5 56C503.95 56 588.777 91.1365 651.32 153.68C713.863 216.223 749 301.05 749 389.5"
           stroke="#EC6E4C"
-          stroke-width="20"
+          strokeWidth="20"
           variants={arcVariants}
           initial="hidden"
           animate="visible"

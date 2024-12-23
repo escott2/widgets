@@ -3,32 +3,17 @@ import { WeatherContext } from "../../context";
 import { Loader, WidgetContainer } from "../../components";
 import styles from "./SunWidget.module.scss";
 import { SunPositionSVG } from "../../components/svg";
-import {
-  convertUnixTimeToLocal,
-  getSunPercentRemaining,
-  getLightDurationData,
-} from "./utils";
+import { convertUnixTimeToLocal, getSunPercentRemaining } from "./utils";
 import { Location } from "../common";
 import { SunStatus } from "./components/SunStatus";
 
 function SunWidget() {
-  const { weatherData, isFetching } = useContext(WeatherContext);
+  const { weatherData, isFetching, isWeatherFetchError } =
+    useContext(WeatherContext);
   const { sunrise, sunset } = weatherData?.sys || {};
 
   const percentDaylightRemaining =
     sunrise && sunset ? getSunPercentRemaining(sunrise, sunset) : undefined;
-
-  interface LightDuration {
-    dayLengthInHours: number;
-    nightLengthInHours: number;
-  }
-
-  const lightDuration: LightDuration | undefined =
-    sunrise && sunset ? getLightDurationData(sunrise, sunset) : undefined;
-  const { dayLengthInHours, nightLengthInHours } = lightDuration || {
-    dayLengthInHours: 0,
-    nightLengthInHours: 0,
-  };
 
   const sunriseTime =
     weatherData?.sys?.sunrise !== undefined &&
@@ -42,42 +27,41 @@ function SunWidget() {
     <>
       <WidgetContainer customClasses={styles.sunWidgetContainer} title="Sun">
         {isFetching && <Loader />}
-        {!isFetching && weatherData ? (
-          <>
-            <Location />
-            <div className={styles.sunInfoContainer}>
-              <SunStatus percentDaylightRemaining={percentDaylightRemaining} />
+        <div aria-busy={isFetching}>
+          {!isFetching && weatherData && (
+            <>
+              <Location />
+              <div className={styles.sunPositionContainer}>
+                <SunPositionSVG
+                  percentDaylightRemaining={percentDaylightRemaining}
+                />
+              </div>
 
-              {dayLengthInHours && nightLengthInHours && (
-                <div className={styles.hoursInfo}>
-                  <h4>Total light:</h4> <p>{dayLengthInHours} hours</p>
-                  <h4>Total dark:</h4>
-                  <p>{nightLengthInHours} hours</p>
+              <div className={styles.sunInfoContainer}>
+                <div className={styles.sunTimeContainer}>
+                  <div className={styles.sunriseContainer}>
+                    <h4>Sunrise</h4>
+                    {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
+                  </div>
+                  <div className={styles.sunsetContainer}>
+                    <h4>Sunset</h4>
+                    {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
+                  </div>
                 </div>
-              )}
-            </div>
-            <div className={styles.sunPositionContainer}>
-              <SunPositionSVG
-                percentDaylightRemaining={percentDaylightRemaining}
-              />
-              {/* <SunPositionSVG percentDaylightRemaining={50} /> */}
-            </div>
-            <div className={styles.sunTimeContainer}>
-              <div className={styles.sunriseContainer}>
-                <h4>Sunrise</h4>
-                {sunriseTime ? <p>{sunriseTime}</p> : <p>N/A</p>}
+                <SunStatus
+                  percentDaylightRemaining={percentDaylightRemaining}
+                />
               </div>
-              <div className={styles.sunsetContainer}>
-                <h4>Sunset</h4>
-                {sunsetTime ? <p>{sunsetTime}</p> : <p>N/A</p>}
-              </div>
-            </div>
-          </>
-        ) : (
-          <p className={styles.noDataMessage}>
-            Enter your ZIP code in the form above for local sun information.
-          </p>
-        )}
+            </>
+          )}
+          {!isFetching && !weatherData && (
+            <p className={styles.noDataMessage}>
+              {isWeatherFetchError
+                ? "An error occurred while fetching sun data."
+                : "Enter your ZIP code in the form above for local sun information."}
+            </p>
+          )}
+        </div>
       </WidgetContainer>
     </>
   );

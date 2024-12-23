@@ -1,3 +1,4 @@
 export { Input, PrimaryButton, FullAreaButton, Loader } from "./ui";
 export { ArrowForwardSVG, PlaySVG, PauseSVG, ClearSVG } from "./svg";
-export { Header, WidgetContainer } from "./layout";
+export { FlexWrapContainer, Header, WidgetContainer } from "./layout";
+export { TypingAnimation } from "./animation";

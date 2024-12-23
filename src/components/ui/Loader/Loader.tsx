@@ -8,7 +8,7 @@ function Loader() {
   };
 
   return (
-    <div className={styles.loaderContainer}>
+    <div className={styles.loaderContainer} aria-label="Loading...">
       <PuffLoader
         color="#000000"
         loading={true}

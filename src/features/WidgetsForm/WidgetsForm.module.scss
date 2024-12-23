@@ -27,6 +27,7 @@
 
 .zipCodeInput {
   flex-grow: 1;
+  max-width: 300px;
 }
 
 .zipCodeButton {
@@ -54,5 +55,7 @@
 
   .arrowForwardSvg {
     margin-left: 2px;
+    height: 24px;
+    width: 24px;
   }
 }
