@@ -8,6 +8,7 @@ import styles from "./ChatWidget.module.scss";
 import { chatQuestions, userInputDisplay } from "./data";
 import { UserResponseRadioButton } from "./components";
 import { ChatTextObject, UserInputObject } from "./types";
+import chatSmile from "../../assets/chat-smile.svg";
 
 interface ChatWidgetProps {
   saveUsername: (name: string) => void;
@@ -251,7 +252,14 @@ function ChatWidget({ saveUsername, name }: ChatWidgetProps) {
       <div className={styles.chatHeader}>
         {displayChat ? (
           <div className={styles.chatInfo}>
-            <div className={styles.circle}></div>
+            <div className={styles.circle}>
+              {" "}
+              <img
+                src={chatSmile}
+                alt="blue smiley face"
+                className={styles.chatSmile}
+              />
+            </div>
             <p>Emily</p>
           </div>
         ) : (

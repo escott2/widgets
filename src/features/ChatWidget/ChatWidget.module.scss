@@ -51,6 +51,14 @@
   background-color: #edf5f8;
   border-radius: 50%;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatSmile {
+  height: 30px;
+  width: 30px;
 }
 
 .chatInfo {

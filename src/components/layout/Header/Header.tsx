@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import headerLogo from "../../../assets/widgetsLogo.svg";
+import headerLogo from "../../../assets/logo.svg";
 
 function Header() {
   return (
