@@ -50,6 +50,7 @@ function WidgetsForm() {
         />
         <motion.button
           type="submit"
+          aria-label="submit"
           onClick={handleFindWeatherClick}
           className={styles.zipCodeButton}
           whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}

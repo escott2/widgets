@@ -11,6 +11,7 @@ function ClearSVG({ customClasses = "" }: ClearSVGProps) {
       fill="white"
       xmlns="http://www.w3.org/2000/svg"
       className={customClasses}
+      aria-hidden="true"
     >
       <rect
         x="285.914"

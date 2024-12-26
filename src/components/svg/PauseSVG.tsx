@@ -11,6 +11,7 @@ function PauseSVG({ customClasses = "" }: PauseSVGProps) {
       fill="white"
       xmlns="http://www.w3.org/2000/svg"
       className={customClasses}
+      aria-hidden="true"
     >
       <rect width="109" height="348" />
       <rect x="198" width="109" height="348" />

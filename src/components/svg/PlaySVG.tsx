@@ -11,6 +11,7 @@ function PlaySVG({ customClasses = "" }: PlaySVGProps) {
       xmlns="http://www.w3.org/2000/svg"
       className={customClasses}
       fill="white"
+      aria-hidden="true"
     >
       <path d="M366.495 234.252L0.495117 468.079V0.425583L366.495 234.252Z" />
     </svg>

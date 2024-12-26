@@ -27,7 +27,7 @@
 
 .zipCodeInput {
   flex-grow: 1;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .zipCodeButton {
@@ -42,20 +42,20 @@
   font-weight: 700;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   margin: $form-element-margin;
   margin-left: 5px;
 
   &:hover {
     background-color: white;
     color: $primary-color;
-    .arrowForwardSvg {
+    .arrowForwardSvg path {
       fill: $primary-color;
     }
   }
 
   .arrowForwardSvg {
-    margin-left: 2px;
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
   }
 }

@@ -96,7 +96,11 @@ const PomodoroWidget = () => {
     >
       <div className={styles.timerControlsContainer}>
         {timeHasElapsed && (
-          <IconButton onClick={clearTimer} customClasses={styles.clearButton}>
+          <IconButton
+            onClick={clearTimer}
+            customClasses={styles.clearButton}
+            aria-label="clear timer"
+          >
             <ClearSVG customClasses={styles.controlSVG} />
           </IconButton>
         )}
@@ -130,13 +134,17 @@ const PomodoroWidget = () => {
           <div className={styles.controlButtonsContainer}>
             {timerIsRunning && timeRemaining > 0 ? (
               <IconButton onClick={stopTimer} customClasses={styles.stopButton}>
-                <PauseSVG customClasses={styles.controlSVG} />
+                <PauseSVG
+                  customClasses={styles.controlSVG}
+                  aria-label="pause timer"
+                />
               </IconButton>
             ) : (
               timeRemaining > 0 && (
                 <IconButton
                   onClick={startTimer}
                   customClasses={styles.playButton}
+                  aria-label="start timer"
                 >
                   <PlaySVG customClasses={styles.controlSVG} />
                 </IconButton>
